@@ -9,4 +9,8 @@
 
 
 # Architectural Diagram
+## Conceptual Diagram
+<img src="./assets/week0/cruddur-conceptual-diagram.jpg">
+
+## Logical Architectural Diagram
 <img src="./assets/week0/cruddur-architectural-diagram.jpg">
