@@ -100,3 +100,17 @@ On the Set up device page, you will set up your authenticator app.
 On the next page you will see the banner below confirming the MFA device was successfully assigned! 
 
 <img src="./assets/week0/aws-mfa-assigned.png">
+
+
+# Create a Zero Spend Budget
+
+After logging into the AWS Management Console, search for Budgets and create a budget. There are 2 main setup options available: Use a template and Customized. 
+
+There are a few templates to choose from as well.
+
+<img src="./assets/week0/aws-budget-setup.jpg">
+
+I'm choosing to setup a Zero spend budget called Zero Spend AWS Bootcamp Budget.
+
+<img src="./assets/week0/aws-zero-spend-budget.jpg">
+
