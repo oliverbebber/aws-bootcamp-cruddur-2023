@@ -102,6 +102,31 @@ On the next page you will see the banner below confirming the MFA device was suc
 <img src="./assets/week0/aws-mfa-assigned.png">
 
 
+## Create Access Keys
+From IAM, select the user then select Security Credentials.
+
+<img src="./assets/week0/aws-access-keys.jpg">
+
+- Click Create access key.
+- Choose one of the options (We're setting up Access keys for the CLI) 
+
+<img src="./assets/week0/access-keys.jpg">
+
+- Check the box to state you understand the above recommendation and want to proceed to create an access key.
+- Click Next
+- Set a description tag (optional)
+- Click Create access key
+- Retrieve your access key on the next page.
+
+Optional: download your access key in a .csv file to import the file into the CLI. 
+- We're using GitPod so we cannot use this option.
+
+Best practices:
+- Never store your access keys in plain text, in a code repository, or in code.
+- Disable or delete access keys when no longer needed.
+- Enable least-privilege permissions.
+- Rotate access keys regularly.
+
 # Create a Zero Spend Budget
 
 After logging into the AWS Management Console, search for Budgets and create a budget. There are 2 main setup options available: Use a template and Customized. 
