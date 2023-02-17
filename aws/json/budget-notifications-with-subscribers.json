@@ -8,17 +8,9 @@
         },
         "Subscribers": [
             {
-<<<<<<< HEAD
                 "Address": "",
-=======
-                "Address": "oliver@***REMOVED***",
->>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
                 "SubscriptionType": "EMAIL"
             }
         ]
     }
-<<<<<<< HEAD
 ]
-=======
-]
->>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
