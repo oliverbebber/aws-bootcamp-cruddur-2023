@@ -167,7 +167,6 @@ We'll tell Gitpod to remember these credentials if we relaunch our workspaces
 Check that the AWS CLI is working and you are the expected user
 aws sts get-caller-identity
 
-
 # Create a Zero Spend Budget
 
 After logging into the AWS Management Console, search for Budgets and create a budget. There are 2 main setup options available: Use a template and Customized. 
@@ -180,3 +179,44 @@ I'm choosing to setup a Zero spend budget called Zero Spend AWS Bootcamp Budget.
 
 <img src="./assets/week0/aws-zero-spend-budget.jpg">
 
+I deleted this budget and recreated it using budget.json in gitpod.
+
+    aws budgets create-budget \
+        --account-id $ACCOUNT_ID\
+        --budget file://aws/json/budget.json \
+        --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
+
+# Creating a Billing Alarm
+## Create SNS Topic
+- We need an SNS topic before we create an alarm.
+- The SNS topic is what will delivery us an alert when we get overbilled
+- <a href="https://docs.aws.amazon.com/cli/latest/reference/sns/create-topic.html">aws sns create-topic</a>
+
+We'll create a SNS Topic
+
+    aws sns create-topic --name billing-alarm
+
+which will return a TopicARN
+
+We'll create a subscription supply the TopicARN and our Email
+
+    aws sns subscribe \
+        --topic-arn TopicARN \
+        --protocol email \
+        --notification-endpoint your@email.com
+
+Check your email and confirm the subscription
+
+<img src="./assets/week0/billing-alarm-confirmed.jpg">
+
+<img src="./assets/week0/billing-alarm.jpg">
+
+## Create Alarm
+- <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/put-metric-alarm.html">aws cloudwatch put-metric-alarm</a>
+- <a href="https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/">Create an Alarm via AWS CLI</a>
+- We need to update the configuration json script with the TopicARN we generated earlier
+- We are just a json file because --metrics is is required for expressions and so its easier to us a JSON file.
+
+    aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
+
+<img src="./assets/week0/cloudwatch-billing-alarm.jpg">
