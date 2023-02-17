@@ -303,6 +303,10 @@ In case of compromise, this account is the same as Domain Admin in the Cloud wor
 - If a bad actor gains access to this account, they can create new users, services, etc. 
 - ALWAYS enabled MFA on the Root User account.
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c48c0a71e26a69f07292b6cbd357d40e1fba9920
 ## AWS Organizations
 Helps manage security policies, cost policies, and billing in one central management account. The Root User is the management account. This account should not have any apps, it should only be used to create the org, the org unit, and all accounts within.
 
@@ -311,6 +315,10 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Automate Vending Accounts w/Designated Owner for each AWS Account
 =======
 ## AWS Organization
+<<<<<<< HEAD
+=======
+>>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
+>>>>>>> c48c0a71e26a69f07292b6cbd357d40e1fba9920
 
 ## AWS CloudTrail
 
@@ -320,7 +328,11 @@ Helps manage security policies, cost policies, and billing in one central manage
 
 ## AWS SCP Best Practices
 
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> c48c0a71e26a69f07292b6cbd357d40e1fba9920
 ## AWS Best Practices
 
 
@@ -330,5 +342,11 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Were there any obstacles (did I overcome them)?
 - What were the homework challenges I attempted?
 
+<<<<<<< HEAD
 
 ## AWS Best Practices
+=======
+=======
+## AWS Best Practices
+>>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
+>>>>>>> c48c0a71e26a69f07292b6cbd357d40e1fba9920
