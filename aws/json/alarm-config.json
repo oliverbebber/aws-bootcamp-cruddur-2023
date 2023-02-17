@@ -3,7 +3,11 @@
     "AlarmDescription": "This alarm would be triggered if the daily estimated charges exceeds 1$",
     "ActionsEnabled": true,
     "AlarmActions": [
+<<<<<<< HEAD
         "***REMOVED***"
+=======
+        "arn:aws:sns:us-east-1:***REMOVED***:billing-alarm"
+>>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
     ],
     "EvaluationPeriods": 1,
     "DatapointsToAlarm": 1,
@@ -32,4 +36,8 @@
         "Label": "DailyEstimatedCharges",
         "ReturnData": true
     }]
+<<<<<<< HEAD
 }
+=======
+  }
+>>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
