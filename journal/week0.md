@@ -165,7 +165,10 @@ We'll tell Gitpod to remember these credentials if we relaunch our workspaces
     gp env AWS_DEFAULT_REGION=us-east-1
 
 Check that the AWS CLI is working and you are the expected user
-aws sts get-caller-identity
+    
+    aws sts get-caller-identity
+
+
 
 # Create a Zero Spend Budget
 
@@ -229,3 +232,40 @@ Check your email and confirm the subscription
     aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm-config.json
 
 <img src="./assets/week0/cloudwatch-billing-alarm.jpg">
+
+
+
+
+# Cloud Security
+Watch <a href="https://youtu.be/4EMWBYVggQI">Ashish's Week 0 - Security Considerations video</a>
+## What is Cloud Security?
+Cybersecurity protects data, apps, and services associated with cloud environments from BOTH internal and external threats.
+
+## Why should we care about Cloud Security?
+- Reduces the impact of breach.
+- Protects networks, apps, and services in cloud environments against malicious data theft.
+- Reduces the human error that is responsible for data leaks.
+
+## Why Cloud Security requires practice?
+- Complexity.
+- Always chasing our tail with new services announced throughout the year.
+- Bad actors are always improving. 
+
+## Why enable MFA for Root Account?
+Root User is the most powerful user in your AWS environment with access to create new users.
+
+In case of compromise, this account is the same as Domain Admin in the Cloud world.
+- If a bad actor gains access to this account, they can create new users, services, etc. 
+- ALWAYS enabled MFA on the Root User account.
+
+## AWS Organization
+
+## AWS CloudTrail
+
+## AWS IAM User & Role Explained
+
+## AWS Organization SCP Explained
+
+## AWS SCP Best Practices
+
+## AWS Best Practices
