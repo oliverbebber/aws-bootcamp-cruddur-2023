@@ -53,10 +53,10 @@ There are 4 best practice areas for operational excellence in the cloud:
 
 # Architectural Diagram
 ## Conceptual Diagram
-<img src="./assets/week0/cruddur-conceptual-diagram.jpg">
+<a href="https://lucid.app/lucidchart/f7113fc8-7465-4a18-8463-ec1e6089e5d9/edit?viewport_loc=-551%2C-134%2C2389%2C1175%2C0_0&invitationId=inv_5bb1febf-8f1a-4404-aeaf-1f41c1d38d30"><img src="./assets/week0/cruddur-conceptual-diagram.jpg"></a>
 
 ## Logical Architectural Diagram
-<img src="./assets/week0/cruddur-architectural-diagram.jpg">
+<a href="https://lucid.app/lucidchart/0630281c-e05e-4058-b6c4-175809480985/edit?viewport_loc=-850%2C64%2C2389%2C1175%2C0_0&invitationId=inv_0e31cfc2-6a56-44b8-bc8f-6e8854944ffa"><img src="./assets/week0/cruddur-architectural-diagram.jpg"></a>
 
 
 # Create an admin user with MFA & IAM Roles
