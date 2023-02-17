@@ -186,6 +186,15 @@ I deleted this budget and recreated it using budget.json in gitpod.
         --budget file://aws/json/budget.json \
         --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
 
+
+
+# Enable Billing
+We need to turn on Billing Alerts to recieve alerts...
+
+- In your Root Account go to the <a href="https://console.aws.amazon.com/billing/">Billing Page</a>
+- Under Billing Preferences Choose Receive Billing Alerts
+- Save Preferences 
+
 # Creating a Billing Alarm
 ## Create SNS Topic
 - We need an SNS topic before we create an alarm.
