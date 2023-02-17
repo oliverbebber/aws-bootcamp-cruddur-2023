@@ -309,8 +309,6 @@ Helps manage security policies, cost policies, and billing in one central manage
 - How many types of Organizational Units (OU)
 - Management Account
 - Automate Vending Accounts w/Designated Owner for each AWS Account
-=======
-## AWS Organization
 
 ## AWS CloudTrail
 
@@ -329,9 +327,3 @@ Helps manage security policies, cost policies, and billing in one central manage
 - What did I accomplish?
 - Were there any obstacles (did I overcome them)?
 - What were the homework challenges I attempted?
-
-
-## AWS Best Practices
-
-## AWS Best Practices
-
