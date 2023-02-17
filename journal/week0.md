@@ -56,6 +56,8 @@ There are 4 best practice areas for operational excellence in the cloud:
 <a href="https://lucid.app/lucidchart/f7113fc8-7465-4a18-8463-ec1e6089e5d9/edit?viewport_loc=-551%2C-134%2C2389%2C1175%2C0_0&invitationId=inv_5bb1febf-8f1a-4404-aeaf-1f41c1d38d30"><img src="./assets/week0/cruddur-conceptual-diagram.jpg"></a>
 
 ## Logical Architectural Diagram
+Still working on this as I want to add extra security measures to the CI/CD pipeline to prevent bad actors from accessing the app. 
+
 <a href="https://lucid.app/lucidchart/0630281c-e05e-4058-b6c4-175809480985/edit?viewport_loc=-850%2C64%2C2389%2C1175%2C0_0&invitationId=inv_0e31cfc2-6a56-44b8-bc8f-6e8854944ffa"><img src="./assets/week0/cruddur-architectural-diagram.jpg"></a>
 
 
@@ -301,7 +303,6 @@ In case of compromise, this account is the same as Domain Admin in the Cloud wor
 - If a bad actor gains access to this account, they can create new users, services, etc. 
 - ALWAYS enabled MFA on the Root User account.
 
-<<<<<<< HEAD
 ## AWS Organizations
 Helps manage security policies, cost policies, and billing in one central management account. The Root User is the management account. This account should not have any apps, it should only be used to create the org, the org unit, and all accounts within.
 
@@ -310,7 +311,6 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Automate Vending Accounts w/Designated Owner for each AWS Account
 =======
 ## AWS Organization
->>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
 
 ## AWS CloudTrail
 
@@ -320,7 +320,7 @@ Helps manage security policies, cost policies, and billing in one central manage
 
 ## AWS SCP Best Practices
 
-<<<<<<< HEAD
+
 ## AWS Best Practices
 
 
@@ -330,6 +330,5 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Were there any obstacles (did I overcome them)?
 - What were the homework challenges I attempted?
 
-=======
+
 ## AWS Best Practices
->>>>>>> ca17a8645db6db876d6eda3a3554161695a6a69c
