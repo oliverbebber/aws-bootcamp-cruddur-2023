@@ -11,6 +11,30 @@
 <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">AWS Well-Architected Framework</a>
 
 ## Operational Excellence Pillar
+### Design Principles
+There are 5 design principles for operational excellence in the cloud:
+- Perform operations as code
+- Make frequent, small, reversible changes
+- Refine operations procedures frequently
+- Anticipate failure
+- Learn from all operational failures
+
+There are 4 best practice areas for operational excellence in the cloud:
+- Organization
+
+    - OPS1: How do you determine what your priorities are?
+    - OPS2: How do you strcture your organization to support your business outcomes?
+    - OPS3: How does your organizational culture support your business outcomes?
+
+- Prepare
+    - OPS4: How do you design your workload so that you can understand its state?
+    - OPS5: How do you reduce defects, ease remediation, and improve flow into production?
+    - OPS6: How do you mitigate deployment risks?
+    - OPS7: How do you know that you are ready to support a workload?
+- Operate
+- Evolve
+
+
 
 ## Security Pillar
 
@@ -293,3 +317,11 @@ Helps manage security policies, cost policies, and billing in one central manage
 ## AWS SCP Best Practices
 
 ## AWS Best Practices
+
+
+
+# Homework Summary
+- What did I accomplish?
+- Were there any obstacles (did I overcome them)?
+- What were the homework challenges I attempted?
+
