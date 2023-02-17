@@ -127,6 +127,29 @@ Best practices:
 - Enable least-privilege permissions.
 - Rotate access keys regularly.
 
+
+# Install the AWS CLI
+- We are going to install the AWS CLI when our Gitpod environment launches.
+- We are going to set AWS CLI to use partial autoprompt mode to make it easier to debug CLI commands.
+- The bash commands we are using are the same as the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" >AWS CLI Installation Instructions</a>
+
+Update our .gitpod.yml to include the following tasks:
+
+    tasks:
+    name: aws-cli
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    init: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
+
+We'll also run these commands individually to perform the install manually.
+
+<img src="./assets/week0/aws-cli-install.jpg">
+
 # Create a Zero Spend Budget
 
 After logging into the AWS Management Console, search for Budgets and create a budget. There are 2 main setup options available: Use a template and Customized. 
