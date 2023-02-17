@@ -7,6 +7,25 @@
 - Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
 - Open a support ticket and request a service limit
 
+# AWS Well-Architected Framework
+<a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">AWS Well-Architected Framework</a>
+
+## Operational Excellence Pillar
+
+## Security Pillar
+
+
+## Reliability Pillar
+
+
+## Performance Efficiency Pillar
+
+
+## Cost Optimization Pillar
+
+
+## Sustainability Pillar
+
 
 # Architectural Diagram
 ## Conceptual Diagram
@@ -264,8 +283,6 @@ Helps manage security policies, cost policies, and billing in one central manage
 - How many types of Organizational Units (OU)
 - Management Account
 - Automate Vending Accounts w/Designated Owner for each AWS Account
-
-
 
 ## AWS CloudTrail
 
