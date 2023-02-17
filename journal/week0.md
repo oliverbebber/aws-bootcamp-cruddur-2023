@@ -101,6 +101,23 @@ On the next page, you can view & download the user's password or email the users
 
 NOTE: You may need to add the user to the new User group you created before the user will be assigned the appropriate permissions. I ran into an issue after signing into the newly created admin account where I saw an error "You don't have permissions" when attempting to setup MFA. When I viewed the user group "Administrators" my user was not assigned for some reason. Assigning the user account to the group resolved the issue.
 
+## Create IAM Role
+
+After creating the user, we now need to create an IAM role for the user. From the IAM Dashboard, click on Roles > Create role.
+
+<img src="./assets/week0/aws-iam-role.jpg">
+
+- Select the Trusted entity type and a use case, then click Next.
+    - Since I'm selecting AWS service and EC2, we will need to attach the appropriate permissions on the next page.
+
+<img src="./assets/week0/aws-iam-permissions.jpg">
+
+- Search for the appropriate permissions, in this instance I searched for EC2 and selected AmazonEC2FullAccess, then click Next.
+
+<img src="./assets/week0/aws-iam-details.jpg">
+
+- Give your role a name then click Create role.
+
 ## Sign into admin user account to enable MFA & access keys
 <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fus-east-2.console.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26region%3Dus-east-2%26state%3DhashArgsFromTB_us-east-2_50d727ee5bfe22a4&client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&forceMobileApp=0&code_challenge=XMwIMrRc4e00A59znlo2b66caHJ6TlAn0XmWTrPrYGI&code_challenge_method=SHA-256">AWS Signin Page</a>
 
