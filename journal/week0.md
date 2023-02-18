@@ -1,11 +1,24 @@
 # Week 0 — Billing and Architecture
-## Homework
-- ~~Destroy your root account credentials, Set MFA, IAM role~~
-- ~~Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.~~
-- Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
-- ~~Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts~~
-- Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
-- Open a support ticket and request a service limit
+## Required Homework
+- [x] Watched Week 0 - Live Streamed Video
+- [x] Watched Chirag's Week 0 - Spend Considerations
+- [x] Watched Ashish's Week 0 - Security Considerations
+- [x] Recreate Conceptual Diagram in Lucid Charts or on a Napkin
+- [x] Recreate Logical Architectural Diagram in Lucid Charts
+- [x] Create Admin User
+- [x] Use CloudShell
+- [x] Generate AWS Credentials
+- [x] Install AWS CLI
+- [x] Create a Billing Alarm
+- [x] Create a Budget
+
+## Homework Challenges
+- [x] Destroy your root account credentials, Set MFA, IAM role.
+- [x] Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
+- [ ] Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
+- [x] Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts.
+- [ ] Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
+- [ ] Open a support ticket and request a service limit
 
 # AWS Well-Architected Framework
 <a href="https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html">AWS Well-Architected Framework</a>
