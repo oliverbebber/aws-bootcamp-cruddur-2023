@@ -1,8 +1,8 @@
 # Week 1 — App Containerization
 ## Livestream Technical Tasks
 In this class, we are going to:
-- [ ] Create a new GitHub repo
-- [ ] Launch the repo within a Gitpod workspace
+- [x] Create a new GitHub repo
+- [x] Launch the repo within a Gitpod workspace
 - [ ] Configure Gitpod.yml configuration, eg. VSCode Extensions
 - [ ] Clone the frontend and backend repo
 - [ ] Explore the codebases
@@ -23,3 +23,5 @@ In this class, we are going to:
 - [ ] Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
 - [ ] Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
 - [ ] Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
+
+
