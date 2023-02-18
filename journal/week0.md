@@ -535,7 +535,13 @@ Helps manage security policies, cost policies, and billing in one central manage
 ## AWS Organization SCP Explained
 
 ## AWS SCP Best Practices
-
+<a href="https://github.com/hashishrajan/aws-scp-best-practice-policies">hashishrajan's AWS SCP Best Practice Policies</a>
+- Deny Guarduty Changes
+- Deny Security Services Changes
+- Restrict ALL Root Access
+- Require MFA for AWS EC2 API Call
+- Restrict IAM Users
+- Restrict Root Permissions
 
 ## AWS Best Practices
 
