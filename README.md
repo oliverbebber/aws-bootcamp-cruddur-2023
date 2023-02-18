@@ -13,6 +13,9 @@ This is the starting codebase that will be used in the FREE AWS Cloud Project Bo
 
 At the start of the bootcamp you need to create a new Github Repository from this template.
 
+## Project Outline
+<a href="https://docs.google.com/document/d/19XMyd5zCk7S9QT2q1_Cg-wvbnBwOge7EgzgvtVCgcz0/edit#">FREE AWS Cloud Project Bootcamp - Outline</a>
+
 ## Journaling Homework
 
 The `/journal` directory contains
