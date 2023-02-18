@@ -300,6 +300,7 @@ Search for Simple Notification Service (SNS) then create a topic.
 
 - Select the topic type (this cannot be modified after creation)
 - Give the topic a name, for example I'm naming mine ServiceHealth.
+    - Edit: I forgot to select Standard; this is something that will cause issues when creating the EventBridge later on. Make note and be sure to select Standard.
 - Scroll down and click Create topic.
 
 <img src="./assets/week0/aws-create-servicehealth.jpg">
