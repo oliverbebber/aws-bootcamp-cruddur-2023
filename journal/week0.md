@@ -544,10 +544,23 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Restrict Root Permissions
 
 ## AWS Best Practices
-
+Top 5 Security Practices
+- Data Protection & Residency in accordance to Security Policy
+- Identity & Access Management with Least Privilege
+- Governance & Compliance of AWS Services being used
+    - Global vs Regional Services
+    - Compliant Services
+- Shared Responsibility of Threat Detection
+- Incident Response Plans to include Cloud
 
 
 # Homework Summary
 - What did I accomplish?
+    - All required homework tasks without issue.
 - Were there any obstacles (did I overcome them)?
+    - N/A
 - What were the homework challenges I attempted?
+    - Destroy root account credentials, set MFA, and IAM role
+    - Use EventBridge to hookup Health Dashboard to SNS & send notifications when any service health issues occur
+    - Review all questions of each pillar in the Well-Architected Tool
+    - Create an architectural diagram CI/CD logical pipeline in Lucid Charts
