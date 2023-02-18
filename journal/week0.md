@@ -1,4 +1,15 @@
 # Week 0 — Billing and Architecture
+## Livestream Technical Tasks
+- [x] Discussing the format of the bootcamp
+- [x] Going over the business use-case of our project
+- [x] Looking at an architectural diagram of what we plan to build. Showcase how to use LucidCharts to build architectures & talk about C4 Models.
+- [x] Running through the cloud services we will utilize
+- [x] Testing that we can access our AWS accounts
+- [x] Settings up AWS free-tier and understand how to track spend in AWS eg . AWS Budgets, AWS Cost Explorer, Billing Alarms
+- [x] Understanding how to look at monthly billing reports
+- [x] Launching AWS CloudShell and looking at AWS CLI
+- [x] Generating AWS credentials
+
 ## Required Homework
 - [x] Watched Week 0 - <a href="https://www.youtube.com/watch?v=SG8blanhAOg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=12">Live Streamed Video</a>
 - [x] Watched Chirag's Week 0 - <a href="https://www.youtube.com/watch?v=OVw3RrlP-sI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=13">Spend Considerations</a>
