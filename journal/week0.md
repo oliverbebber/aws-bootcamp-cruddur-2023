@@ -495,6 +495,8 @@ The next page is optional. You can add tags to label your AWS resources to searc
 <img src="./assets/week0/aws-review-create.jpeg">
 
 
+# Use CloudShell
+<img src="./assets/week0/aws-cloudshell.jpg">
 
 # Cloud Security
 Watch <a href="https://youtu.be/4EMWBYVggQI">Ashish's Week 0 - Security Considerations video</a>
