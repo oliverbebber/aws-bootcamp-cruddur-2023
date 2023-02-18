@@ -15,7 +15,7 @@
 ## Homework Challenges
 - [x] Destroy your root account credentials, Set MFA, IAM role.
 - [x] Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.
-- [ ] Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
+- [x] Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 - [x] Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts.
 - [ ] Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
 - [ ] Open a support ticket and request a service limit
@@ -384,6 +384,9 @@ Helps manage security policies, cost policies, and billing in one central manage
 - Automate Vending Accounts w/Designated Owner for each AWS Account
 
 ## AWS CloudTrail
+- Monitor data security & residence
+- Understand the region vs availability zones vs global services concepts
+- Audit logs for IR/Forensics
 
 ## AWS IAM User & Role Explained
 
