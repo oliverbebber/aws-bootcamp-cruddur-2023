@@ -1,8 +1,8 @@
 # Week 0 — Billing and Architecture
 ## Required Homework
-- [x] Watched Week 0 - Live Streamed Video
-- [x] Watched Chirag's Week 0 - Spend Considerations
-- [x] Watched Ashish's Week 0 - Security Considerations
+- [x] Watched Week 0 - <a href="https://www.youtube.com/watch?v=SG8blanhAOg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=12">Live Streamed Video</a>
+- [x] Watched Chirag's Week 0 - <a href="https://www.youtube.com/watch?v=OVw3RrlP-sI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=13">Spend Considerations</a>
+- [x] Watched Ashish's Week 0 - <a href="https://www.youtube.com/watch?v=4EMWBYVggQI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=15">Security Considerations</a>
 - [x] Recreate Conceptual Diagram in Lucid Charts or on a Napkin
 - [x] Recreate Logical Architectural Diagram in Lucid Charts
 - [x] Create Admin User
