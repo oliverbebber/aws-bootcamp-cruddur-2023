@@ -34,35 +34,177 @@ There are 5 design principles for operational excellence in the cloud:
 
 There are 4 best practice areas for operational excellence in the cloud:
 - Organization
-
-    - OPS1: How do you determine what your priorities are?
-    - OPS2: How do you strcture your organization to support your business outcomes?
-    - OPS3: How does your organizational culture support your business outcomes?
+    - OPS 1: How do you determine what your priorities are?
+    - OPS 2: How do you strcture your organization to support your business outcomes?
+    - OPS 3: How does your organizational culture support your business outcomes?
 
 - Prepare
-    - OPS4: How do you design your workload so that you can understand its state?
-    - OPS5: How do you reduce defects, ease remediation, and improve flow into production?
-    - OPS6: How do you mitigate deployment risks?
-    - OPS7: How do you know that you are ready to support a workload?
+    - OPS 4: How do you design your workload so that you can understand its state?
+    - OPS 5: How do you reduce defects, ease remediation, and improve flow into production?
+    - OPS 6: How do you mitigate deployment risks?
+    - OPS 7: How do you know that you are ready to support a workload?
+
 - Operate
+    - OPS 8: How do you understand the health of your workload?
+    - OPS 9: How do you understand the health of your operations?
+    - OPS 10: How do you manage workload and operations events?
+
 - Evolve
-
-
+    - OPS 11: How do you evolve operations?
 
 ## Security Pillar
+### Design Principles
+There are 7 design principles for security in the cloud:
+- Implement a strong identity foundation
+- Enable traceability
+- Apply security at all layers
+- Automate security best practices
+- Protect data in transit and at rest
+- Keep people away from data
+- Prepare for security events
+
+There are 6 best practice areas for operational excellence in the cloud:
+- Security
+    - SEC 1: How do you securely operate your workload?
+
+- Identity and Access Management
+    - SEC 2: How do you manage identities for people and machines?
+    - SEC 3: How do you manage permissions for people and machines?
+
+- Detection
+    - SEC 4: How do you detect and investigate security events?
+
+- Infrastructure Protection
+    - SEC 5: How do you protect your network resources?
+    - SEC 6: How do you protect your compute resources?
+
+- Data Protection
+    - SEC 7: How do you classify your data?
+    - SEC 8: How do you protect your data at rest?
+    - SEC 9: How do you protect your data in transit?
+
+- Incident Response
+    - SEC 10: How do you anticipate, respond to, and recover from incidents?
 
 
 ## Reliability Pillar
+There are 5 design principles for reliability in the cloud:
+- Automatically recover from failure
+- Test recovery procedures
+- Scale horizontally to increase aggregate workload availability
+- Stop guessing capacity
+- Manage change in automation
 
+There are 4 best practice areas for reliability in the cloud:
+- Foundations
+    - REL 1: How do you manage service quotas and constraints?
+    - REL 2: How do you plan your network topology?
+
+- Workload Architecture
+    - REL 3: How do you design your workload service architecture?
+    - REL 4: How do you design interactions in a distributed system to prevent failures?
+    - REL 5: How do you design interactions in a distributed system to mitigate or withstand failures?
+
+- Change Management
+    - REL 6: How do you monitor workload resources?
+    - REL 7: How do you design your workload to adapt to changes in demand?
+    - REL 8: How do you implement change?
+
+- Failure Management
+    - REL 9: How do you back up data?
+    - REL 10: How do you use fault isolation to protect your workload?
+    - REL 11: How do you design your workload to withstand component failures?
+    - REL 12: How do you test reliability?
+    - REL 13: How do you plan for disaster recovery (DR)?
 
 ## Performance Efficiency Pillar
+There are 5 design priniciples for performance efficiency in the cloud:
+- Democratize advanced technologies
+- Go global in minutes
+- Use serverless architectures
+- Experiment more often
+- Consider mechanical sympathy
 
+There are 4 best practice areas for performance efficiency in the cloud:
+- Selection
+    - PERF 1: How do you select the best performing architecture?
+
+        - Compute
+            - PERF 2: How do you select your compute solution?
+
+        - Storage
+            - PERF 3: How do you select your storage solution?
+
+        - Database
+            - PERF 4: How do you select your database solution?
+
+        - Network
+            - PERF 5: How do you configure your networking solution?
+- Review
+    - PERF 6: How do you evolve your workload to take advantage of new releases?
+
+- Monitoring
+    - PERF 7: How do you monitor your resources to ensure they are performing?
+
+- Tradeoffs
+    - PERF 8: How do you use tradeoffs to improve performance?
 
 ## Cost Optimization Pillar
+There are 5 design priniciples for cost optimization in the cloud:
+- Implement Cloud Financial Management
+- Adopt a consumption model
+- Measure overall efficiency
+- Stop spending money on undifferentiated heavy lifting
+- Analyze and attribute expenditure
 
+There are 5 best practice areas for cost optimization in the cloud:
+- Practice Cloud Financial Management
+    - COST 1: How do you implement cloud financial management?
+
+- Expenditure and usage awareness
+    - COST 2: How do you govern usage?
+    - COST 3: How do you monitor usage and cost?
+    - COST 4: How do you decommission resources?
+
+- Cost-effective resources
+    - COST 5: How do you evaluate cost when you select services?
+    - COST 6: How do you meet cost targets when you select resource type, size and number?
+    - COST 7: How do you use pricing models to reduce cost?
+    - COST 8: How do you plan for data transfer charges?
+
+- Manage demand and supply resources
+    - COST 9: How do you manage demand, and supply resources?
+
+- Optimize over time
+    - COST 10: How do you evaluate new services?
 
 ## Sustainability Pillar
+There are 6 design principles for sustainability in the cloud:
+- Understand your impact
+- Establish sustainability goals
+- Maximize utilization
+- Anticipate and adopt new, more efficient hardware and software offerings
+- Use managed services
+- Reduce the downstream impact of your cloud workloads
 
+There are 6 best practice areas for sustainability in the cloud:
+- Region selection
+    - SUS 1: How do you select Regions to support your sustainability goals?
+
+- User behavior patterns
+    - SUS 2: How do you take advantage of user behavior patterns to support your sustainability goals?
+
+- Software and architecture patterns
+    - SUS 3: How do you take advantage of software and architecture patterns to support your sustainability goals?
+
+- Data patterns
+    - SUS 4: How do you take advantage of data access and usage patterns to support your sustainability goals?
+
+- Hardware patterns
+    - SUS 5: How do your hardware management and usage practices support your sustainability goals?
+
+- Development and deployment process
+    - SUS 6: How do your development and deployment processes support your sustainability goals?
 
 # Architectural Diagram
 ## Conceptual Diagram
