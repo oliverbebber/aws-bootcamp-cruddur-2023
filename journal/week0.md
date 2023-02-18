@@ -102,7 +102,6 @@ On the next page, you can view & download the user's password or email the users
 NOTE: You may need to add the user to the new User group you created before the user will be assigned the appropriate permissions. I ran into an issue after signing into the newly created admin account where I saw an error "You don't have permissions" when attempting to setup MFA. When I viewed the user group "Administrators" my user was not assigned for some reason. Assigning the user account to the group resolved the issue.
 
 ## Create IAM Role
-
 After creating the user, we now need to create an IAM role for the user. From the IAM Dashboard, click on Roles > Create role.
 
 <img src="./assets/week0/aws-iam-role.jpg">
@@ -233,7 +232,6 @@ Check that the AWS CLI is working and you are the expected user
 
 
 # Create a Zero Spend Budget
-
 After logging into the AWS Management Console, search for Budgets and create a budget. There are 2 main setup options available: Use a template and Customized. 
 
 There are a few templates to choose from as well.
@@ -295,6 +293,50 @@ Check your email and confirm the subscription
 
 <img src="./assets/week0/cloudwatch-billing-alarm.jpg">
 
+# Setup EventBridge, hookup Health Dashboard to SNS for service health notifications
+Search for Simple Notification Service (SNS) then create a topic.
+
+<img src="./assets/week0/aws-create-sns-topic.jpg">
+
+- Select the topic type (this cannot be modified after creation)
+- Give the topic a name, for example I'm naming mine ServiceHealth.
+- Scroll down and click Create topic.
+
+<img src="./assets/week0/aws-create-servicehealth.jpg">
+
+## Create EventBridge
+Search for Health Dashboard.
+
+<img src="./assets/week0/aws-health-dashboard.jpg">
+
+- Click Configure.
+- Give your rule a name and click Next.
+
+<img src="./assets/week0/aws-create-eventbridge-rule.jpg">
+
+- Select the event source.
+- Select a creation method.
+- Create an event pattern.
+    - Select the event source.
+    - Select the AWS service.
+    - Select the Event type
+    - Any service or specific services (optional) - this defaults to Any service.
+    - Any resource or specific resource(s) (optional) - the defaults to Any resource.
+    - Click Next.
+
+<img src="./assets/week0/aws-build-event-pattern.jpeg">
+
+- Select the target type.
+    - In this instance, I'm selecting SNS topic and ServiceHealth.fifo.
+- Click Next.
+
+<img src="./assets/week0/aws-select-targets.jpg">
+
+The next page is optional. You can add tags to label your AWS resources to search and filter the resources, or to track AWS costs.
+
+- We're skipping this part, so click Next to review and create.
+
+<img src="./assets/week0/aws-review-create.jpeg">
 
 
 
