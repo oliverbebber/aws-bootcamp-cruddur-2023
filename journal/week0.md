@@ -213,6 +213,8 @@ There are 6 best practice areas for sustainability in the cloud:
 ## Logical Architectural Diagram
 Still working on this as I want to add extra security measures to the CI/CD pipeline to prevent bad actors from accessing the app. 
 
+Update: Removed AWS Firewall due to Spend considerations.
+
 <a href="https://lucid.app/lucidchart/0630281c-e05e-4058-b6c4-175809480985/edit?viewport_loc=-850%2C64%2C2389%2C1175%2C0_0&invitationId=inv_0e31cfc2-6a56-44b8-bc8f-6e8854944ffa"><img src="./assets/week0/cruddur-architectural-diagram.jpg"></a>
 
 
