@@ -70,6 +70,8 @@ Two main components
 - Keep host & Docker updated with the latest security patches
 - Docker daemon & containers should run in non-root user mode
 - Image Vulnerability Scanning
+    - Amazon Inspector
+    - Clair requires a client and a server. It will download libraries to match if the image is vulnerable.
 - Trusting a Private vs Public Image Registry
 - No Sensitive Data in Dockerfiles or Images
 - Use Secret Management Services to share secrets
