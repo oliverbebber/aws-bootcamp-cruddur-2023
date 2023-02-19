@@ -14,6 +14,15 @@ In this class, we are going to:
 - [ ] Mount directories so we can make changes while we code
 
 ## Required Homework
+- [ ] Watch Grading Homework Summaries
+- [ ] Watch Week 1 - Live Stream
+- [ ] Watch Ashish's Week 1 - Container Security
+- [ ] Watch Ashish's Week 1 - Containerize Application (Dockerfiles, Docker Compose)
+- [ ] Document the Notification Endpoint for the OpenAI Document
+- [ ] Write a Flask Backend Endpoint for Notifications
+- [ ] Write a React Page for Notifications
+- [ ] Run DynamoDB Local Container & ensure it works
+- [ ] Run Postgres Container & ensure it works
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
