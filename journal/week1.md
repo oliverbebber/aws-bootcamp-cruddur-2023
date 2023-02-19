@@ -65,3 +65,13 @@ Two main components
 - Compliance Framework
 
 ## Security Best Practices
+- Keep host & Docker updated with the latest security patches
+- Docker daemon & containers should run in non-root user mode
+- Image Vulnerability Scanning
+- Trusting a Private vs Public Image Registry
+- No Sensitive Data in Dockerfiles or Images
+- Use Secret Management Services to share secrets
+- Read-only file system & volume for Docker
+- Separate databases for longterm storage
+- Use DevSecOps practices while building application security
+- Ensure all code is tested for vulnerabilities before releasing for production
