@@ -20,11 +20,11 @@ In this class, we are going to:
 - [x] Watch Chirag's Week 1 - <a href="https://www.youtube.com/watch?v=OAMHu1NiYoI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=24">Spending Considerations</a>
 - [x] Watch Ashish's Week 1 - <a href="https://www.youtube.com/watch?v=OjZz4D0B-cA&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=24">Container Security</a>
 - [ ] Watch Ashish's Week 1 - <a href="https://www.youtube.com/watch?v=b-idMgFFcpg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=23">Containerize Application (Dockerfiles, Docker Compose)</a>
-- [ ] Document the Notification Endpoint for the OpenAI Document
-- [ ] Write a Flask Backend Endpoint for Notifications
-- [ ] Write a React Page for Notifications
-- [ ] Run DynamoDB Local Container & ensure it works
-- [ ] Run Postgres Container & ensure it works
+- [ ] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Document the Notification Endpoint for the OpenAI Document</a>
+- [ ] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a Flask Backend Endpoint for Notifications</a>
+- [ ] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a React Page for Notifications</a>
+- [ ] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run DynamoDB Local Container & ensure it works</a>
+- [ ] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run Postgres Container & ensure it works</a>
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
