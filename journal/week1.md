@@ -78,4 +78,16 @@ Two main components
 - Use DevSecOps practices while building application security
 - Ensure all code is tested for vulnerabilities before releasing for production
 
-Note: Container Escape 
+Note: Container Escape is a security vulnerability that allows a bad actor to break out of a container and gain access to resources on the host operating system. This could compromise the security of the entire system. 
+
+This vulnerability can be caused by a variety of factors:
+- Kernel vulnerabilities
+    - The host and the container share the same kernel, meaning kernel vulnerabilities may allow an attacker to break out of the container.
+- Application vulnerabilities
+    - If an app running inside the container has a vulnerability, this may be exploited to gain access to the host OS.
+- Misconfigured container runtime
+    - Misconfigurations can allow attackers to access additional resources.
+- Privilege escalation
+    - If a container has more permissions than required, such as running as the root user, an attacker might be able to use privilege escalation to gain access to the host OS. 
+
+Container Escape can be avoided by following the security best practices mentioned above.
