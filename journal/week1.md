@@ -34,3 +34,14 @@ In this class, we are going to:
 - [ ] Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
 
 
+# Container Security
+## What is Container Security?
+The practice of protecting apps hosted on compute services like Containers. Common examples of apps can be Single Page Applications (SPAs), Microservices, APIs, etc.
+
+- Container First Strategy
+- Most apps are being developed with Containers & Cloud Native
+- Reducing impact of breach - segregation of apps & related services
+- Managed Container services means your security responsibility is focused on a few things (AWS ECS, AWS ECR next week)
+- Automation can help reduce recovery times to a known good state quickly
+
+## Security Best Practices
