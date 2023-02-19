@@ -73,6 +73,8 @@ Two main components
 - Trusting a Private vs Public Image Registry
 - No Sensitive Data in Dockerfiles or Images
 - Use Secret Management Services to share secrets
+    - AWS Secrets Manager can be used with some services, but not every service will integrate with it.
+    - Hashicorp Vault is another option to use, there is a free and paid version. The free version requires managing the server and client yourself.
 - Read-only file system & volume for Docker
 - Separate databases for longterm storage
 - Use DevSecOps practices while building application security
