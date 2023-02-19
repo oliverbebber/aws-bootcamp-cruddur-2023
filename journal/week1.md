@@ -50,4 +50,18 @@ The practice of protecting apps hosted on compute services like Containers. Comm
 - Unmanaged containers require more work than Managed containers
     - Managed containers are managed by the CSP
 
+## Docker Architecture
+Two main components
+- Client
+- Server
+
+## Container Security Components
+- Docker & Host Configuration
+- Securing Images
+- Secret Management
+- Application Security
+- Data Security
+- Monitoring Containers
+- Compliance Framework
+
 ## Security Best Practices
