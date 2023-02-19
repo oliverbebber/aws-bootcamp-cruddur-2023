@@ -95,3 +95,15 @@ This vulnerability can be caused by a variety of factors:
     - If a container has more permissions than required, such as running as the root user, an attacker might be able to use privilege escalation to gain access to the host OS. 
 
 Container Escape can be avoided by following the security best practices mentioned above.
+
+## Managed Container Services
+Docker Compose and Docker containers work really well to build one app.
+- The down side is that security patches and updates requires shutting down Docker, make the update, and restart the server. This can cause problems in enterprise environments.
+
+AWS Managed Container Services can provide a better 
+
+- AWS ECS
+- AWS EKS
+- AWS Fargate
+- AWS App Runner
+- AWS Copilot
