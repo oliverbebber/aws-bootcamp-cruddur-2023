@@ -44,4 +44,10 @@ The practice of protecting apps hosted on compute services like Containers. Comm
 - Managed Container services means your security responsibility is focused on a few things (AWS ECS, AWS ECR next week)
 - Automation can help reduce recovery times to a known good state quickly
 
+## Why Container Security requires practice
+- Complexity with Containers
+- Relying on CSPs for features
+- Unmanaged containers require more work than Managed containers
+    - Managed containers are managed by the CSP
+
 ## Security Best Practices
