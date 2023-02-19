@@ -33,6 +33,8 @@ In this class, we are going to:
 - [ ] Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces
 - [ ] Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
 
+<img src="./assets/week1/docker.png">
+
 
 # Container Security
 ## What is Container Security?
@@ -75,3 +77,5 @@ Two main components
 - Separate databases for longterm storage
 - Use DevSecOps practices while building application security
 - Ensure all code is tested for vulnerabilities before releasing for production
+
+Note: Container Escape 
