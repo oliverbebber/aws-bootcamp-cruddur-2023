@@ -271,4 +271,9 @@ docker compose up
 ```
 
 - Hit an error due to a typo in the frontend Dockerfile.
+
 <img src="./assets/week1/frontend-dockerfile-typo-npm.jpg">
+
+Once docker compose up completed downloading the images, the app populated for a preview:
+
+<img src="./assets/week1/docker-compose-up-preview.jpg">
