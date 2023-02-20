@@ -263,3 +263,9 @@ networks:
 ```
 
 Right-click on `docker-compose.yml` file and click on Compose Up.
+- Make sure you're in the root dir before you do this otherwise it may result in an error.
+- You can also type in the following command:
+
+```sh
+docker compose up
+```
