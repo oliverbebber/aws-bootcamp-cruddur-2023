@@ -109,3 +109,10 @@ AWS Managed Container Services can provide a better
 - AWS Fargate
 - AWS App Runner
 - AWS Copilot
+
+# VSCode Docker Extension
+Docker for VSCode makes it easy to work with Docker
+
+https://code.visualstudio.com/docs/containers/overview
+
+    Gitpod is preinstalled with theis extension
