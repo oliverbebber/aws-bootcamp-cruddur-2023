@@ -224,3 +224,9 @@ RUN nmp install
 EXPOSE ${PORT}
 CMD ["npm", "start"]
 ```
+
+## Run Frontend Container
+```sh
+docker run -p 3000:3000 -d frontend-react-js
+```
+
