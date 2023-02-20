@@ -201,3 +201,12 @@ CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 
 > docker container run is idiomatic, docker run is legacy syntax but is commonly used.
 
+
+# Containerize Frontend
+## Install NPM
+```
+cd frontend-react-js
+npm i
+```
+
+NOTE: if this returns an error, wait a moment and try again. Otherwise, check to ensure you're in the correct directory.
