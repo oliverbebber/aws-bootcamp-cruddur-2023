@@ -182,11 +182,10 @@ Run the following:
 set BACKEND_URL="*"
 set FRONTEND_URL="*"
 docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
-unset BACKEND_URL="*"
-unset FRONTEND_URL="*"
 ```
 
-NOTE: Navigate to the URL with /api/activities/home appended.
+NOTE: Navigate to the URL with /api/activities/home appended. 
+- unset was not needed to removed the frontend & backend var.
 
 Run in background
 ```sh
