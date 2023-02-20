@@ -173,6 +173,21 @@ unset FRONTEND_URL="*"
 unset BACKEND_URL="*"
 ```
 
+NOTE: The above code is from the instructions however, I had to set BACKEND_URL & FRONTEND_URL to both ="*" before running docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask.
+
+
+Run the following:
+
+```sh
+set BACKEND_URL="*"
+set FRONTEND_URL="*"
+docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
+unset BACKEND_URL="*"
+unset FRONTEND_URL="*"
+```
+
+NOTE: Navigate to the URL with /api/activities/home appended.
+
 Run in background
 ```sh
 docker container -run --rm -p 4567:4567 -d backend-flask
