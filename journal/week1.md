@@ -210,3 +210,17 @@ npm i
 ```
 
 NOTE: if this returns an error, wait a moment and try again. Otherwise, check to ensure you're in the correct directory.
+
+## Create Dockerfile
+Create a new Dockerfile in the frontend-react-js directory:
+```dockerfile
+FROM node:16.18
+
+ENV PORT=3000
+
+COPY . /frontend-react-js
+WORKDIR /frontend-react-js
+RUN nmp install
+EXPOSE ${PORT}
+CMD ["npm", "start"]
+```
