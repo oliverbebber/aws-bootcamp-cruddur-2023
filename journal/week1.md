@@ -116,3 +116,18 @@ Docker for VSCode makes it easy to work with Docker
 https://code.visualstudio.com/docs/containers/overview
 
     Gitpod is preinstalled with theis extension
+
+# Containerize Backend
+## Run Python
+    cd backend-flask
+    export FRONTEND_URL="*"
+    export BACKEND_URL="*"
+    python3 -m flask run --host=0.0.0.0 --port=4567
+    cd ..
+
+- Unlock the port on the port tab in Gitpod
+- Open the link for port 4567
+- Append /api/activities/home to the URL
+- JSON should return in the browser
+
+<img src="./assets/week1/run-python.jpg">
