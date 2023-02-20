@@ -178,9 +178,10 @@ Run in background
 docker container -run --rm -p 4567:4567 -d backend-flask
 ```
 
-Return the container id into an Env Vat
+Return the container id into an Env Var
 ```sh
 CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 ```
 
 > docker container run is idiomatic, docker run is legacy syntax but is commonly used.
+
