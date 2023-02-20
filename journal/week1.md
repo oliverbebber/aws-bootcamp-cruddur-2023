@@ -261,3 +261,5 @@ networks:
     driver: bridge
     name: cruddur
 ```
+
+Right-click on `docker-compose.yml` file and click on Compose Up.
