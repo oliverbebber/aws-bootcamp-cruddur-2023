@@ -156,6 +156,11 @@ CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 docker build -t backend-flask ./backend-flask
 ```
 
+Note: -t stands for tag. This flag will name the image, and provides the option for a tag in the format of 'name:tag'
+
+- Docker will default to 'latest' tag but this is a default and doesn't necessarily mean it's the latest image.
+- Treat 'latest' as a default tag.
+
 ## Run Container
 ```sh
 docker run --rm -p 4567:4567 -it backend-flask
