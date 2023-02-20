@@ -129,5 +129,3 @@ https://code.visualstudio.com/docs/containers/overview
 - Open the link for port 4567
 - Append /api/activities/home to the URL
 - JSON should return in the browser
-
-<img src="./assets/week1/run-python.jpg">
