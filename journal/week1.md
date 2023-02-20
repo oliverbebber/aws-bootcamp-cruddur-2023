@@ -277,3 +277,5 @@ docker compose up
 Once docker compose up completed downloading the images, the app populated for a preview:
 
 <img src="./assets/week1/docker-compose-up-preview.jpg">
+
+<img src="./assets/week1/backend-preview.jpg">
