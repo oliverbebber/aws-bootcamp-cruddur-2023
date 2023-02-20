@@ -269,3 +269,6 @@ Right-click on `docker-compose.yml` file and click on Compose Up.
 ```sh
 docker compose up
 ```
+
+- Hit an error due to a typo in the frontend Dockerfile.
+<img src="./assets/week1/frontend-dockerfile-typo-npm.jpg">
