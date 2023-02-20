@@ -187,6 +187,8 @@ docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-
 NOTE: Navigate to the URL with /api/activities/home appended. 
 - unset was not needed to removed the frontend & backend var.
 
+<img src="./assets/week1/unset-not-valid.jpg">
+
 Run in background
 ```sh
 docker container -run --rm -p 4567:4567 -d backend-flask
