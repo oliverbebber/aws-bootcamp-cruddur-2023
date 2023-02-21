@@ -61,14 +61,14 @@ def data_create_message():
     return model['data'], 200
   return
 
-@app.route("/api/activities/notifications", methods=['GET'])
-def data_home():
-  data = NotificationsActivities.run()
-  return data, 200
-
 @app.route("/api/activities/home", methods=['GET'])
 def data_home():
   data = HomeActivities.run()
+  return data, 200
+
+@app.route("/api/activities/notifications", methods=['GET'])
+def data_notifications():
+  data = NotificationsActivities.run()
   return data, 200
 
 @app.route("/api/activities/@<string:handle>", methods=['GET'])
