@@ -133,6 +133,8 @@ cd ..
 - Append /api/activities/home to the URL
 - JSON should return in the browser
 
+<img src="./assets/week1/run-python.jpg">
+
 ## Add Dockerfile
 Create a file in backend-flask named Dockerfile
 
@@ -278,10 +280,10 @@ docker compose up
 Once docker compose up completed downloading the images, the app populated for a preview:
 
 ### Frontend Preview
-<img src="./assets/week1/docker-compose-up-preview.jpg" width="900" height="600">
+<img src="./assets/week1/docker-compose-up-preview.jpg">
 
 ### Backend Preview
-<img src="./assets/week1/backend-preview.jpg" width="600" height="800">
+<img src="./assets/week1/backend-preview.jpg">
 
 # Create Front and Backend Notification Pages
 ## Edit ```openapi-3.0.yml``` to Create Notifications Section
