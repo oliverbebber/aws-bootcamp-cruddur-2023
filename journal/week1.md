@@ -29,12 +29,14 @@ In this class, we are going to:
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
+  - https://docs.docker.com/engine/reference/builder/#run
 - [ ] Push and tag a image to DockerHub (they have a free tier)
   - https://docs.docker.com/engine/reference/commandline/push/
   - https://docs.docker.com/engine/reference/commandline/tag/
 - [ ] Use multi-stage building for a Dockerfile build
   - https://docs.docker.com/build/building/multi-stage/
 - [ ] Implement a healthcheck in the V3 Docker compose file
+  - https://docs.docker.com/engine/reference/builder/#healthcheck
   - https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e
 - [ ] Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
   - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
