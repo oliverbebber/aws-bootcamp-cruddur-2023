@@ -3,15 +3,15 @@
 In this class, we are going to:
 - [x] Create a new GitHub repo
 - [x] Launch the repo within a Gitpod workspace
-- [ ] Configure Gitpod.yml configuration, eg. VSCode Extensions
+- [x] Configure Gitpod.yml configuration, eg. VSCode Extensions
 - [x] Clone the frontend and backend repo
 - [x] Explore the codebases
 - [x] Ensure we can get the apps running locally
 - [x] Write a Dockerfile for each app
-- [ ] Ensure we get the apps running via individual container
+- [x] Ensure we get the apps running via individual container
 - [x] Create a docker-compose file
-- [ ] Ensure we can orchestrate multiple containers to run side by side
-- [ ] Mount directories so we can make changes while we code
+- [x] Ensure we can orchestrate multiple containers to run side by side
+- [x] Mount directories so we can make changes while we code
 
 ## Required Homework
 - [x] Watch <a href="https://www.youtube.com/watch?v=tDPqmwKMP7Y&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=29">How to Ask for Technical Help</a>
