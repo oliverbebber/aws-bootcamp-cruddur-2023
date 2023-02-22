@@ -273,15 +273,15 @@ docker compose up
 
 - Hit an error due to a typo in the frontend Dockerfile.
 
-<img src="./assets/week1/frontend-dockerfile-typo-npm.jpg">
+<img src="./assets/week1/frontend-dockerfile-typo-npm.jpg" width="900" height="300">
 
 Once docker compose up completed downloading the images, the app populated for a preview:
 
 ### Frontend Preview
-<img src="./assets/week1/docker-compose-up-preview.jpg">
+<img src="./assets/week1/docker-compose-up-preview.jpg" width="900" height="600">
 
 ### Backend Preview
-<img src="./assets/week1/backend-preview.jpg">
+<img src="./assets/week1/backend-preview.jpg" width="600" height="800">
 
 # Create Front and Backend Notification Pages
 ## Edit ```openapi-3.0.yml``` to Create Notifications Section
@@ -347,8 +347,8 @@ class NotificationsActivities:
 
 
 
-### Frontend React Notification Page
-<img src="./assets/week1/cruddur-frontend-notifications.jpg">
+## Frontend React Notification Page
+<img src="./assets/week1/cruddur-frontend-notifications.jpg" width="900" height="600">
 
-### Backend Flask Notification Page
-<img src="./assets/week1/cruddur-backend-notifications.jpg">
+## Backend Flask Notification Page
+<img src="./assets/week1/cruddur-backend-notifications.jpg" width="600" height="650">
