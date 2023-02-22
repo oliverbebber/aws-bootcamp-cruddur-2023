@@ -284,6 +284,28 @@ Once docker compose up completed downloading the images, the app populated for a
 <img src="./assets/week1/backend-preview.jpg">
 
 
+# Edit ```openapi-3.0.yml``` to Create Notifications Section
+
+```yml
+ /api/activities/notifications:
+    get:
+      description: 'Return a feed of activity for all of my followers'
+      tags:
+        - activities
+      parameters: []
+      responses:
+        '200':
+          description: Returns an array of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+```
+
+
+
 # Create Front and Backend Notification Pages
 ## Frontend React Notification Page
 <img src="./assets/week1/cruddur-frontend-notifications.jpg">
