@@ -210,7 +210,7 @@ cd frontend-react-js
 npm i
 ```
 
-NOTE: if this returns an error, wait a moment and try again. Otherwise, check to ensure you're in the correct directory.
+NOTE: if this returns an error, check your spelling. I had ```nmp i``` typed in. Otherwise, check to ensure you're in the correct directory.
 
 ## Create Dockerfile
 Create a new Dockerfile in the frontend-react-js directory:
