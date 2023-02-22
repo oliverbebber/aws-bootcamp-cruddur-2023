@@ -305,7 +305,15 @@ Once docker compose up completed downloading the images, the app populated for a
 ```
 
 ## Write a Flask Backend Endpoint for Notifications
-### Edit ```app.py``` to Create Notifications Section 
+### Edit ```app.py``` to Create Notifications 
+```py
+@app.route("/api/activities/notifications", methods=['GET'])
+def data_notifications():
+  data = NotificationsActivities.run()
+  return data, 200
+```
+
+Note: This section caused issues as I forgot to change ```data_home``` to be ```data_notifications```. Quickly noticed after looking at the errors I received when trying to load the notifications page within the app.
 
 ### Create ```notifications_activities.py```
 ```py
