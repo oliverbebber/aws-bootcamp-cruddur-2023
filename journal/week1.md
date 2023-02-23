@@ -380,6 +380,18 @@ services:
     working_dir: /home/dynamodblocal
 ```
 
+Example of using DynamoDB local https://github.com/100DaysOfCloud/challenge-dynamodb-local
+
+## Ensure DynamoDB works
+### Create a table
+<img src="./assets/week1/dynamodb-local-create-a-table.jpg">
+
+### Create an item & list table
+<img src="./assets/week1/dynamodb-local-create-item-list-table.jpg">
+
+### Get records
+<img src="./assets/week1/dynamodb-local-get-records.jpg">
+
 ## Add Postgres to ```docker-compose.yml```
 ```yml
 services:
@@ -397,3 +409,17 @@ volumes:
   db:
     driver: local
 ```
+
+To install the postgres client into Gitpod:
+
+```sh
+  - name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+```
+
+## Ensure Postgres works
+<img src="./assets/week1/postgres-list.jpg">
