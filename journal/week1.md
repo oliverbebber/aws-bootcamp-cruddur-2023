@@ -359,7 +359,7 @@ class NotificationsActivities:
 
 
 ## Frontend React Notification Page
-<img src="./assets/week1/cruddur-frontend-notifications.jpg" width="900" height="600">
+<img src="./assets/week1/cruddur-frontend-notifications.jpg" width="850" height="600">
 
 ## Backend Flask Notification Page
 <img src="./assets/week1/cruddur-backend-notifications.jpg" width="600" height="650">
