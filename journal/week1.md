@@ -24,8 +24,8 @@ In this class, we are going to:
 - [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Document the Notification Endpoint for the OpenAI Document</a>
 - [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a Flask Backend Endpoint for Notifications</a>
 - [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a React Page for Notifications</a>
-- [ ] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run DynamoDB Local Container & ensure it works</a>
-- [ ] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run Postgres Container & ensure it works</a>
+- [x] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run DynamoDB Local Container & ensure it works</a>
+- [x] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run Postgres Container & ensure it works</a>
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
