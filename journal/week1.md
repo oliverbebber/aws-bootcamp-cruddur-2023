@@ -423,3 +423,12 @@ To install the postgres client into Gitpod:
 
 ## Ensure Postgres works
 <img src="./assets/week1/postgres-list.jpg">
+
+# Homework Challenges
+## Install Docker Locally
+
+
+## Docker Hub 
+
+### Push and tag an image to Docker Hub
+
