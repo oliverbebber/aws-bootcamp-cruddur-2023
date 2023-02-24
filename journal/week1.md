@@ -429,6 +429,18 @@ To install the postgres client into Gitpod:
 
 
 ## Docker Hub 
+Before the bootcamp, I had created a Docker Hub account, however, I never pushed an image, nor had I ever tagged an image.
 
+If you don't have a Docker Hub account, you can create one by going to https://hub.docker.com/
+
+## Login using the terminal
+Run the following command
+
+```
+docker login
+```
+
+Enter your username and password.
+- For enhanced security, use an access token.
 ### Push and tag an image to Docker Hub
 
