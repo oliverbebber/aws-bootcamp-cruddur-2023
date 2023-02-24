@@ -456,5 +456,7 @@ Log in to https://hub.docker.com
 - Copy the token and save it in a safe place. 
   - NOTE: You will NOT be able to regenerate your token after closing this page.
 
+For more info: <a href="https://docs.docker.com/docker-hub/access-tokens/">Manage Access Tokens - Docker Documentation</a>
+
 ### Push and tag an image to Docker Hub
 
