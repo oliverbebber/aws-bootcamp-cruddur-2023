@@ -442,5 +442,19 @@ docker login
 
 Enter your username and password.
 - For enhanced security, use an access token.
+
+## Create an access token
+Log in to https://hub.docker.com
+
+- Click on your username in the upper right
+- Click on Account Settings
+- Click on Security > New Access Tokens
+
+- Give the Access Token a description
+- Click the drop-down menu and select the appropriate access permissions
+- Click Generate
+- Copy the token and save it in a safe place. 
+  - NOTE: You will NOT be able to regenerate your token after closing this page.
+
 ### Push and tag an image to Docker Hub
 
