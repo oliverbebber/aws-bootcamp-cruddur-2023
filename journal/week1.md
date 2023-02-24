@@ -426,6 +426,16 @@ To install the postgres client into Gitpod:
 
 # Homework Challenges
 ## Install Docker Locally
+For Windows: Download Docker from https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
+
+I used PowerShell when I installed Docker locally, so I used the following command after changing directories to where I downloaded the executable:
+
+```ps
+Start-Process 'Docker Desktop Installer.exe' -Wait install
+```
+
+I ended up needing to enable WSL 2 as this is the first time I've done any development while using Windows. The following resource may be useful if you have never enabled Windows Subsystem for Linux: https://learn.microsoft.com/en-us/windows/wsl/install
+
 
 
 ## Docker Hub 
@@ -466,5 +476,5 @@ Log in to https://hub.docker.com
 
 For more info: <a href="https://docs.docker.com/docker-hub/access-tokens/">Manage Access Tokens - Docker Documentation</a>
 
-### Push and tag an image to Docker Hub
+## Push and tag an image to Docker Hub
 
