@@ -442,6 +442,14 @@ docker login
 
 Enter your username and password.
 - For enhanced security, use an access token.
+  
+To login with an access token:  
+
+```
+docker login -u <username>
+```
+
+Then enter your access token when prompted for your password.
 
 ## Create an access token
 Log in to https://hub.docker.com
