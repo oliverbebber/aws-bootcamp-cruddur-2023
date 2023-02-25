@@ -38,6 +38,8 @@ In this class, we are going to:
 - [ ] Implement a healthcheck in the V3 Docker compose file
   - https://docs.docker.com/engine/reference/builder/#healthcheck
   - https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e
+  - https://medium.com/@saklani1408/configuring-healthcheck-in-docker-compose-3fa6439ee280
+  - https://www.chubbydeveloper.com/docker-compose-healthcheck/
 - [ ] Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
   - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 - [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#install-docker-locally">Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces</a>
