@@ -621,3 +621,12 @@ The following is an example of the order of instructions:
 3. Generate the app.
 
 
+# Use multi-stage building for a Dockerfile build
+Each ```RUN```, ```COPY```, and ```ADD``` instruction in a Dockerfile adds a layer to the image, which can make it challenging to keep the image size down. You need to remember to cleanup any unnecessary artifacts before moving on to the next layer.
+
+To write efficient Dockerfiles, shell tricks and other logic has been needed to keep the layers as small as possible to ensure each layer has only the artifacts that it needs from the previous layer and nothing more.
+
+Using multi-stage builds, you use multiple ```FROM``` statements witin the Dockerfile. 
+- Each ```FROM``` instruction can use a different base, and from each, a new stage of the build begins.
+- This allows you to selectively copy artifacts from one stage to another, leaving anything you don't want or need in the final image. 
+
