@@ -566,3 +566,40 @@ Images defined by Dockerfiles should generate containers that are as ephemeral a
 Docker has the ability to build images by piping a Dockerfile through stdin with a local or remote build context. Piping a Dockerfile through stdin can be helpful to perform one-off builds without writing a Dockerfile to disk, or in situations where the Dockerfile is generated and shouldn't remain afterwards.
 - Any method to provide the Dockerfile on stdin can be used.
 
+The following are equivalent:
+
+```sh
+echo -e 'FROM busybox\nRUN echo "hello world"' | docker build -
+```
+
+```docker
+docker build -<<EOF
+FROM busybox
+RUN echo "hello world"
+EOF
+```
+
+
+### Build an image using a Dockerfile from stdin, without sending build context
+Use this syntax to build an image using a Dockerfile from stdin, without sending additional files as build context.
+
+```
+docker build [OPTIONS] -
+```
+
+The hyphen takes the position of the ```PATH``` and instructs Docker to read the build context, which only contains  Dockerfile from the stdin, instead of a directory.
+
+The example below builds an image using a Dockerfile that is passed through stdin.
+- No files are sent as build context to the daemon.
+
+```docker
+docker build -t myimage:latest -<<EOF
+FROM busybox
+RUN echo "hello world"
+EOF
+```
+
+Omitting the build context can be beneficial in situations where the Dockerfile doesn't require files to be copied into the image, which can improve build-speed, since no files are sent to the daemon.
+
+To improve build-speed by excluding some files from the build context, exclude with ```.dockerignore```.
+
