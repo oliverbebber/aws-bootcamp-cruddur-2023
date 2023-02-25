@@ -30,7 +30,7 @@ In this class, we are going to:
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
   - https://docs.docker.com/engine/reference/builder/#run
-- [ ] Push and tag a image to DockerHub (they have a free tier)
+- [x] Push and tag a image to DockerHub (they have a free tier)
   - https://docs.docker.com/engine/reference/commandline/push/
   - https://docs.docker.com/engine/reference/commandline/tag/
 - [ ] Use multi-stage building for a Dockerfile build
