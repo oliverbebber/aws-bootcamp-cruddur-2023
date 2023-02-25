@@ -684,3 +684,20 @@ A lot of trust is put into docker images. It's extremely important to make sure 
 Do NOT skip this step. Scan your docker images for known vulns and integrate it as part of your continuous integration. 
 - Synk was mentioned in one of our homework video assignments and can be used for this purpose. They have a free tier!
 
+# Homework Summary
+What did I accomplish?
+- All required homework assignments and some homework challenges.
+
+Were there any obstacles (did I overcome them)?
+I ran into a few errors along the way, mostly due to typos.
+- Running docker compose up threw an error and pointed out the typo.
+I ran into an issue while writing the backend endpoint for notifications, as I forgot to change 'data_home' to 'data_notifications'.
+- Navigation to the page and hitting a 404 led me to reviewing docker logs and the app.py code.
+
+While spinning up my local containers, I ran into a TypeError: argument of type "NoneType" is not iterable but have not had time to research this as it's late and I work early in the morning. I will be looking further into this after work and after catching up on the livestream video.
+
+What were the homework challenges I attempted?
+- Push and tag an image to DockerHub.
+- I used a naming convention I ended up regretting. Changing it to a shorter version this weekend.
+- Installed Docker on my local machine and run the containers outside of Gitpod.
+- I ran into an issue with the backend. With it being late and having work early in the morning, I won't get to investigate this until after homework is due. My findings will be posted in my journal.
