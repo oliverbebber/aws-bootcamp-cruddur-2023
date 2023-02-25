@@ -311,7 +311,6 @@ docker compose up
 
 
 # Create Notification Endpoint for the OpenAPI File
-## Write a Flask Backend Endpoint for Notifications
 ### Edit ```app.py``` to Create Notifications 
 ```py
 @app.route("/api/activities/notifications", methods=['GET'])
@@ -321,7 +320,7 @@ def data_notifications():
 ```
 
 Note: This section caused issues as I forgot to change ```data_home``` to be ```data_notifications```. Quickly noticed after looking at the errors I received when trying to load the notifications page within the app.
-
+# Write a Flask Backend Endpoint for Notifications
 ### Create ```notifications_activities.py```
 ```py
 from datetime import datetime, timedelta, timezone
