@@ -20,12 +20,12 @@ In this class, we are going to:
 - [x] <a href="https://www.youtube.com/watch?v=b-idMgFFcpg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=23">Remember to Commit Your Code</a>
 - [x] Watch Chirag's Week 1 - <a href="https://www.youtube.com/watch?v=OAMHu1NiYoI&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=24">Spending Considerations</a>
 - [x] Watch Ashish's Week 1 - <a href="https://www.youtube.com/watch?v=OjZz4D0B-cA&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=24">Container Security</a>
-- [x] <a href="https://www.youtube.com/watch?v=b-idMgFFcpg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=23">Containerize Application (Dockerfiles, Docker Compose)</a>
-- [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Document the Notification Endpoint for the OpenAI Document</a>
-- [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a Flask Backend Endpoint for Notifications</a>
-- [x] <a href="https://www.youtube.com/watch?v=k-_o0cCpksk&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=27">Write a React Page for Notifications</a>
-- [x] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run DynamoDB Local Container & ensure it works</a>
-- [x] <a href="https://www.youtube.com/watch?v=CbQNMaa6zTg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=28">Run Postgres Container & ensure it works</a>
+- [x] <a href="">Containerize Application (Dockerfiles, Docker Compose)</a>
+- [x] <a href="">Document the Notification Endpoint for the OpenAI Document</a>
+- [x] <a href="">Write a Flask Backend Endpoint for Notifications</a>
+- [x] <a href="">Write a React Page for Notifications</a>
+- [x] <a href="">Run DynamoDB Local Container & ensure it works</a>
+- [x] <a href="">Run Postgres Container & ensure it works</a>
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
@@ -127,8 +127,10 @@ https://code.visualstudio.com/docs/containers/overview
 
     Gitpod is preinstalled with theis extension
 
-# Containerize Backend
-## Run Python
+
+# Containerize Application - Dockerfiles, Docker Compose
+## Containerize Backend
+### Run Python
 ```sh
 cd backend-flask
 export FRONTEND_URL="*"
