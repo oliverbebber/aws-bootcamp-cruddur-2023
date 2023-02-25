@@ -505,5 +505,29 @@ For more info: <a href="https://docs.docker.com/docker-hub/access-tokens/">Manag
 
 - Click Create
 
-## Push and tag an image to Docker Hub
+# Push and tag an image to Docker Hub
+Navigate back to Gitpod
 
+Install npm in ```frontend-react-js```
+
+```sh
+cd frontend-react-js
+npm i
+cd ..
+```
+
+```
+docker compose up
+docker images
+```
+
+<img src="./assets/week1/docker-images.jpg">
+
+```
+docker tag image-name dockerhub-username/repo-name:tag
+docker push image-name dockerhub-username/repo-name:tag
+```
+
+<a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-frontend-react-js/tags"><img src="./assets/week1/docker-hub-frontend-image.jpg"></a>
+
+<a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-backend-flask/tags"><img src="./assets/week1/docker-hub-backend-image.jpg"></a>
