@@ -482,6 +482,10 @@ Note: The frontend is up and functioning, however, I have run into errors runnin
 
 <img src="./assets/week1/local-docker-backend-error.jpg">
 
+Error encountered: 
+
+```TypeError: argument of type 'NoneType' is not iterable```
+
 
 ## Docker Hub 
 Before the bootcamp, I had created a Docker Hub account, however, I never pushed an image, nor had I ever tagged an image.
