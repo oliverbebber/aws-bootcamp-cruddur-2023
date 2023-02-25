@@ -1,6 +1,6 @@
 FROM python:3.10-slim-buster
 
-ENV PORT=4567
+## ENV PORT=4567
 
 # Inside Container
 # Make a new folder insider the container
