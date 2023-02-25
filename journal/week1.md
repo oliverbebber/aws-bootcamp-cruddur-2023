@@ -448,6 +448,12 @@ docker run -d -p 80:80 docker/getting-started
 - ```-p 80:80``` maps port 80 of the host to port 80 of the container.
 - ```docker/getting-started``` is the image that will be used.
 
+NOTE: You can combine the ```-d``` & ```-p``` flags to shorten the command as seen below:
+
+```docker
+docker run -dp 80:80 docker/getting-started
+```
+
 ## Docker Hub 
 Before the bootcamp, I had created a Docker Hub account, however, I never pushed an image, nor had I ever tagged an image.
 
