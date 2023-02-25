@@ -420,7 +420,7 @@ To install the postgres client into Gitpod:
 <img src="./assets/week1/postgres-list.jpg">
 
 # Homework Challenges
-## Install Docker Locally
+## Install Docker Desktop & Run Containers Locally
 For Windows: Download Docker from https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe
 
 I used PowerShell when I installed Docker locally, so I used the following command after changing directories to where I downloaded the executable:
@@ -448,6 +448,38 @@ NOTE: You can combine the ```-d``` & ```-p``` flags to shorten the command as se
 ```docker
 docker run -dp 80:80 docker/getting-started
 ```
+
+### Now to pull & run the containers!
+- Open PowerShell
+- Pull the container image(s)
+
+```ps
+docker pull dockerhub-username/repo-name:tag
+```
+
+Next, we need to run the containers that we just pulled. Run the following command in PowerShell:
+
+
+```ps
+docker run -p 3000:3000 dockerhub-username/repo-name:tag
+```
+
+
+<img src="./assets/week1/local-docker-frontend.jpg">
+
+
+
+
+
+```ps
+docker run -p 4567:4567 dockerhub-username/repo-name:tag
+```
+
+
+Note: The frontend is up and functioning, however, I have run into errors running the backend-flask image locally. I will need to investigate this further over the weekend, after work. 
+
+<img src="./assets/week1/local-docker-backend-error.jpg">
+
 
 ## Docker Hub 
 Before the bootcamp, I had created a Docker Hub account, however, I never pushed an image, nor had I ever tagged an image.
@@ -496,7 +528,7 @@ For more info: <a href="https://docs.docker.com/docker-hub/access-tokens/">Manag
 - Name the repository
 - Be sure to set it's visibility public
 
-<img src="./assets/week1/docker-hub-backend-flask-image-repo.jpg">
+<img src="./assets/week1/backend-flask-dockerhub-repo.jpg">
 
 - Click Create
 
@@ -526,6 +558,9 @@ docker push image-name dockerhub-username/repo-name:tag
 <a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-frontend-react-js/tags"><img src="./assets/week1/docker-hub-frontend-image.jpg"></a>
 
 <a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-backend-flask/tags"><img src="./assets/week1/docker-hub-backend-image.jpg"></a>
+
+
+- I regret making my image name/repo name so long. I will be changing this ASAP 
 
 # Best Practices for Writing Dockerfiles
 Docker builds images automatically by reading the instructions within a Dockerfile.
