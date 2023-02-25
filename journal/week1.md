@@ -130,7 +130,7 @@ https://code.visualstudio.com/docs/containers/overview
 
 # Containerize Application - Dockerfiles, Docker Compose
 ## Containerize Backend
-### Run Python
+## Run Python
 ```sh
 cd backend-flask
 export FRONTEND_URL="*"
@@ -216,7 +216,7 @@ CONTAINER_ID=$(docker run --rm -p 4567:4567 -d backend-flask)
 > docker container run is idiomatic, docker run is legacy syntax but is commonly used.
 
 
-# Containerize Frontend
+## Containerize Frontend
 ## Install NPM
 ```
 cd frontend-react-js
@@ -317,6 +317,8 @@ Once docker compose up completed downloading the images, the app populated for a
                   $ref: '#/components/schemas/Activity'
 ```
 
+
+# Create Notification Endpoint for the OpenAPI File
 ## Write a Flask Backend Endpoint for Notifications
 ### Edit ```app.py``` to Create Notifications 
 ```py
