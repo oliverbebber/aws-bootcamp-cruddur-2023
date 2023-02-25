@@ -556,3 +556,13 @@ CMD ["npm", "start"]
 - ```COPY``` adds files from our Docker client's current directory.
 - ```RUN``` builds our app by installing ```npm```.
 - ```CMD``` specifies the command to run within the container.
+
+## Guidelines & Recommendations
+### Create ephemeral containers
+Images defined by Dockerfiles should generate containers that are as ephemeral as possible.
+- This means the container can be stopped & destroyed, then rebuilt & replaced with minimumal set up and configuration.
+
+### Pipe Dockerfile through stdin
+Docker has the ability to build images by piping a Dockerfile through stdin with a local or remote build context. Piping a Dockerfile through stdin can be helpful to perform one-off builds without writing a Dockerfile to disk, or in situations where the Dockerfile is generated and shouldn't remain afterwards.
+- Any method to provide the Dockerfile on stdin can be used.
+
