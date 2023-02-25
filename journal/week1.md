@@ -40,7 +40,7 @@ In this class, we are going to:
   - https://medium.com/geekculture/how-to-successfully-implement-a-healthcheck-in-docker-compose-efced60bc08e
 - [ ] Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
   - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-- [ ] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#install-docker-locally">Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces</a>
+- [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#install-docker-locally">Learn how to install Docker on your localmachine and get the same containers running outside of Gitpod / Codespaces</a>
   - https://docs.docker.com/desktop/install/windows-install/
   - https://docs.docker.com/desktop/install/mac-install/
 - [ ] Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
