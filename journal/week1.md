@@ -668,6 +668,7 @@ Using multi-stage builds, you use multiple ```FROM``` statements witin the Docke
 
 
 # Docker Image Security Best Practices
+Reference: https://res.cloudinary.com/snyk/image/upload/v1551798390/Docker_Image_Security_Best_Practices_.pdf
 ## Least privileged user
 Create a dedicated user & group on the image, with minimal permissions to run the app.
 - The same user should be used to run the process.
