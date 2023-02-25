@@ -27,7 +27,7 @@ In this class, we are going to:
 - [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#add-dynamodb-local-to-docker-composeyml">Run DynamoDB Local Container & ensure it works</a>
 - [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#add-postgres-to-docker-composeyml">Run Postgres Container & ensure it works</a>
 
-## Homework Challenges
+## <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#homework-challenges-1">Homework Challenges</a>
 - [ ] Run the dockerfile CMD as an external script
   - https://docs.docker.com/engine/reference/builder/#run
 - [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#push-and-tag-an-image-to-docker-hub">Push and tag a image to DockerHub</a> (they have a free tier)
