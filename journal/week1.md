@@ -24,8 +24,8 @@ In this class, we are going to:
 - [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#create-notification-endpoint-for-the-openapi-file">Document the Notification Endpoint for the OpenAPI Document</a>
 - [x] <a href="">Write a Flask Backend Endpoint for Notifications</a>
 - [x] <a href="">Write a React Page for Notifications</a>
-- [x] <a href="">Run DynamoDB Local Container & ensure it works</a>
-- [x] <a href="">Run Postgres Container & ensure it works</a>
+- [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#add-dynamodb-local-to-docker-composeyml">Run DynamoDB Local Container & ensure it works</a>
+- [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#add-postgres-to-docker-composeyml">Run Postgres Container & ensure it works</a>
 
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
