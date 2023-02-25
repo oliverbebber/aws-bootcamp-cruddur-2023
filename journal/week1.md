@@ -436,7 +436,17 @@ Start-Process 'Docker Desktop Installer.exe' -Wait install
 
 I ended up needing to enable WSL 2 as this is the first time I've done any development while using Windows. The following resource may be useful if you have never enabled Windows Subsystem for Linux: https://learn.microsoft.com/en-us/windows/wsl/install
 
+Once Docker Desktop is installed, open the app and login.
 
+Open your terminal and run the following command:
+
+```docker
+docker run -d -p 80:80 docker/getting-started
+```
+
+- ```-d``` runs the container in detached mode, or in the background.
+- ```-p 80:80``` maps port 80 of the host to port 80 of the container.
+- ```docker/getting-started``` is the image that will be used.
 
 ## Docker Hub 
 Before the bootcamp, I had created a Docker Hub account, however, I never pushed an image, nor had I ever tagged an image.
