@@ -603,3 +603,22 @@ Omitting the build context can be beneficial in situations where the Dockerfile 
 
 To improve build-speed by excluding some files from the build context, exclude with ```.dockerignore```.
 
+### Build from a local build context, using a Dockerfile from stdin
+
+
+### Build from a remote build context, using a Dockerfile from stdin
+
+### Exclude with ```.dockerignore```
+
+
+### Use multi-stage builds
+Multi-stage builds allow you to drastically reduce the size of your final image, without issue reducing the number of intermediate layers and files.
+
+Images are built during the final stage of the build process, which allows you to minimize image layers by leveraging build cache.
+
+The following is an example of the order of instructions:
+1. Install tools you need to build your app.
+2. Install or update library dependencies.
+3. Generate the app.
+
+
