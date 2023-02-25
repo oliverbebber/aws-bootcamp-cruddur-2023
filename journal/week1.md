@@ -30,7 +30,7 @@ In this class, we are going to:
 ## Homework Challenges
 - [ ] Run the dockerfile CMD as an external script
   - https://docs.docker.com/engine/reference/builder/#run
-- [x] Push and tag a image to DockerHub (they have a free tier)
+- [x] <a href="https://github.com/oliverbebber/aws-bootcamp-cruddur-2023/blob/main/journal/week1.md#push-and-tag-an-image-to-docker-hub">Push and tag a image to DockerHub</a> (they have a free tier)
   - https://docs.docker.com/engine/reference/commandline/push/
   - https://docs.docker.com/engine/reference/commandline/tag/
 - [ ] Use multi-stage building for a Dockerfile build
