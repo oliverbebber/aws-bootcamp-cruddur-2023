@@ -665,3 +665,19 @@ Using multi-stage builds, you use multiple ```FROM``` statements witin the Docke
 - Each ```FROM``` instruction can use a different base, and from each, a new stage of the build begins.
 - This allows you to selectively copy artifacts from one stage to another, leaving anything you don't want or need in the final image. 
 
+
+
+# Docker Image Security Best Practices
+## Least privileged user
+Create a dedicated user & group on the image, with minimal permissions to run the app.
+- The same user should be used to run the process.
+
+## Digital signatures & signature verification
+A lot of trust is put into docker images. It's extremely important to make sure the image that's being pulled is pushed by the publisher and hasn't been tampered with.
+- Sign images
+- Verify the trust & authenticity of the images you pull
+
+## Remediate open source vulnerabilities
+Do NOT skip this step. Scan your docker images for known vulns and integrate it as part of your continuous integration. 
+- Synk was mentioned in one of our homework video assignments and can be used for this purpose. They have a free tier!
+
