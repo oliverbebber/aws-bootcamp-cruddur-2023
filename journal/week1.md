@@ -286,7 +286,7 @@ docker compose up
 
 - Hit an error due to a typo in the frontend Dockerfile.
 
-<img src="./assets/week1/frontend-dockerfile-typo-npm.jpg" width="900" height="300">
+<img src="./assets/week1/frontend-dockerfile-typo-npm.jpg">
 
 # Create Front and Backend Notification Pages
 ## Edit ```openapi-3.0.yml``` to Create Notifications Section
@@ -355,7 +355,7 @@ class NotificationsActivities:
 
 
 ## Frontend React Notification Page
-<img src="./assets/week1/cruddur-frontend-notifications.jpg" width="850" height="600">
+<img src="./assets/week1/cruddur-frontend-notifications.jpg">
 
 
 # Adding DynamoDB Local and Postgres
