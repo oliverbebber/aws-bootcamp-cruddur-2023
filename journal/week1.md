@@ -527,3 +527,32 @@ docker push image-name dockerhub-username/repo-name:tag
 <a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-frontend-react-js/tags"><img src="./assets/week1/docker-hub-frontend-image.jpg"></a>
 
 <a href="https://hub.docker.com/r/oliverbebber/aws-bootcamp-cruddur-2023-backend-flask/tags"><img src="./assets/week1/docker-hub-backend-image.jpg"></a>
+
+# Best Practices for Writing Dockerfiles
+Docker builds images automatically by reading the instructions within a Dockerfile.
+- A Dockerfile is a text file that contains all commands, in order, required to build a docker image.
+  - There is a specifc format that needs to be followed.
+  - To learn more: https://docs.docker.com/engine/reference/builder/
+
+## What is a Docker image?
+A Docker image is made up of read-only layers that represent a Dockerfile instruction.
+
+Each instruction within a Dockerfile creates one layer.
+
+For example: 
+```dockerfile
+FROM node:16.18
+
+ENV PORT=3000
+
+COPY . /frontend-react-js
+WORKDIR /frontend-react-js
+RUN npm install
+EXPOSE ${PORT}
+CMD ["npm", "start"]
+```
+
+- ```FROM``` creates a layer from the ```node:16.18``` Docker image.
+- ```COPY``` adds files from our Docker client's current directory.
+- ```RUN``` builds our app by installing ```npm```.
+- ```CMD``` specifies the command to run within the container.
