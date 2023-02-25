@@ -492,5 +492,18 @@ Log in to https://hub.docker.com
 
 For more info: <a href="https://docs.docker.com/docker-hub/access-tokens/">Manage Access Tokens - Docker Documentation</a>
 
+## Create a new (public) repository
+- Click the Repsitories tab at the top of Docker Hub.
+
+<img src="./assets/week1/docker-hub-create-repo.jpg">
+
+- Click Create repository
+- Name the repository
+- Be sure to set it's visibility public
+
+<img src="./assets/week1/docker-hub-backend-flask-image-repo.jpg">
+
+- Click Create
+
 ## Push and tag an image to Docker Hub
 
