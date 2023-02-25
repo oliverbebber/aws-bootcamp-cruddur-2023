@@ -288,14 +288,6 @@ docker compose up
 
 <img src="./assets/week1/frontend-dockerfile-typo-npm.jpg" width="900" height="300">
 
-Once docker compose up completed downloading the images, the app populated for a preview:
-
-### Frontend Preview
-<img src="./assets/week1/docker-compose-up-preview.jpg">
-
-### Backend Preview
-<img src="./assets/week1/backend-preview.jpg">
-
 # Create Front and Backend Notification Pages
 ## Edit ```openapi-3.0.yml``` to Create Notifications Section
 
