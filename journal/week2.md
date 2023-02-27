@@ -383,6 +383,22 @@ Note: I'm unsure if this is going to work as my API key and Env Var for backend-
 
 <img src="./assets/week2/set-frontend-api.jpg">
 
+
+# Custom CloudWatch Logs
+Add the following to `requirements.txt`
+
+```
+watchtower
+```
+
+Then do the following:
+
+```sh
+cd backend-flask
+pip install -r requirements.txt
+```
+
+
 ## Set Env Vars for ```frontend-react-js``` in ```docker-compose ```
 Add the following to the backend-flask service.
 
