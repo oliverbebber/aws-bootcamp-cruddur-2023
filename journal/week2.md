@@ -35,8 +35,12 @@ Observability is essential in modern software development because it allows deve
 In a distributed system, different components of an application can run on different servers, in different programming languages, and may communicate with each other using various communication protocols. Observability tools allow developers and operators to track the flow of requests through the system, monitor system health and performance, and identify and troubleshoot issues as they arise.
 
 - Metrics: collect valuable data regarding KPIs like error rates, latency, and throughput. 
+    - For instance, metrics for downtime can be created.
 - Traces: tracks each request as it occurs and analyzes the performance of each component that processes the requests.
+    - Tracing will help map out the root problem.
 - Logs: capture data from different components of a system and analyze the information to get insights into the an applications behavior.
+    - Every application is producing logs.
+    - Metrics can be used on top of this.
 - Dependencies: reveals how each component is dependent on other components, apps, and IT resources.
 
 Source: https://www.ibm.com/topics/observability & https://newrelic.com/blog/best-practices/observability-instrumentation
@@ -58,8 +62,13 @@ Monitoring typically refers to collecting and analyzing data from a system or ap
 <img src="./assets/week2/observability-vs-monitoring.png">
 
 
+## AWS Observability Services
+- AWS CloudWatch Logs
+- AWS CloudWatch Metrics
+- AWS X-Ray Traces
 
 ## Security Considerations
+
 
 # HoneyComb
 ## Create a HoneyComb account
