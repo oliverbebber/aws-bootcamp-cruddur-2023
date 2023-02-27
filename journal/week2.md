@@ -255,6 +255,8 @@ aws xray create-group \
 
 - I ran into an issue while trying to create a group for X-ray traces due to leaving off an additional " at the end of the command.
 
+<img src="./assets/week2/create-xray-group.jpg">
+
 ## Create a Sampling Rule
 Sampling will allow you to determine what information you will see.
 - This can help reduce spend.
