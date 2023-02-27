@@ -195,6 +195,8 @@ Found code to add from: https://docs.honeycomb.io/getting-data-in/opentelemetry/
 
 <img src="./assets/week2/double-span-trace.jpg">
 
+<img src="./assets/week2/double-span-trace-2.jpg">
+
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 
