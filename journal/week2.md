@@ -89,7 +89,20 @@ Note: running ```pip install opentelemtry-api``` did NOT add to ```requirements.
 
 <img src="./assets/week2/python-package-requirements-file.jpg">
 
+## Add Dependencies to ```requirements.txt```
+```
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-otlp-proto-http
+opentelemetry-instrumentation-flask
+opentelemetry-instrumentation-requests
+```
 
+Then run the following from the backend-flask directory
+
+```py
+pip install -r requirements.txt
+```
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
