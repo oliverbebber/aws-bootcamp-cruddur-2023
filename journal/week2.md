@@ -206,3 +206,20 @@ Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
 
 ## Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
 Resource: https://docs.honeycomb.io/working-with-your-data/queries/
+
+## About Queries
+Queries in HoneyComb consist of 6 clauses:
+- Visualize: Visualize specific stats across events
+- Where: Choose events based on additional criteria.
+- Group By: Split events into groups based on the value of a specified attribute.
+- Order By: Sort the results.
+- Limit: Specify a limit on the number of results to return.
+- Having: Filter results based on aggregate criteria.
+
+Most queries output defaults to a time series and a summary table. Precise composition will depend on the composition of the queries you create:
+    
+- Specifying a visualize clause will cause a time series to be drawn representing the calculated value over time. 
+    - Multiple visualize clauses wil result in multiple graphs, one for each calculation.
+- Specifying a group by clause will result in the time series drawing multiple lines, one for each group.
+    - The summary table will contain a single row for each unique group.
+- Leaving visualize blank will result in raw event data being returned without any summarization.
