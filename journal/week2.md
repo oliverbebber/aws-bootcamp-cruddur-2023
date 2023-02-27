@@ -67,9 +67,6 @@ NOTE: Instead of calling the HoneyComb Service Name "Cruddur", we will want to n
 
 <img src="./assets/week2/set-honeycomb-service-name-backend.jpg">
 
-
-In ```docker-compose.yml``` we will make a new line under the backend-flask service to reflect ```OTEL_SERVICE_NAME: "backend-flask"```
-
 ## Set Env Vars for ```backend-flask``` in ```docker-compose ```
 Add the following to the backend-flask service.
 
