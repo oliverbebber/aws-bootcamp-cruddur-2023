@@ -257,6 +257,10 @@ aws xray create-group \
 
 <img src="./assets/week2/create-xray-group.jpg">
 
+Successfully created and located the group within CloudWatch X-ray Traces.
+
+<img src="./assets/week2/aws-xray-group.jpg">
+
 ## Create a Sampling Rule
 Sampling will allow you to determine what information you will see.
 - This can help reduce spend.
