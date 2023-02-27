@@ -68,7 +68,16 @@ Monitoring typically refers to collecting and analyzing data from a system or ap
 - AWS X-Ray Traces
 
 ## Security Considerations
-
+- CloudTrail
+- CloudWatch Agent
+- CloudWatch Metrics
+- X-Rays Traces
+- AWS Private CA
+- AWS Certificate Manager
+- AWS Backup
+- Amazon Inspector
+- AWS KMS
+- AWS ECS Cluster auto-scaling
 
 # HoneyComb
 ## Create a HoneyComb account
