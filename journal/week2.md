@@ -41,6 +41,25 @@ In a distributed system, different components of an application can run on diffe
 
 Source: https://www.ibm.com/topics/observability & https://newrelic.com/blog/best-practices/observability-instrumentation
 
+- Decreased Alert Fatigue for Security Operation Teams
+- Visibility of end-to-end logs, metrics, & tracing
+- Troubleshooting & resolve things without increased expenses
+- Understand application health
+- Accelerate collaboration between teams
+- Reduce overall operational costs
+- Increase customer satisfaction
+
+Observability covers the entire lifecycle of an application.
+
+## What is Monitoring?
+Monitoring typically refers to collecting and analyzing data from a system or application to determine its health and performance, including metrics such as CPU usage, memory usage, network traffic, and error rates, among other things. Monitoring focuses on providing real-time feedback on the state of a system so that teams can quickly identify and respond to issues as they arise.
+
+## Observability vs Monitoring
+<img src="./assets/week2/observability-vs-monitoring.png">
+
+
+
+## Security Considerations
 
 # HoneyComb
 ## Create a HoneyComb account
