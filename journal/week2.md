@@ -131,6 +131,20 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
 
+## Add Port Configuration to ```gitpod.yml```
+```yml
+ports:
+  - name: frontend
+    port: 3000
+    onOpen: open-browser
+    visibility: public
+  - name: backend
+    port: 4567
+    visibility: public
+  - name: xray-daemon
+    port: 2000
+    visibility: public
+```
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
