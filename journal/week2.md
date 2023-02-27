@@ -49,7 +49,17 @@ https://www.honeycomb.io/
 
 I had previously setup my HoneyComb account. If you need an account, go to the website about and click Get Started to begin creating your account.
 
+## Set the API key & Service Name
+```
+export HONEYCOMB_API_KEY=""
+export HONEYCOMB_SERVICE_NAME="Cruddur"
+gp env HONEYCOMB_API_KEY=""
+gp env HONEYCOMB_SERVICE_NAME="Cruddur"
+````
 
+<img src="./assets/week2/set-honeycomb-api-key.jpg">
+
+<img src="./assets/week2/set-honeycomb-service-name.jpg">
 
 
 
