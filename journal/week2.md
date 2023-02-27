@@ -104,6 +104,37 @@ Then run the following from the backend-flask directory
 pip install -r requirements.txt
 ```
 
+## Add ```app.py``` Updates
+
+```py
+# HoneyComb Updates -------
+from opentelemetry import trace
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+```
+
+
+```py
+# HoneyComb Updates -------
+# Initialize tracing and an exporter that can send data to Honeycomb
+provider = TracerProvider()
+processor = BatchSpanProcessor(OTLPSpanExporter())
+provider.add_span_processor(processor)
+trace.set_tracer_provider(provider)
+tracer = trace.get_tracer(__name__)
+```
+
+```py
+# HoneyComb Updates -------
+# Initialize automatic instrumentation with Flask
+FlaskInstrumentor().instrument_app(app)
+RequestsInstrumentor().instrument()
+```
+
+
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 
