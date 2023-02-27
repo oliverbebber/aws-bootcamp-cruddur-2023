@@ -22,8 +22,10 @@ A trace represents a single request and includes information about the component
 
 <img src="./assets/week2/slow-api-trace-sidebar.png">
 
-## What is Instrumenting?
+## What is Instrumentation?
 Instrumenting refers to the process of adding code to an application to collect data about its behavior, performance, or usage. The goal of instrumenting an application is to gain insight into how the application is functioning, to identify and fix issues, optimize performance, and improve user experience.
+
+Put simply, instrumentation helps produce logs or traces.
 
 ## What is observability?
 <img src="./assets/week2/observability-three-pillars.jpg">
