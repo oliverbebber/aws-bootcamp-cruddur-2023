@@ -398,6 +398,35 @@ cd backend-flask
 pip install -r requirements.txt
 ```
 
+## Add dependencies to `app.py`
+```py
+# CloudWatch Logs -------
+import watchtower
+import logging
+from time import strftime
+```
+
+## Configure Logger for CloudWatch in `app.py`
+```py
+# Configuring Logger to Use CloudWatch -------
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+# LOGGER.info("some message")
+```
+
+## Configure error logging in `app.py`
+```py
+@app.after_request
+def after_request(response):
+    timestamp = strftime('[%Y-%b-%d %H:%M]')
+    LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
+    return response
+```
+
 
 ## Set Env Vars for ```frontend-react-js``` in ```docker-compose ```
 Add the following to the backend-flask service.
