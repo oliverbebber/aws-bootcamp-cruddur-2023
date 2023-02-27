@@ -223,3 +223,29 @@ Most queries output defaults to a time series and a summary table. Precise compo
 - Specifying a group by clause will result in the time series drawing multiple lines, one for each group.
     - The summary table will contain a single row for each unique group.
 - Leaving visualize blank will result in raw event data being returned without any summarization.
+
+## Create a New Query
+I created 2 new queries to save for later.
+1. Based on status codes not equal to 200.
+2. Based on the backend-flask service name where the trace.parent_id doesn't exist, grouping by user agent and displayed in descending order.
+
+
+From within HoneyComb, click on New Query.
+
+<img src="./assets/week2/honeycomb-new-query.jpg">
+
+- Select the desired Visualize option
+- Select the desired Where option
+- Select the desired Group By option
+
+Then click Run Query
+
+<img src="./assets/week2/honeycomb-status-code-query.jpg">
+
+I created an addition query using the Heatmap Visualize option:
+
+<img src="./assets/week2/honeycomb-heatmap-query.jpg">
+
+To find these queries again to run, you can click on the History tab on the left side of the screen.
+
+<img src="./assets/week2/honeycomb-query-history.jpg">
