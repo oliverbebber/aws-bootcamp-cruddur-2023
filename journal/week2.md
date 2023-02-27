@@ -247,5 +247,3 @@ I created an addition query using the Heatmap Visualize option:
 <img src="./assets/week2/honeycomb-heatmap-query.jpg">
 
 To find these queries again to run, you can click on the History tab on the left side of the screen.
-
-<img src="./assets/week2/honeycomb-query-history.jpg">
