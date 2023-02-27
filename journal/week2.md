@@ -171,7 +171,27 @@ Click on Home & Spans should be displayed
 
 <img src="./assets/week2/single-span-trace.jpg">
 
+## Create a New Span in ```home_activities.py```
+```py
+from opentelemetry import trace
 
+tracer = trace.get_tracer("tracer.name.here")
+```
+
+NOTE: Rename 'trace.name.here' replace it with 'home.activities'
+- It's best practice to name it after the module/service it is being used for.
+
+
+
+Add the following under def run within ```home_activities.py```
+
+```py
+with tracer.start_as_current_span("http-handler"):
+```
+
+NOTE: Rename 'http-handler' to name the span.
+
+Found code to add from: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
