@@ -201,5 +201,8 @@ Found code to add from: https://docs.honeycomb.io/getting-data-in/opentelemetry/
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 
 ## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
+Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
+
 
 ## Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
+Resource: https://docs.honeycomb.io/working-with-your-data/queries/
