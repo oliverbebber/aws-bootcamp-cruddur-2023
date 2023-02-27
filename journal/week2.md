@@ -169,7 +169,7 @@ Click on Home & Spans should be displayed
 
 <img src="./assets/week2/honeycomb-http-status-code.jpg">
 
-
+<img src="./assets/week2/single-span-trace.jpg">
 
 
 
