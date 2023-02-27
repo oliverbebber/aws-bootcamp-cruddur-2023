@@ -268,8 +268,11 @@ Sampling will allow you to determine what information you will see.
 Run the following from the terminal:
 
 ```sh
+cd ..
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 ```
+
+<img src="./assets/week2/create-sampling-rule.jpg">
 
 ## Add Daemon Service to ```docker-compose.yml```
 
