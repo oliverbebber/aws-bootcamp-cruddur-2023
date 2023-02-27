@@ -199,6 +199,15 @@ Found code to add from: https://docs.honeycomb.io/getting-data-in/opentelemetry/
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
+## Set the Service Name
+```sh
+export HONEYCOMB_API_KEY=""
+export HONEYCOMB_SERVICE_NAME="frontend-react-js"
+gp env HONEYCOMB_API_KEY=""
+gp env HONEYCOMB_SERVICE_NAME="frontend-react-js"
+```
+
+Note: I'm unsure if this is going to work as my API key and Env Var for backend-flask are now replaced with the API Key and Env Var for frontend-react-js.
 
 ## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
