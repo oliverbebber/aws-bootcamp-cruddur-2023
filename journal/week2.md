@@ -79,6 +79,15 @@ OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 OTEL_SERVICE_NAME: "backend-flask"
 ```
 
+## Install Python Packages
+```
+cd backend-flask
+pip install opentelemetry-api
+```
+
+Note: running ```pip install opentelemtry-api``` did NOT add to ```requirements.txt```
+
+<img src="./assets/week2/python-package-requirements-file.jpg">
 
 
 
