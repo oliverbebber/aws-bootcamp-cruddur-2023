@@ -61,7 +61,11 @@ gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 
 <img src="./assets/week2/set-honeycomb-service-name.jpg">
 
+NOTE: Instead of calling the HoneyComb Service Name "Cruddur", we will want to name it specifically the name of the service. 
+- For example: we will rename this service name to "backend-flask"
+- The overall project (Cruddur) should use the same API key, which will allow all services to work together, but each part of the project will have it's own service name.
 
+In ```docker-compose.yml``` we will make a new line under the backend-flask service to reflect ```OTEL_SERVICE_NAME: "backend-flask"```
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
