@@ -42,6 +42,17 @@ In a distributed system, different components of an application can run on diffe
 
 Source: https://www.ibm.com/topics/observability & https://newrelic.com/blog/best-practices/observability-instrumentation
 
+
+# HoneyComb
+## Create a HoneyComb account
+https://www.honeycomb.io/
+
+I had previously setup my HoneyComb account. If you need an account, go to the website about and click Get Started to begin creating your account.
+
+
+
+
+
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 
