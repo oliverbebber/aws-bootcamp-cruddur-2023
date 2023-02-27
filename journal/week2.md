@@ -146,6 +146,26 @@ ports:
     visibility: public
 ```
 
+## Start Containers
+```docker
+docker compose up
+```
+
+## Add SimpleSpanProcessor (ConsoleSpanExporter) to ```app.py```
+Under the first section for HoneyComb Updates:
+```py
+from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
+```
+
+Add this to the second section of HoneyComb Updates (Initialize tracing & an exporter that can send data to Honeycomb)
+```py
+# Show this in logs within backend-flask app (STDOUT)
+simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
+provider.add_simple_span_processor(simple_processor)
+```
+
+
+
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 
