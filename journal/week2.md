@@ -211,6 +211,15 @@ Note: I'm unsure if this is going to work as my API key and Env Var for backend-
 
 <img src="./assets/week2/set-frontend-api.jpg">
 
+## Set Env Vars for ```frontend-react-js``` in ```docker-compose ```
+Add the following to the backend-flask service.
+
+```docker
+OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
+OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
+OTEL_SERVICE_NAME: "frontend-react-js"
+```
+
 
 ## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
