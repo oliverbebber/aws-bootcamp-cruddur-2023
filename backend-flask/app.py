@@ -48,6 +48,7 @@ tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
+# X-RAY -------
 XRayMiddleware(app, xray_recorder)
 
 # HoneyComb Updates -------
