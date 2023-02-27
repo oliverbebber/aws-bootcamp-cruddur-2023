@@ -30,6 +30,8 @@ provider = TracerProvider()
 processor = BatchSpanProcessor(OTLPSpanExporter())
 provider.add_span_processor(processor)
 
+
+# HoneyComb Updates -------
 # Show this in logs within backend-flask app (STDOUT)
 simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
 provider.add_simple_span_processor(simple_processor)
