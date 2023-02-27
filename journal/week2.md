@@ -220,6 +220,49 @@ OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 OTEL_SERVICE_NAME: "frontend-react-js"
 ```
 
+## Instrumentation Packages
+Add the following to ```package-lock.json```
+
+```sh
+# not sure if the npm install --save is needed
+# npm install --save
+@opentelemetry/api
+@opentelemetry/sdk-trace-web
+@opentelemetry/exporter-trace-otlp-http
+@opentelemetry/context-zone
+```
+
+
+## Create Initialization File
+```js
+// tracing.js
+import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
+import { WebTracerProvider, BatchSpanProcessor } from '@opentelemetry/sdk-trace-web';
+import { ZoneContextManager } from '@opentelemetry/context-zone';
+import { Resource }  from '@opentelemetry/resources';
+import { SemanticResourceAttributes } from '@opentelemetry/semantic-conventions';
+
+const exporter = new OTLPTraceExporter({
+  url: 'https://<your collector endpoint>:443/v1/traces'
+});
+const provider = new WebTracerProvider({
+  resource: new Resource({
+    [SemanticResourceAttributes.SERVICE_NAME]: 'browser',
+  }),
+});
+provider.addSpanProcessor(new BatchSpanProcessor(exporter));
+provider.register({
+  contextManager: new ZoneContextManager()
+});
+```
+
+
+```js
+// index.js
+import './tracing.js'
+
+// ...rest of the app's entry point code
+```
 
 ## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
