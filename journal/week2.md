@@ -3,7 +3,7 @@
 ## Required Homework
 - [x] Watch <Live href="https://www.youtube.com/watch?v=2GD9xCzRId4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=30">Live Stream Video</a>
 - [ ] Watch Chirag's Week 2 - Spending Considerations
-- [ ] Watch Ashish's Week 2 - <a href="https://www.youtube.com/watch?v=bOf4ITxAcXc&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=32">Observability Security Considerations</a>
+- [x] Watch Ashish's Week 2 - <a href="https://www.youtube.com/watch?v=bOf4ITxAcXc&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=32">Observability Security Considerations</a>
 - [x] Instrument Honeycomb with OTEL
 - [x] <a href="https://www.youtube.com/watch?v=n2DTsuBrD_A&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=32">Instrument AWS X-Ray</a>
 - [ ] Configure custom logger to send to CloudWatch Logs
