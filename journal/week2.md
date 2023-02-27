@@ -250,8 +250,10 @@ Run the following from within ```backend-flask```
 FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
 aws xray create-group \
    --group-name "Cruddur" \
-   --filter-expression "service(\"backend-flask\")
+   --filter-expression "service(\"backend-flask\")"
 ```
+
+- I ran into an issue while trying to create a group for X-ray traces due to leaving off an additional " at the end of the command.
 
 ## Create a Sampling Rule
 Sampling will allow you to determine what information you will see.
