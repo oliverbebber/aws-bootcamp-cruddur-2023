@@ -13,7 +13,7 @@
 ## Homework Challenges
 - [ ] Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 - [ ] Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
-- [ ] Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
+- [x] Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
 
 # What is Distributed Tracing?
 Distributed tracing is a technique used in software development to help identify and debug problems that occur in complex, distributed systems. In a distributed system, different components of an application can run on different servers, in different programming languages, and may communicate with each other using various communication protocols. It involves instrumenting an application to generate trace data, which provides a detailed view of how requests flow through the different components of a system. 
