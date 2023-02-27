@@ -81,6 +81,30 @@ Monitoring typically refers to collecting and analyzing data from a system or ap
 - AWS KMS
 - AWS ECS Cluster auto-scaling
 
+## Building Security Metrics & Logs for Tracing
+1. Which application?
+2. Type of application (compute, monolith, microservices)
+3. Threat modelling session
+4. Identity Attack Vectors
+5. Map Attack Vectors to TTP in MITRE ATT&CK Framework
+6. Identify instrumentation agents to create tracing
+7. AWS services such as AWS Distro for OpenTelemetry (ADOT) for metrics & traces
+8. Dashboards for Practical Attack Vectors only for the application
+9. Repeat steps for other applications
+
+
+Central Observability Platforms
+- AWS Security Hub with Amazon EventBridge
+- SIEM
+- Open Source Dashboards
+- Event Drive Architecture with AWS Services
+
+## Event Driven Security
+- Event Drive Architecture using serverless
+- Auto remediation with Amazon EventBridge & AWS Security Hub
+- AWS Services for Threat Detection (Amazon GuardDuty or third-party services)
+
+
 # HoneyComb
 ## Create a HoneyComb account
 https://www.honeycomb.io/
