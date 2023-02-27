@@ -296,7 +296,7 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
       AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 ```
 
-
+<img src="./assets/week2/aws-xray-traces.jpg">
 
 
 # Homework Challenges
