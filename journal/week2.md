@@ -209,6 +209,9 @@ gp env HONEYCOMB_SERVICE_NAME="frontend-react-js"
 
 Note: I'm unsure if this is going to work as my API key and Env Var for backend-flask are now replaced with the API Key and Env Var for frontend-react-js.
 
+<img src="./assets/week2/set-frontend-api.jpg">
+
+
 ## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
 
