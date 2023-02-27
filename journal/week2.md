@@ -50,7 +50,7 @@ https://www.honeycomb.io/
 I had previously setup my HoneyComb account. If you need an account, go to the website about and click Get Started to begin creating your account.
 
 ## Set the API key & Service Name
-```
+```sh
 export HONEYCOMB_API_KEY=""
 export HONEYCOMB_SERVICE_NAME="Cruddur"
 gp env HONEYCOMB_API_KEY=""
@@ -66,6 +66,18 @@ NOTE: Instead of calling the HoneyComb Service Name "Cruddur", we will want to n
 - The overall project (Cruddur) should use the same API key, which will allow all services to work together, but each part of the project will have it's own service name.
 
 In ```docker-compose.yml``` we will make a new line under the backend-flask service to reflect ```OTEL_SERVICE_NAME: "backend-flask"```
+
+## Set Env Vars for ```backend-flask``` in ```docker-compose ```
+Add the following to the backend-flask service.
+
+```docker
+OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
+OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
+OTEL_SERVICE_NAME: "backend-flask"
+```
+
+
+
 
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
