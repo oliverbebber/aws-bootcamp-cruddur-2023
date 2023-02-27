@@ -336,6 +336,11 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
 
 <img src="./assets/week2/aws-xray-traces.jpg">
 
+To search for the traces after adding a segment & subsegment to ```user_activities.py```, I was unsuccessful to locate them until commenting out the segment & subsegment sections we added to the file in the video. Once commenting it out, I used the following query and had success:
+
+http.url CONTAINS "/api/activities/@andrewbrown"
+
+<img src="./assets/week2/aws-xray-trace-query.jpg">
 
 # Homework Challenges
 # Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
