@@ -253,7 +253,15 @@ aws xray create-group \
    --filter-expression "service(\"backend-flask\")
 ```
 
+## Create a Sampling Rule
+Sampling will allow you to determine what information you will see.
+- This can help reduce spend.
 
+Run the following from the terminal:
+
+```sh
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+```
 
 
 # Homework Challenges
