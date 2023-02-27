@@ -197,6 +197,22 @@ Found code to add from: https://docs.honeycomb.io/getting-data-in/opentelemetry/
 
 <img src="./assets/week2/double-span-trace-2.jpg">
 
+
+# AWS X-ray
+## Add & Install Dependencies
+Add the following to ```requirements.txt```
+
+```py
+aws-xray-sdk
+```
+
+Change directories to backend-flask then install dependencies:
+
+```
+cd backend-flask
+pip install -r requirements.txt
+```
+
 # Homework Challenges
 ## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 ## Set the Service Name
