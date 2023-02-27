@@ -243,9 +243,21 @@ XRayMiddleware(app, xray_recorder)
 }
 ```
 
+## Create a Group to Create X-ray Trace
+Run the following from within ```backend-flask```
+
+```sh
+FLASK_ADDRESS="https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
+aws xray create-group \
+   --group-name "Cruddur" \
+   --filter-expression "service(\"backend-flask\")
+```
+
+
+
 
 # Homework Challenges
-## Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
+# Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
 ## Set the Service Name
 ```sh
 export HONEYCOMB_API_KEY=""
@@ -311,11 +323,11 @@ import './tracing.js'
 // ...rest of the app's entry point code
 ```
 
-## Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
+# Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/python/
 
 
-## Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
+# Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
 Resource: https://docs.honeycomb.io/working-with-your-data/queries/
 
 ## About Queries
