@@ -301,6 +301,9 @@ We need to add these two env vars to our backend-flask in our `docker-compose.ym
 
 # Homework Challenges
 # Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
+
+## <center> *** this needs further research ***</center>
+
 ## Set the Service Name
 ```sh
 export HONEYCOMB_API_KEY=""
