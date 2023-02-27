@@ -164,6 +164,13 @@ simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
 provider.add_simple_span_processor(simple_processor)
 ```
 
+### Check HoneyComb for Data
+Click on Home & Spans should be displayed
+
+<img src="./assets/week2/honeycomb-http-status-code.jpg">
+
+
+
 
 
 # Homework Challenges
