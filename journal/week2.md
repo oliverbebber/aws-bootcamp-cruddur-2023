@@ -366,22 +366,6 @@ http.url CONTAINS "/api/activities/@andrewbrown"
 
 <img src="./assets/week2/aws-xray-trace-query.jpg">
 
-# Homework Challenges
-# Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
-
-## <center> *** this needs further research ***</center>
-
-## Set the Service Name
-```sh
-export HONEYCOMB_API_KEY=""
-export HONEYCOMB_SERVICE_NAME="frontend-react-js"
-gp env HONEYCOMB_API_KEY=""
-gp env HONEYCOMB_SERVICE_NAME="frontend-react-js"
-```
-
-Note: I'm unsure if this is going to work as my API key and Env Var for backend-flask are now replaced with the API Key and Env Var for frontend-react-js.
-
-<img src="./assets/week2/set-frontend-api.jpg">
 
 
 # Custom CloudWatch Logs
@@ -426,6 +410,34 @@ def after_request(response):
     LOGGER.error('%s %s %s %s %s %s', timestamp, request.remote_addr, request.method, request.scheme, request.full_path, response.status)
     return response
 ```
+
+
+
+
+
+
+--------------------
+
+
+
+
+# Homework Challenges
+# Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
+
+## <center> *** this needs further research ***</center>
+
+## Set the Service Name
+```sh
+export HONEYCOMB_API_KEY=""
+export HONEYCOMB_SERVICE_NAME="frontend-react-js"
+gp env HONEYCOMB_API_KEY=""
+gp env HONEYCOMB_SERVICE_NAME="frontend-react-js"
+```
+
+Note: I'm unsure if this is going to work as my API key and Env Var for backend-flask are now replaced with the API Key and Env Var for frontend-react-js.
+
+<img src="./assets/week2/set-frontend-api.jpg">
+
 
 
 ## Set Env Vars for ```frontend-react-js``` in ```docker-compose ```
