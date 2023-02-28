@@ -423,6 +423,7 @@ def after_request(response):
 
 # Homework Challenges
 # Instrument Honeycomb for the frontend-application to observe network latency between frontend and backend[HARD]
+Resource: https://docs.honeycomb.io/getting-data-in/opentelemetry/browser-js/
 
 ## <center> *** this needs further research ***</center>
 
