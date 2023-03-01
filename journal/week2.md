@@ -419,7 +419,7 @@ def after_request(response):
       AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
 ```
 
-
+<img src="./assets/week2/cloudwatch-logs.jpg">
 
 
 --------------------
