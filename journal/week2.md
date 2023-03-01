@@ -411,7 +411,13 @@ def after_request(response):
     return response
 ```
 
+## Set Env Vars for CloudWatch
 
+```yml
+      AWS_DEFAULT_REGION: "${AWS_DEFAULT_REGION}"
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+```
 
 
 
