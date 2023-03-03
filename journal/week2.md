@@ -446,6 +446,10 @@ export ROLLBAR_ACCESS_TOKEN=""
 gp env ROLLBAR_ACCESS_TOKEN=""
 ```
 
+## Add token to backend-flask in `docker-compose.yml`
+```yml
+ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"
+```
 
 
 
