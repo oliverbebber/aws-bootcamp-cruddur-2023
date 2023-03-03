@@ -422,7 +422,21 @@ def after_request(response):
 <img src="./assets/week2/cloudwatch-logs.jpg">
 
 
---------------------
+# Rollbar
+https://rollbar.com
+
+Create a new project in Rollbar called `Cruddur`
+
+## Add to `requirements.txt`
+
+```
+blinker
+rollbar
+```
+
+
+
+
 
 
 
