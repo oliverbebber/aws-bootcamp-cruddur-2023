@@ -434,7 +434,11 @@ blinker
 rollbar
 ```
 
-
+## Install dependencies
+```sh
+cd backend-flask
+pip install -r requirements.txt
+```
 
 
 
