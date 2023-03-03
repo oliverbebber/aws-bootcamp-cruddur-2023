@@ -486,6 +486,7 @@ def rollbar_test():
     return "Hello World!"
 ```
 
+<img src="./assets/week2/rollbar-warning-first-item.jpg">
 
 
 
