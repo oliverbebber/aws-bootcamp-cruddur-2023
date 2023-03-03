@@ -440,6 +440,12 @@ cd backend-flask
 pip install -r requirements.txt
 ```
 
+## Set Access Token
+```sh
+export ROLLBAR_ACCESS_TOKEN=""
+gp env ROLLBAR_ACCESS_TOKEN=""
+```
+
 
 
 
