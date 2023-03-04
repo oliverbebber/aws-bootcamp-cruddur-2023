@@ -14,6 +14,9 @@
 - [ ] Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
 - [x] Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
 
+### Additional HW Challenge
+- [x] Review all vulnerabilities using Snyk, update, test, and merge into main
+
 # What is Distributed Tracing?
 Distributed tracing is a technique used in software development to help identify and debug problems that occur in complex, distributed systems. In a distributed system, different components of an application can run on different servers, in different programming languages, and may communicate with each other using various communication protocols. It involves instrumenting an application to generate trace data, which provides a detailed view of how requests flow through the different components of a system. 
 
@@ -626,3 +629,17 @@ Were there any obstacles (did I overcome them)?
 What were the homework challenges I attempted?
 - Instrument Honeycomb for the frontend to observe network latency between front and backend; I tried to follow similar steps as instrumenting the backend, however when I set the API key, it set it for the entire environment (like Jess had mentioned it would in the live stream), and when I tried setting the HONEYCOMB_SERVICE_NAME="frontend-react-js" it replaced my backend-flask service name.
 - Run custom queries in Honeycomb and save them for later; I researched queries and their options using Honeycomb's docs and created 2 queries. One to search for all status codes not equal to 200, and one as an experiment to see what different options would return.
+
+
+# Security HW Challenge
+## Review all vulnerabilities using Snyk, update, test, and merge into main
+Snyk opened three PRs after discovering multiple critical vulnerabilities.
+- Reviewed PRs
+- Created a new branch to merge changes to before merging with main
+- Tested the updates/fixes
+- My application successfully ran in Gitpod with no unexpected errors
+- Merged into main branch
+
+
+## Zero Critical Vulns Reporting After Remediation
+<img src="./assets/week2/snyk-remediated-critical-vulns.jpg">
