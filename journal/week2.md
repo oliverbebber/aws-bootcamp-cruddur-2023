@@ -2,7 +2,7 @@
 
 ## Required Homework
 - [x] Watch <Live href="https://www.youtube.com/watch?v=2GD9xCzRId4&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=30">Live Stream Video</a>
-- [ ] Watch Chirag's Week 2 - Spending Considerations
+- [x] Watch Chirag's Week 2 - Spending Considerations
 - [x] Watch Ashish's Week 2 - <a href="https://www.youtube.com/watch?v=bOf4ITxAcXc&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=32">Observability Security Considerations</a>
 - [x] Instrument Honeycomb with OTEL
 - [x] <a href="https://www.youtube.com/watch?v=n2DTsuBrD_A&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=32">Instrument AWS X-Ray</a>
@@ -613,3 +613,16 @@ I created an addition query using the Heatmap Visualize option:
 To find these queries again to run, you can click on the History tab on the left side of the screen.
 
 <img src="./assets/week2/honeycomb-query-history.jpg">
+
+
+
+# Homework Summary
+What did I accomplish?
+- All required homework assignments and some homework challenges.
+
+Were there any obstacles (did I overcome them)?
+- Only issue I faced was when I attempted the HW Challenge - Instrument Honeycomb for the frontend to observe network latency between front and backend.
+
+What were the homework challenges I attempted?
+- Instrument Honeycomb for the frontend to observe network latency between front and backend; I tried to follow similar steps as instrumenting the backend, however when I set the API key, it set it for the entire environment (like Jess had mentioned it would in the live stream), and when I tried setting the HONEYCOMB_SERVICE_NAME="frontend-react-js" it replaced my backend-flask service name.
+- Run custom queries in Honeycomb and save them for later; I researched queries and their options using Honeycomb's docs and created 2 queries. One to search for all status codes not equal to 200, and one as an experiment to see what different options would return.
