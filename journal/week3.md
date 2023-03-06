@@ -20,3 +20,23 @@
 - [ ] 
 - [ ] 
 
+
+# Setup AWS Cognito
+## Create new user pool
+- User pools to have login and sign up
+- Federated identity providers would use a social identity from another identity provider
+
+NOTE: Required attributes cannot be changed after creating the user pool.
+
+## Install AWS Amplify Library
+AWS Amplify will allow us to use Cognito
+
+Documentation: https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/
+
+```sh
+cd frontend-react-js
+npm i aws-amplify --save
+```
+
+Adding this as a dependency.
+Open `package.json` and we should see `"aws-amplify: ^5.0.16"`
