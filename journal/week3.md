@@ -60,13 +60,17 @@ Amplify.configure({
   Auth: {
     // We are not using an Identity Pool
     // identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID, // REQUIRED - Amazon Cognito Identity Pool ID
-    region: process.env.REACT_AWS_PROJECT_REGION,           // REQUIRED - Amazon Cognito Region
+    region: process.env.REACT_APP_AWS_PROJECT_REGION,           // REQUIRED - Amazon Cognito Region
     userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,         // OPTIONAL - Amazon Cognito User Pool ID
     userPoolWebClientId: process.env.REACT_APP_AWS_USER_POOLS_WEB_CLIENT_ID,   // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
   }
 });
 ```
+Edited above Auth region to be 
 
+```js
+process.env.REACT_APP_AWS_PROJECT_REGION
+```
 
 # Conditionally show components based on logged in or logged out
 Inside our `HomeFeedPage.js`
@@ -220,3 +224,55 @@ const signOut = async () => {
   }
 }
 ```
+
+
+We'll rewrite `DesktopSidebar.js` so that it conditionally shows components in case you are logged in or not.
+
+```js
+import './DesktopSidebar.css';
+import Search from '../components/Search';
+import TrendingSection from '../components/TrendingsSection'
+import SuggestedUsersSection from '../components/SuggestedUsersSection'
+import JoinSection from '../components/JoinSection'
+export default function DesktopSidebar(props) {
+  const trendings = [
+    {"hashtag": "100DaysOfCloud", "count": 2053 },
+    {"hashtag": "CloudProject", "count": 8253 },
+    {"hashtag": "AWS", "count": 9053 },
+    {"hashtag": "FreeWillyReboot", "count": 7753 }
+  ]
+  const users = [
+    {"display_name": "Andrew Brown", "handle": "andrewbrown"}
+  ]
+  let trending;
+  if (props.user) {
+    trending = <TrendingSection trendings={trendings} />
+  }
+  let suggested;
+  if (props.user) {
+    suggested = <SuggestedUsersSection users={users} />
+  }
+  let join;
+  if (props.user) {
+  } else {
+    join = <JoinSection />
+  }
+  return (
+    <section>
+      <Search />
+      {trending}
+      {suggested}
+      {join}
+      <footer>
+        <a href="#">About</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </footer>
+    </section>
+  );
+}
+```
+
+Tested app and the frontend resulted in a blank page.
+
+
