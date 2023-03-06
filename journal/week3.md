@@ -49,6 +49,7 @@ We need to hook up our cognito pool to our code in the `App.js`
 
 ```js
 import { Amplify } from 'aws-amplify';
+
 Amplify.configure({
   "AWS_PROJECT_REGION": process.env.REACT_AWS_PROJECT_REGION,
   "aws_cognito_identity_pool_id": process.env.REACT_APP_AWS_COGNITO_IDENTITY_POOL_ID,
