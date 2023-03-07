@@ -28,6 +28,48 @@
 
 NOTE: Required attributes cannot be changed after creating the user pool.
 
+- Log into the AWS Console
+- Search for Cognito
+- Click on Create user pool
+
+<img src="./assets/week3/cognito-create-user-pool.jpg">
+
+Since we're not using Federated identity providers, we will use the Cognito user pool.
+
+- Select User name and email for sign-in options
+- Allow users to sign in with a preferred user name
+
+<img src="./assets/week3/cognito-password-policy.jpg">
+
+- We're selecting a custom password for the security requirements as the default isn't extremely secure. I believe the default was set to 8 characters for the password length.
+- After selecting Custom, enter in the minimum password length you want for your users to be required to use.
+
+<img src="./assets/week3/cognito-mfa.jpg">
+
+- To make sure we don't have additional expenses, we are skipping MFA.
+
+<img src="./assets/week3/cognito-account-recovery.jpg">
+
+- To make sure we don't have additional expenses, we will use email only for account recovery messages.
+    - SMS incurs additional costs.
+
+<img src="./assets/week3/cognito-signup-experience.jpg">
+
+- We want to allow our users to have a self-service sign up page
+
+<img src="./assets/week3/cognito-verification-confirmation.jpg">
+
+<img src="./assets/week3/cognito-requires-custom-attributes.jpg">
+
+<img src="./assets/week3/cognito-required-attributes.jpg">
+
+<img src="./assets/week3/cognito-message-delivery.jpg">
+
+<img src="./assets/week3/cognito-integrate-app1.jpg">
+
+<img src="./assets/week3/cognito-integrate-app2.jpg">
+
+
 ## Install AWS Amplify Library
 AWS Amplify will allow us to use Cognito
 
