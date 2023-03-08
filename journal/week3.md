@@ -361,6 +361,29 @@ if (cognitoErrors){
 
 <img src="./assets/week3/sign-in-page.jpg">
 
+Upon testing the sign-in page, no error displayed publicly. Edited the code to be what's shown below and the error displayed!
+
+```js
+  const onsubmit = async (event) => {
+    setErrors('')
+    event.preventDefault();
+    Auth.signIn(email, password)
+    .then(user => {
+      localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+      window.location.href = "/"
+    })
+    .catch(error => {
+      if (error.code == 'UserNotConfirmedException') {
+        window.location.href = "/confirm"
+      }
+      setErrors(error.message)
+    });
+    return false
+  }
+```
+
+<img src="./assets/week3/sign-in-page-error.jpg">
+
 
 # Sign-up Page
 
