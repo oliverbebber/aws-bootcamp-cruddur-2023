@@ -384,6 +384,29 @@ Upon testing the sign-in page, no error displayed publicly. Edited the code to b
 
 <img src="./assets/week3/sign-in-page-error.jpg">
 
+# Create User in AWS Cognito
+
+- Go into AWS Cognito User pools
+- Open the User pool we created from earlier
+
+<img src="./assets/week3/cognito-create-user.jpg">
+
+- Click Create user
+- Select the Email checkbox
+- Create a username
+- Enter a valid email
+- Set a password
+
+<img src="./assets/week3/cognito-create-user-2.jpg">
+
+- Click Create user
+
+<img src="./assets/week3/created-user.jpg">
+
+- Could not confirm user within AWS Cognito.
+- Attempting to sign in with the newly created user account resulted in the following error
+
+<img src="./assets/week3/null-access-token.jpg">
 
 # Sign-up Page
 
