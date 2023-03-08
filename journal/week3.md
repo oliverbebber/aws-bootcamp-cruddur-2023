@@ -11,12 +11,15 @@
 - [ ] Watch about different approaches to verifying JWTs
 
 ## Homework Challenges
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Decouple the JWT verify from the application code by writing a Flask Middleware (medium)
+- [ ] Decouple the JWT verify by implementing a Container Sidecar pattern using the official AWS aws-jwt-verify.js library (hard)
+- [ ] Decouple the JWT verify process by using Envoy as a sidecar (hard)
+  - https://www.envoyproxy.io/
+- [ ] Implement an IdP login (Amazon, Facebook, Apple, or Google) (hard)
+- [ ] Implement MFA that sends SMS (not, this has spend, investigate spend before considering, text messages are not eligible for AWS credits) (easy)
+- [ ] Research how to create users with Cognito without temp password 
+  - https://stackoverflow.com/questions/64720348/create-new-users-in-aws-cognito-without-a-temp-password-email
+  - https://stackoverflow.com/questions/45666794/aws-cognito-user-pool-without-a-password
 - [ ] 
 - [ ] 
 
