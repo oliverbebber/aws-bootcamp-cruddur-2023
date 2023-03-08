@@ -323,15 +323,20 @@ Made changes to `App.js` auth region
 process.env.REACT_APP_AWS_PROJECT_REGION
 ```
 # Sign-in Page
+Replace ```import Cookies from 'js-cookie'``` with the following:
 
 ```js
 import { Auth } from 'aws-amplify';
+```
+
+```js
 const [cognitoErrors, setCognitoErrors] = React.useState('');
+
 const onsubmit = async (event) => {
-  setCognitoErrors('')
+  setErrors('')
   event.preventDefault();
   try {
-    Auth.signIn(username, password)
+    Auth.signIn(email, password)
       .then(user => {
         localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
         window.location.href = "/"
@@ -341,10 +346,11 @@ const onsubmit = async (event) => {
     if (error.code == 'UserNotConfirmedException') {
       window.location.href = "/confirm"
     }
-    setCognitoErrors(error.message)
+    setErrors(error.message)
   }
   return false
 }
+
 let errors;
 if (cognitoErrors){
   errors = <div className='errors'>{cognitoErrors}</div>;
