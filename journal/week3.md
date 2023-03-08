@@ -415,6 +415,23 @@ After reviewing the steps taken while creating a user in Cognito, I noticed we d
 Recreated user with the checkbox selected and the email arrived in my inbox shortly after.
 - The email that was received, however, presents a security issue. I will be adding this into my homework challenges to see how I can make this more secure.
 
+After recreating the user in Cognito, the same error message appeared.
+
+The line below appears to be part of the problem (in `app.js`)
+
+```js
+localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+```
+
+AWS CLI should have a command that will help us confirm this user account.
+
+```
+aws
+aws cognito-idp admin-set-user-password --username <username> --password <password> --user-pool-id <userpoolID> --permanent
+```
+
+<img src="./assets/week3/cruddur-active-user.jpg">
+
 # Sign-up Page
 
 ```js
