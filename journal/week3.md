@@ -359,6 +359,9 @@ if (cognitoErrors){
 {errors}
 ```
 
+<img src="./assets/week3/sign-in-page.jpg">
+
+
 # Sign-up Page
 
 ```js
