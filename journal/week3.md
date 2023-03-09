@@ -62,8 +62,6 @@ Since we're not using Federated identity providers, we will use the Cognito user
 
 <img src="./assets/week3/cognito-verification-confirmation.jpg">
 
-<img src="./assets/week3/cognito-requires-custom-attributes.jpg">
-
 <img src="./assets/week3/cognito-required-attributes.jpg">
 
 <img src="./assets/week3/cognito-message-delivery.jpg">
