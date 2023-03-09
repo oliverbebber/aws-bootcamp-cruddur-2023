@@ -451,6 +451,21 @@ aws cognito-idp admin-set-user-password --username <username> --password <passwo
 
 <img src="./assets/week3/cruddur-active-user.jpg">
 
+## Set Name and Handle
+- Go into AWS Cognito User Pools
+- Edit the user we created from earlier
+
+<img src="./assets/week3/edit-user.jpg">
+
+- The name section will be the display name
+- The preferred_username will be the handle
+
+<img src="./assets/week3/edit-display-and-handle.jpg">
+
+- Save changes
+
+<img src="./assets/week3/display-handle-updated.jpg">
+
 # Sign-up Page
 
 ```js
