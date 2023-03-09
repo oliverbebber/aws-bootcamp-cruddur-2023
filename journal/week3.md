@@ -467,13 +467,23 @@ aws cognito-idp admin-set-user-password --username <username> --password <passwo
 <img src="./assets/week3/display-handle-updated.jpg">
 
 # Sign-up Page
+Replace `import Cookies from 'js-cookie'` with the following in `SignupPage.js`: 
 
 ```js
 import { Auth } from 'aws-amplify';
+```
+
+Below is already included in the `SignupPage.js` code:
+```js
 const [cognitoErrors, setCognitoErrors] = React.useState('');
+```
+
+Replace const onsubmit with the following:
+
+```js
 const onsubmit = async (event) => {
   event.preventDefault();
-  setCognitoErrors('')
+  setErrors('')
   try {
       const { user } = await Auth.signUp({
         username: email,
@@ -491,10 +501,15 @@ const onsubmit = async (event) => {
       window.location.href = `/confirm?email=${email}`
   } catch (error) {
       console.log(error);
-      setCognitoErrors(error.message)
+      setErrors(error.message)
   }
   return false
 }
+```
+
+Replaced `setCognitoErrors` with `setErrors`
+
+```js
 let errors;
 if (cognitoErrors){
   errors = <div className='errors'>{cognitoErrors}</div>;
