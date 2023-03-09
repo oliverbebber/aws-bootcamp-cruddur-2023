@@ -573,6 +573,8 @@ Hit an error after accidentally deleting 5 lines of code from `SignupPage.js`
 
 <img src="./assets/week3/signup-page-email-format.jpg">
 
+Recreating the Cognito User Pool should resolve this error as we have discovered that we accidentally selected both Username and Email during the setup.
+
 # Recovery Page
 
 ```js
