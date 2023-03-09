@@ -20,8 +20,7 @@
 - [ ] Research how to create users with Cognito without temp password 
   - https://stackoverflow.com/questions/64720348/create-new-users-in-aws-cognito-without-a-temp-password-email
   - https://stackoverflow.com/questions/45666794/aws-cognito-user-pool-without-a-password
-- [ ] 
-- [ ] 
+
 
 
 # Setup AWS Cognito
@@ -62,13 +61,32 @@ Since we're not using Federated identity providers, we will use the Cognito user
 
 <img src="./assets/week3/cognito-verification-confirmation.jpg">
 
+- We want to allow Cognito to automatically send messages to verify & confirm. 
+  - Attributes to verify: select Send email message, verify email address
+- Verifying attribute changes: select Keep original attribute value active when an update is pending - Recommended
+- Active attribute values when an update is pending: select Email address
+
 <img src="./assets/week3/cognito-required-attributes.jpg">
+
+- Required Attributes: 
+  - Email
+  - name
+  - preferred_username
 
 <img src="./assets/week3/cognito-message-delivery.jpg">
 
+- Configure message delivery: Send email with Cognito
+
+
 <img src="./assets/week3/cognito-integrate-app1.jpg">
 
+- Name the user pool
+
 <img src="./assets/week3/cognito-integrate-app2.jpg">
+
+- App type: Public client
+- Name the app client
+- Client secret: Don't generate a client secret
 
 
 ## Install AWS Amplify Library
