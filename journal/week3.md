@@ -567,6 +567,12 @@ const onsubmit = async (event) => {
 }
 ```
 
+<img src="./assets/week3/signup-page-errors.jpg">
+
+Hit an error after accidentally deleting 5 lines of code from `SignupPage.js`
+
+<img src="./assets/week3/signup-page-email-format.jpg">
+
 # Recovery Page
 
 ```js
