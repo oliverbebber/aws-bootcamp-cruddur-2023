@@ -20,7 +20,9 @@
 - [ ] Research how to create users with Cognito without temp password 
   - https://stackoverflow.com/questions/64720348/create-new-users-in-aws-cognito-without-a-temp-password-email
   - https://stackoverflow.com/questions/45666794/aws-cognito-user-pool-without-a-password
-
+- [ ] Configure the confirmation page to automatically log the new user into their account
+- [ ] Research how to restrict users from resetting their password to a previously used password
+- [ ] Fix successful recovery page
 
 
 # Setup AWS Cognito
@@ -579,32 +581,50 @@ Recreating the Cognito User Pool should resolve this error as we have discovered
 
 Successfully setup confirmation page and received the confirmation code via email.
 
+<img src="./assets/week3/confirmation-page-url.jpg">
+
+HW challenge idea: remove the user information from the URL and implement email field autofill
+
 # Recovery Page
+Add the following to `RecoverPage.js`
 
 ```js
 import { Auth } from 'aws-amplify';
+```
+
+```js
 const onsubmit_send_code = async (event) => {
   event.preventDefault();
-  setCognitoErrors('')
+  setErrors('')
   Auth.forgotPassword(username)
   .then((data) => setFormState('confirm_code') )
-  .catch((err) => setCognitoErrors(err.message) );
+  .catch((err) => setErrors(err.message) );
   return false
 }
+```
+
+```js
 const onsubmit_confirm_code = async (event) => {
   event.preventDefault();
-  setCognitoErrors('')
+  setErrors('')
   if (password == passwordAgain){
     Auth.forgotPasswordSubmit(username, code, password)
     .then((data) => setFormState('success'))
-    .catch((err) => setCognitoErrors(err.message) );
+    .catch((err) => setErrors(err.message) );
   } else {
-    setCognitoErrors('Passwords do not match')
+    setErrors('Passwords do not match')
   }
   return false
 }
-## Authenticating Server Side
+```
+
+<img src="./assets/week3/recovery-page-reset.jpg">
+
+<img src="./assets/week3/recovery-successful.jpg">
+
+# Authenticating Server Side
 Add in the `HomeFeedPage.js` a header eto pass along the access token
+
 ```js
   headers: {
     Authorization: `Bearer ${localStorage.getItem("access_token")}`
