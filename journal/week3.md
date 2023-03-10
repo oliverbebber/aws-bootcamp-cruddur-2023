@@ -680,6 +680,9 @@ aws_auth = AWSCognitoAuthentication(app)
 
 
 # Create `cognito_token_verification.py`
+This may not be needed, however, there is an error occurring that is preventing me from starting the backend-flask service in gitpod. 
+Test changes, rewatch Week 3 Congito JWT Server side Verify Video and try again.
+
 ```py
 import time
 import requests
