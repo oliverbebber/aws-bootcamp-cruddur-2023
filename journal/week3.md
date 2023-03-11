@@ -623,14 +623,6 @@ const onsubmit_confirm_code = async (event) => {
 <img src="./assets/week3/recovery-successful.jpg">
 
 # Authenticating Server Side
-Add in the `HomeFeedPage.js` a header eto pass along the access token
-
-```js
-  headers: {
-    Authorization: `Bearer ${localStorage.getItem("access_token")}`
-  }
-```
-# Authenticating Server Side
 Add in the `HomeFeedPage.js` a header to pass along the access token
 
 ```js
