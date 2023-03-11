@@ -635,6 +635,9 @@ Add in the `HomeFeedPage.js` a header to pass along the access token
 request.headers.get('your-header-name')
 ```
 
+<img src="./assets/week3/authenticate-backend-console-errors.jpg">
+
+^^ Hit CORS error, needing to update CORS to resolve.
 # 
 Replace `cors` with the following in `app.py`
 
@@ -648,8 +651,26 @@ cors = CORS(
 )
 ```
 
-# 
+<img src="./assets/week3/cors-resolved.jpg">
 
+# Ensure JWT Access Token is Properly Set
+Add the following to /api/activities/home to ensure access token is being set
+
+```py
+  app.logger.debug("AUTH HEADER")
+  app.logger.debug(
+    request.headers.get('Authorization')
+  )
+```
+
+<img src="./assets/week3/access-token-log.jpg">
+
+# Add Dependency
+In `requirements.txt` add the following:
+
+Flask-AWSCognito
+
+Install requirements:
 ```sh
 cd backend-flask
 pip install -r requirements.txt
@@ -668,18 +689,51 @@ Add the following to `app.py`
 from flask_awscognito import AWSCognitoAuthentication
 ```
 
+Add the following to `app.py` after the @app
 
 ```py
-app.config['AWS_COGNITO_USER_POOL_ID'] = 'eu-west-1_XXX'
-app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = 'YYY'
-
+app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv("AWS_COGNITO_USER_POOL_ID")
+app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID")
 
 aws_auth = AWSCognitoAuthentication(app)
 ```
 
 <img src="./assets/week3/flask-awscognito-error.jpg">
 
+
+Add the following to `app.py` under /api/activities/home
+
+```py
+@aws_auth.authentication_required
+
+
+claims = aws_auth.claims
+```
+
+<img src="./assets/week3/userpool-client-secret-error.jpg">
+
+There's no user pool client secret to set because we're not using it.
+
+- Client secrets are used by the server-side component of an app to authorize API requests. Using a client secret can prevent a third party from impersonating your client.
+
+We are NOT authorizing API requests.
+
+
+Remove the following: 
+```py
+from flask_awscognito import AWSCognitoAuthentication
+app.config['AWS_COGNITO_USER_POOL_ID'] = os.getenv("AWS_COGNITO_USER_POOL_ID")
+app.config['AWS_COGNITO_USER_POOL_CLIENT_ID'] = os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID")
+
+aws_auth = AWSCognitoAuthentication(app)
+
+@aws_auth.authentication_required
+```
+
+
 # Create `cognito_token_verification.py`
+Create a new folder called `lib` under `backend-flask`
+
 This may not be needed, however, there is an error occurring that is preventing me from starting the backend-flask service in gitpod. 
 Test changes, rewatch Week 3 Congito JWT Server side Verify Video and try again.
 
@@ -696,13 +750,6 @@ class FlaskAWSCognitoError(Exception):
 class TokenVerifyError(Exception):
   pass
 
-def extract_access_token(request_headers):
-    access_token = None
-    auth_header = request_headers.get("Authorization")
-    if auth_header and " " in auth_header:
-        _, access_token = auth_header.split()
-    return access_token
-
 class CognitoJwtToken:
     def __init__(self, user_pool_id, user_pool_client_id, region, request_client=None):
         self.region = region
@@ -717,6 +764,15 @@ class CognitoJwtToken:
             self.request_client = request_client
         self._load_jwk_keys()
 
+  @classmethod
+  def extract_access_token(request_headers):
+      access_token = None
+      # get header request
+      auth_header = request_headers.get("Authorization")
+      # split header request
+      if auth_header and " " in auth_header:
+          _, access_token = auth_header.split()
+      return access_token
 
     def _load_jwk_keys(self):
         keys_url = f"https://cognito-idp.{self.region}.amazonaws.com/{self.user_pool_id}/.well-known/jwks.json"
@@ -796,6 +852,38 @@ class CognitoJwtToken:
         self._check_expiration(claims, current_time)
         self._check_audience(claims)
 
-        self.claims = claims 
+        self.claims = claims
         return claims
 ```
+
+
+Add the following to `app.py`
+
+```py
+from lib.cognito_jwt_token import CognitoJwtToken
+
+cognito_token_verification = CognitoJwtToken(
+  user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"),
+  user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
+  region=os.getenv("AWS_DEFAULT_REGION")
+)
+
+
+
+# place before calling data to allow it to know if the request is authenticated or not
+    access_token = CognitoJwtToken.extract_access_token(request.headers)
+    try:
+      claims = cognito_jwt_token.token_service.verify(access_token)
+    except TokenVerifyError as e:
+      _ = request.data
+      abort(make_response(jsonify(message=str(e)), 401))
+
+    app.logger.debug('claims')
+    app.logger.debug(claims)
+```
+
+<img src="./assets/week3/argument-error.jpg">
+
+To resolve this error, I matched the `extract_access_token` arguments. 
+- 1 was `request_headers` and the other was `request.headers`
+- These need to match in order to be properly called upon.
