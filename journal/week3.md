@@ -958,7 +958,24 @@ cognito_token_verification = CognitoJwtToken(
 
 <img src="./assets/week3/argument-error.jpg">
 
+Takes 1 positional argument but 2 were given - regarding (request.headers).
+- I need to look into this further to understand the issue but we resolved this by creating a different class.
 
+<img src="./assets/week3/debug-unauthenticated.jpg">
+
+After debugging, we received an error that we were unauthenticated.
+
+<img src="./assets/week3/token-expired.jpg">
+
+Upon debugging again, the token was displaying as expired. This required logging out and back in again.
+
+<img src="./assets/week3/authenticated.jpg">
+
+After logging back in, we were authenticated.
+
+<img src="./assets/week3/signed-out-home-secret.jpg">
+
+When signing out, the token is not getting cleared out. 
 
 # Homework Summary
 What did I accomplish?
