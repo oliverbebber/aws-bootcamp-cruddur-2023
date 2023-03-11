@@ -5,10 +5,10 @@
 - [ ] Chirag's Week 3 - Spending Considerations
 - [x] Setup Cognito User Pool
 - [x] Implement Custom Sign-in Page
-- [ ] Implement Custom Sign-up Page
-- [ ] Implement Custom Confirmation Page
-- [ ] Implement Custom Recovery Page
-- [ ] Watch about different approaches to verifying JWTs
+- [x] Implement Custom Sign-up Page
+- [x] Implement Custom Confirmation Page
+- [x] Implement Custom Recovery Page
+- [x] Watch about different approaches to verifying JWTs
 
 ## Homework Challenges
 - [ ] Decouple the JWT verify from the application code by writing a Flask Middleware (medium)
