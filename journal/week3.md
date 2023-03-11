@@ -5,10 +5,10 @@
 - [ ] Chirag's Week 3 - Spending Considerations
 - [x] Setup Cognito User Pool
 - [x] Implement Custom Sign-in Page
-- [ ] Implement Custom Sign-up Page
-- [ ] Implement Custom Confirmation Page
-- [ ] Implement Custom Recovery Page
-- [ ] Watch about different approaches to verifying JWTs
+- [x] Implement Custom Sign-up Page
+- [x] Implement Custom Confirmation Page
+- [x] Implement Custom Recovery Page
+- [x] Watch about different approaches to verifying JWTs
 
 ## Homework Challenges
 - [ ] Decouple the JWT verify from the application code by writing a Flask Middleware (medium)
@@ -24,6 +24,80 @@
 - [ ] Research how to restrict users from resetting their password to a previously used password
 - [ ] Fix successful recovery page
 
+# Cognito Security Best Practices
+## Authentication
+Security Assertion Markup Language (SAML): Uses one credential to log into any service.
+
+OpenID Connect: Allows you to use your social credentials (LinkedIn, Facebook, Twitter, etc.) to authenticate using instead of setting up new credentials every single time you create an account.
+
+## Authorization
+OAuth2.0: 
+
+
+## What is Decentralized Authentication?
+
+## What is AWS Cognito
+Service that allows authentication with users stored locally.
+- Serves as a user directory with the context of AWS.
+
+2 types of AWS Cognito:
+
+### Cognito User pool
+- Authenticates using OAuth
+  - Get the trust relationship between social media sites and the app to offload the need for a username & password to be stored locally.
+  - Users can directly log in and register themselves.
+  - Only allows access to the app itself.
+
+### Cognito Identity Pool
+- Allows applications to request temporary credentials.
+  - To allow users to have access to other AWS services.
+  - Acts as an access broker.
+
+## Why use Cognito?
+- User Directory for Customers
+- Ability to access AWS Resources for the app being built
+- Identity Broker for AWS Resources with temporary credentials
+- Can extend users to AWS Resources easily
+
+## User Lifecycle Management
+<img src="./assets/week3/user-lifecycle-management.jpg">
+
+## Token Lifecycle Management
+<img src="./assets/week3/token-lifecycle-management.jpg">
+
+Tokens can be describe similarly as cookies, but they're different.
+- Tokens are primarily used by API services and modern applications.
+- Tokens are short-lived.
+  - Create
+  - Assign
+  - Activate
+  - Suspend
+  - Remove
+  - Expire
+
+## Cognito Users
+
+## Application Users
+
+## AWS Cognito Security Best Practices
+### User Best Practices
+- AWS Services - API Gateway, AWS Resources shared with the App Client (backend or back channels)
+- AWS WAF with Web ACLs for rate limiting, allow/deny list, deny access from regions & many other WAF management rules similar to OWASP
+- AWS Cognito Compliance standard is what your business requires
+- AWS Cognito should only be in the AWS region that you are legally allowed to be holding user data in (follow GRC frameworks; GDPR for example)
+- AWS Organizations SCP - to manage user pool deletion, creation, region lock, etc.
+- Enable AWS CloudTrail  & monitor to trigger alerts on malicious Cognito behavior by an identity in AWS
+
+### Application Best Practices
+- Applications should use industry standard for authentication & authorization (SAML, OpenID Connect, OAuth2.0, etc.)
+- App User Lifecycle Management - Create, modify, delete users
+- AWS User Access Lifecycle Management - Change of roles/revoke roles
+- RBAC to manage how much access to AWS Resources for the app being built
+- Token Lifecycle Management - Issue new tokens, revoke compromised tokens, storage location (client/server), etc.
+- Security testing - penetration tests
+- Access Token Scope - keep limited
+- JWT Token best practice - no sensitive information
+- Encryption in Transit for API Calls
 
 # Setup AWS Cognito
 ## Create new user pool
@@ -884,6 +958,18 @@ cognito_token_verification = CognitoJwtToken(
 
 <img src="./assets/week3/argument-error.jpg">
 
-To resolve this error, I matched the `extract_access_token` arguments. 
-- 1 was `request_headers` and the other was `request.headers`
-- These need to match in order to be properly called upon.
+
+
+# Homework Summary
+What did I accomplish?
+
+- All required homework assignments 
+
+Were there any obstacles (did I overcome them)?
+
+- 
+
+What were the homework challenges I attempted?
+
+- 
+- 
