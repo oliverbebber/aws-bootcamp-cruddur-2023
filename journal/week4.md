@@ -226,7 +226,7 @@ Run the following command:
 whereis bash
 ```
 
-## Add Shell Script to Drop the DB
+# Add Shell Script to Drop the DB
 `bin/db-drop`
 
 ```sh
@@ -248,7 +248,9 @@ ls -l ./bin
 <img src="./assets/week4/current-bin-permissions.jpg">
 
 r= read
+
 w= write
+
 x= executable
 
 ## Change permissions in scope of the user
@@ -299,4 +301,26 @@ echo "db-drop"
 NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 
 psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
+```
+
+
+```sh
+./bin/db-drop
+```
+
+After adding sed to `db-drop` the DB successfully dropped.
+
+<img src="./assets/week4/db-drop.jpg">
+
+
+# Add Shell Script to Create DB
+
+Add the following in `db-create`
+
+```sh
+echo "db-create"
+```
+
+```sql
+CREATE database cruddur;
 ```
