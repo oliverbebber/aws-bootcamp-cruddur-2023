@@ -144,7 +144,7 @@ CREATE database cruddur;
 We'll create a new SQL file called `schema.sql`
 and we'll place it in `backend-flask/db`
 
-# Add a Universal Unique Identifier (UUID) Extension
+## Add a Universal Unique Identifier (UUID) Extension
 
 We are going to have Postgres generate out UUIDs.
 We'll need to use an extension called:
@@ -303,6 +303,7 @@ NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
 ```
 
+Run the following command
 
 ```sh
 ./bin/db-drop
@@ -327,6 +328,11 @@ NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 CREATE database cruddur;
 ```
 
+Run the following command
+
+```sh
+./bin/db-create
+```
 
 <img src="./assets/week4/db-create.jpg">
 
@@ -335,28 +341,116 @@ CREATE database cruddur;
 
 ```sh
 echo "db-schema-load"
-```
 
-```sql
 psql $CONNECTION_URL cruddur < db/schema.sql
 ```
 
+<img src="./assets/week4/db-schema-load.jpg">
+
+
+```
+cd ..
+./backend-flask/bin/db-schema-load
+```
+
+<img src="./assets/week4/db-schema-2.jpg">
+
 The path is executing relative to where we are. 
+- In order to get this to work with the current way `db-schema-load` is written, we would need to edit it slightly to be `backend-flask/db/schema.sql`. But we don't want this.
 - We will need to use real path to find the `schema.sql` file
 
-<img src="./assets/week4/db-schema-load.jpg">
+## Edit the `db-schema-load` file with the following:
+
+```sh
+$echo realpath
+
+echo "db-schema-load"
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+Try to execute the file again
+
+```sh
+./backend-flask/bin/db-schema-load
+```
+
+
+<img src="./assets/week4/realpath-nofile.jpg">
+
+
+
+### Edit again, this time giving realpath a parameter
+
+```sh
+$echo realpath .
+
+echo "db-schema-load"
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+Try to execute the file again
+
+```sh
+./backend-flask/bin/db-schema-load
+```
+
+Same error occurred...
+
+### Trying again but this time, wrapping realpath
+```sh
+$echo $(realpath .)
+
+echo "db-schema-load"
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+Try to execute the file again
+
+```sh
+./backend-flask/bin/db-schema-load
+```
+
+<img src="./assets/week4/realpath-wrapped.jpg">
+
+```
+cd backend-flask
+./bin/db-schema-load
+```
+
+<img src="./assets/week4/realpath-wrapped-backend-flask.jpg">
+
+
+- This time it worked
+
+
+### Use `schema_path` to locate the file
+
+```sh
+schema_path = $(realpath ..)/db/schema.sql
+echo $schema_path
+
+echo "db-schema-load"
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+<img src="./assets/week4/schema-load-uuid-exists.jpg">
+
+
 
 
 ```sh
 echo "db-schema-load"
 
-schema_path="$(realpath .)/db/schema.sql"
+schema_path="$(realpath ..)/db/schema.sql"
 echo $schema_path
 
 psql $CONNECTION_URL cruddur < $schema_path
 ```
 
 <img src="./assets/week4/schema_path.jpg">
+
+The absolute path for `schema.sql` is listed:
+- `/workspace/aws-bootcamp-cruddur-2023/db/schema.sql`
 
 Only works from within `backend-flask`
 
