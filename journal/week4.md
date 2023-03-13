@@ -1,3 +1,21 @@
 # Week 4 — Postgres and RDS
 
-## Homework
+# Required Homework
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+
+# Homework Challenges
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
+- [ ]
