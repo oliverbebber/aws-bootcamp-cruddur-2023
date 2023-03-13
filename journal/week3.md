@@ -975,18 +975,20 @@ After logging back in, we were authenticated.
 
 <img src="./assets/week3/signed-out-home-secret.jpg">
 
+
 When signing out, the token is not getting cleared out. 
+
+Created a "secret" post for authenticated users to see but upon signing out, the token is not getting cleared out. 
 
 # Homework Summary
 What did I accomplish?
 
-- All required homework assignments 
+- All required homework assignments, with the exception of Chirag's video. This was not available at the time of submitting homework via the student portal.
 
 Were there any obstacles (did I overcome them)?
 
-- 
+- Similar issues as what we experienced in the videos. Some that were different however they were due to forgetting to change the name of variables that other files were calling upon.
 
 What were the homework challenges I attempted?
 
-- 
-- 
+- This week, time did not permit for me to attempt the homework challenges. I do plan on coming back to each week when time permits and finishing them. 
