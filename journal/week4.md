@@ -139,16 +139,10 @@ CREATE database cruddur;
 <img src="./assets/week4/cruddur-db.jpg">
 
 
-# Add Schema file and Import Script
+# Add Schema file 
 
 We'll create a new SQL file called `schema.sql`
 and we'll place it in `backend-flask/db`
-
-The command to import:
-
-```
-psql cruddur < db/schema.sql -h localhost -U postgres
-```
 
 # Add a Universal Unique Identifier (UUID) Extension
 
@@ -162,3 +156,14 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 Postgres comes with some extensions to turn on.
 - Make sure these extensions are available on AWS.
+
+# Import Script
+
+The command to import:
+
+```
+cd backend-flask
+psql cruddur < db/schema.sql -h localhost -U postgres
+```
+
+<img src="./assets/week4/create-extension.jpg">
