@@ -167,3 +167,24 @@ psql cruddur < db/schema.sql -h localhost -U postgres
 ```
 
 <img src="./assets/week4/create-extension.jpg">
+
+# Make a new connection_url string
+Test the connection_url by typing in:
+
+```sh
+psql postgresql://postgres:password@localhost:5432/cruddur
+```
+
+Successfully connected to postgres DB without having to enter the password in.
+
+<img src="./assets/week4/test-connection-url.jpg">
+
+## Set env var
+
+```sh
+\q
+export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+psql $CONNECTION_URL
+```
+
+<img src="./assets/week4/env-var.jpg">
