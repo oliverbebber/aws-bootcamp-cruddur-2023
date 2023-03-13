@@ -980,6 +980,13 @@ When signing out, the token is not getting cleared out.
 
 Created a "secret" post for authenticated users to see but upon signing out, the token is not getting cleared out. 
 
+# Approaches to Verify JWTs
+https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html
+
+https://github.com/awslabs/aws-support-tools/blob/master/Cognito/decode-verify-jwt/decode-verify-jwt.py
+
+https://github.com/borisrozumnuk/cognitojwt
+
 # Homework Summary
 What did I accomplish?
 
