@@ -188,3 +188,23 @@ psql $CONNECTION_URL
 ```
 
 <img src="./assets/week4/env-var.jpg">
+
+## Set GitPod Env Var
+
+```sh
+\q
+gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+```
+
+<img src="./assets/week4/gp-env.jpg">
+
+## Set Production & GitPod Env Var
+
+Set aside
+
+```sh
+export PROD_CONNECTION_URL="postgresql://masterusername:masterpassword@cruddur-db-instance.endpoint.amazonaws.com:5432/cruddur"
+gp env PROD_CONNECTION_URL="postgresql://masterusername:masterpassword@cruddur-db-instance.endpoint.amazonaws.com:5432/cruddur"
+```
+
+<img src="./assets/week4/prod-env-vars.jpg">
