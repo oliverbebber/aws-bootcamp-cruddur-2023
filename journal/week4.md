@@ -213,6 +213,10 @@ gp env PROD_CONNECTION_URL="postgresql://masterusername:masterpassword@cruddur-d
 # Create `bin` folder w/create `db-create`, `db-drop`, & `db-schema-load`
 In the backend-flask directory, create these folders and files without extensions.
 
+```sh
+mkdir /workspace/aws-bootcamp-cruddur-2023/backend-flask/bin
+```
+
 Within these files, we need to run a bash script.
 - Before adding the shebang to the files, we need to find where bash is.
 
@@ -222,3 +226,11 @@ Run the following command:
 whereis bash
 ```
 
+## Add Shell Script to Drop the DB
+`bin/db-drop`
+
+```sh
+#! /usr/bin/bash
+
+psql $CONNECTION_URL -c "DROP database cruddur;"
+```
