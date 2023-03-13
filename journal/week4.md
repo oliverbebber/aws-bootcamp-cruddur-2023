@@ -109,3 +109,5 @@ Enter the following into the CLI to list the databases postgres template0 and te
 ```
 \l
 ```
+
+<img src="./assets/week4/list-dbs.jpg">
