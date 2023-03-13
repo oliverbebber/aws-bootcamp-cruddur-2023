@@ -284,3 +284,19 @@ This resulted in an error due to us being currently connected to the open databa
 Our CONNECTION_URL needs to exclude the database name.
 - To do this in bash, we can use a tool called sed to manipulate text in place.
 - This tool doesn't always work the same way in every linux system.
+
+
+### Edit `db-drop` using sed
+
+```sh
+echo "db-drop"
+# sed allows us to manipulate strings
+# s = substitute
+# what do we want to select - in the first / /
+# what do we want to replace it with in the 2nd / /
+# \ will escape the / that we want to replace
+# g = global, which means that all matching occurrences in the line would be replaced
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+
+psql $NO_DB_CONNECTION_URL -c "DROP database cruddur;"
+```
