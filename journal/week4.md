@@ -455,3 +455,61 @@ The absolute path for `schema.sql` is listed:
 Only works from within `backend-flask`
 
 <img src="./assets/week4/backend-flask-schema.jpg">
+
+
+## To toggle between local and prod
+In `db-schema-load` add the following & make the appropriate edits:
+
+```sh
+echo "ARG FIRST"
+# echo $0 --- not needed
+echo $1
+
+echo "db-schema-load"
+schema_path="$(realpath .)/db/schema.sql"
+echo $schema_path
+
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+
+Then run the following command
+
+```sh
+./bin/db-schema-load prod
+```
+
+<img src="./assets/week4/schema-load-arg-prod.jpg">
+
+Using `$0` & `$1` didn't narrow down to what we expected which was just `prod`
+
+<img src="./assets/week4/schema-load-echo1.jpg">
+
+Removed `$0` and `$1` was the key to showing prod environment
+
+
+## Add the following to `db-schema-load`
+
+```sh
+echo "db-schema-load"
+schema_path="$(realpath .)/db/schema.sql"
+echo $schema_path
+
+if [ "$1" = "prod" ]; then
+    echo "using production"
+    CON_URL=$CONNECTION_URL
+else
+    CON_URL=$CONNECTION_URL
+fi
+
+psql $CON_URL cruddur < $schema_path
+```
+
+
+Then run the following
+
+```sh
+./bin/db-schema-load prod
+```
+
+<img src="./assets/week4/schema-using-prod.jpg">
