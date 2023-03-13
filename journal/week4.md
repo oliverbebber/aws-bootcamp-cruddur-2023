@@ -328,3 +328,4 @@ CREATE database cruddur;
 ```
 
 
+<img src="./assets/week4/db-create.jpg">
