@@ -208,3 +208,17 @@ gp env PROD_CONNECTION_URL="postgresql://masterusername:masterpassword@cruddur-d
 ```
 
 <img src="./assets/week4/prod-env-vars.jpg">
+
+
+# Create `bin` folder w/create `db-create`, `db-drop`, & `db-schema-load`
+In the backend-flask directory, create these folders and files without extensions.
+
+Within these files, we need to run a bash script.
+- Before adding the shebang to the files, we need to find where bash is.
+
+Run the following command:
+
+```sh
+whereis bash
+```
+
