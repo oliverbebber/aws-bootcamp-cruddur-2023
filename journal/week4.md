@@ -111,3 +111,29 @@ Enter the following into the CLI to list the databases postgres template0 and te
 ```
 
 <img src="./assets/week4/list-dbs.jpg">
+
+# Create (and dropping) our database
+We can use the createdb command to create our database:
+
+https://www.postgresql.org/docs/current/app-createdb.html
+
+```
+createdb cruddur -h localhost -U postgres
+```
+
+```sh
+psql -U postgres -h localhost
+```
+
+```sql
+\l
+DROP database cruddur;
+```
+
+We can create the database within the PSQL client
+
+```sql
+CREATE database cruddur;
+```
+
+<img src="./assets/week4/cruddur-db.jpg">
