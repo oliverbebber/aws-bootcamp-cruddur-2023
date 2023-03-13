@@ -6,4 +6,4 @@ echo "db-schema-load"
 schema_path=$(realpath ..)/db/schema.sql
 echo $schema_path
 
-psql $CON_URL cruddur < $schema_path
+psql $CONNECTION_URL cruddur < db/schema.sql
