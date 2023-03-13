@@ -513,3 +513,18 @@ Then run the following
 ```
 
 <img src="./assets/week4/schema-using-prod.jpg">
+
+
+# Print in Color
+
+We we can make prints for our shell scripts coloured so we can see what we're doing:
+
+https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+
+
+```sh
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-schema-load"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+```
