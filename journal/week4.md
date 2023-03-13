@@ -252,6 +252,7 @@ w= write
 x= executable
 
 ## Change permissions in scope of the user
+We want to allow these files to become executable 
 
 ```sh
 chmod u+x bin/db-create
@@ -268,3 +269,18 @@ chmod 644 bin/db-schema-load
 ```
 
 <img src="./assets/week4/chmod-bin.jpg">
+
+
+## Drop DB
+
+```sh
+./bin/db-drop
+```
+
+This resulted in an error due to us being currently connected to the open database.
+
+<img src="./assets/week4/cannot-drop-open-DB.jpg">
+
+Our CONNECTION_URL needs to exclude the database name.
+- To do this in bash, we can use a tool called sed to manipulate text in place.
+- This tool doesn't always work the same way in every linux system.
