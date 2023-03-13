@@ -24,6 +24,80 @@
 - [ ] Research how to restrict users from resetting their password to a previously used password
 - [ ] Fix successful recovery page
 
+# Cognito Security Best Practices
+## Authentication
+Security Assertion Markup Language (SAML): Uses one credential to log into any service.
+
+OpenID Connect: Allows you to use your social credentials (LinkedIn, Facebook, Twitter, etc.) to authenticate using instead of setting up new credentials every single time you create an account.
+
+## Authorization
+OAuth2.0: 
+
+
+## What is Decentralized Authentication?
+
+## What is AWS Cognito
+Service that allows authentication with users stored locally.
+- Serves as a user directory with the context of AWS.
+
+2 types of AWS Cognito:
+
+### Cognito User pool
+- Authenticates using OAuth
+  - Get the trust relationship between social media sites and the app to offload the need for a username & password to be stored locally.
+  - Users can directly log in and register themselves.
+  - Only allows access to the app itself.
+
+### Cognito Identity Pool
+- Allows applications to request temporary credentials.
+  - To allow users to have access to other AWS services.
+  - Acts as an access broker.
+
+## Why use Cognito?
+- User Directory for Customers
+- Ability to access AWS Resources for the app being built
+- Identity Broker for AWS Resources with temporary credentials
+- Can extend users to AWS Resources easily
+
+## User Lifecycle Management
+<img src="./assets/week3/user-lifecycle-management.jpg">
+
+## Token Lifecycle Management
+<img src="./assets/week3/token-lifecycle-management.jpg">
+
+Tokens can be describe similarly as cookies, but they're different.
+- Tokens are primarily used by API services and modern applications.
+- Tokens are short-lived.
+  - Create
+  - Assign
+  - Activate
+  - Suspend
+  - Remove
+  - Expire
+
+## Cognito Users
+
+## Application Users
+
+## AWS Cognito Security Best Practices
+### User Best Practices
+- AWS Services - API Gateway, AWS Resources shared with the App Client (backend or back channels)
+- AWS WAF with Web ACLs for rate limiting, allow/deny list, deny access from regions & many other WAF management rules similar to OWASP
+- AWS Cognito Compliance standard is what your business requires
+- AWS Cognito should only be in the AWS region that you are legally allowed to be holding user data in (follow GRC frameworks; GDPR for example)
+- AWS Organizations SCP - to manage user pool deletion, creation, region lock, etc.
+- Enable AWS CloudTrail  & monitor to trigger alerts on malicious Cognito behavior by an identity in AWS
+
+### Application Best Practices
+- Applications should use industry standard for authentication & authorization (SAML, OpenID Connect, OAuth2.0, etc.)
+- App User Lifecycle Management - Create, modify, delete users
+- AWS User Access Lifecycle Management - Change of roles/revoke roles
+- RBAC to manage how much access to AWS Resources for the app being built
+- Token Lifecycle Management - Issue new tokens, revoke compromised tokens, storage location (client/server), etc.
+- Security testing - penetration tests
+- Access Token Scope - keep limited
+- JWT Token best practice - no sensitive information
+- Encryption in Transit for API Calls
 
 # Setup AWS Cognito
 ## Create new user pool
@@ -900,6 +974,9 @@ Upon debugging again, the token was displaying as expired. This required logging
 After logging back in, we were authenticated.
 
 <img src="./assets/week3/signed-out-home-secret.jpg">
+
+
+When signing out, the token is not getting cleared out. 
 
 Created a "secret" post for authenticated users to see but upon signing out, the token is not getting cleared out. 
 
