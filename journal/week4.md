@@ -234,3 +234,37 @@ whereis bash
 
 psql $CONNECTION_URL -c "DROP database cruddur;"
 ```
+
+Before we can run this, we need to give it permission otherwise running the following will result in "Permission denied"
+
+```sh
+./bin/db-create
+```
+
+```sh
+ls -l ./bin
+```
+
+<img src="./assets/week4/current-bin-permissions.jpg">
+
+r= read
+w= write
+x= executable
+
+## Change permissions in scope of the user
+
+```sh
+chmod u+x bin/db-create
+chmod u+x bin/db-drop
+chmod u+x bin/db-schema-load
+```
+
+OR
+
+```sh
+chmod 644 bin/db-create
+chmod 644 bin/db-drop
+chmod 644 bin/db-schema-load
+```
+
+<img src="./assets/week4/chmod-bin.jpg">
