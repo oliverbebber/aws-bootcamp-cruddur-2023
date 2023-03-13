@@ -41,6 +41,8 @@ aws rds create-db-instance \
   --storage-type gp2 \
   --publicly-accessible \
   --storage-encrypted \
+  --enable-performance-insights \
+  --performance-insights-retention-period 7 \ 
   --no-deletion-protection
 ```
 This will take about 10-15 mins
