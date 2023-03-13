@@ -63,3 +63,14 @@ More errors occurred while attempting to create my own RDS instance --- this app
 <img src="./assets/week4/aws-cli-rds.jpg">
 
 <img src="./assets/week4/create-rds-instance.jpg">
+
+Comment out DynamoDB in `docker-compose.yml` then run docker compose up
+
+Go back into AWS RDS and check on the RDS instance.
+- Click into the instance
+- Click Actions
+- Click Stop temporarily
+
+Stopping the instance temporarily will result in the instance starting automatically after 7 days.
+
+<img src="./assets/week4/rds-stop-temp.jpg">
