@@ -319,8 +319,12 @@ Add the following in `db-create`
 
 ```sh
 echo "db-create"
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
 ```
 
 ```sql
 CREATE database cruddur;
 ```
+
+
