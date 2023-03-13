@@ -348,9 +348,12 @@ The path is executing relative to where we are.
 
 
 ```sh
-schema_path=$(realpath ..)/db/schema.sql
+echo "db-schema-load"
+
+schema_path=$(realpath .)/db/schema.sql
 echo $schema_path
 
-echo "db-schema-load"
-psql $CONNECTION_URL cruddur < db/schema.sql
+psql $CONNECTION_URL cruddur < $schema_path
 ```
+
+<img src="./assets/week4/schema_path.jpg">
