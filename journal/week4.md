@@ -528,3 +528,129 @@ NO_COLOR='\033[0m'
 LABEL="db-schema-load"
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 ```
+
+# Create User and Activities Tables
+
+https://www.postgresql.org/docs/current/sql-createtable.html
+
+Think of these schemas as namespaces, by default they are set to public.
+- Defining them as public out of good habit
+
+```sql
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+```
+
+```sql
+CREATE TABLE public.users (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  display_name text,
+  handle text,
+  cognito_user_id text,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+```
+
+```sql
+CREATE TABLE public.activities (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_uuid UUID NOT NULL,
+  message text NOT NULL,
+  replies_count integer DEFAULT 0,
+  reposts_count integer DEFAULT 0,
+  likes_count integer DEFAULT 0,
+  reply_to_activity_uuid integer,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+```
+
+## Run Tables in CLI
+
+```sh
+./bin/db-schema-load
+```
+
+
+# Create `db-connect` in `/bin`
+
+```sh
+#! /usr/bin/bash
+
+psql $CONNECTION_URL
+```
+
+## Change Permissions
+
+Run the following:
+
+```sh
+chmod u+x ./bin/db-connect
+```
+
+## Test `db-connect`
+
+```sh
+./bin/db-connect
+
+\dt
+```
+
+- Both tables should display in the CLI.
+
+
+# Create `db-seed`
+
+```sh
+#! /usr/bin/bash 
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-seed"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+echo "db-schema-load"
+
+seed_path="$(realpath .)/db/seed.sql"
+echo $seed_path
+
+if [ "$1" = "prod" ]; then
+    echo "Running in production mode"
+    CON_URL=$PROD_CONNECTION_URL
+else
+    CON_URL=$CONNECTION_URL
+fi
+
+psql $CON_URL cruddur < $seed_path
+```
+
+# Create `seed.sql`
+
+```sql
+INSERT INTO public.users (display_name, handle, cognito_user_id)
+VALUES
+  ('Andrew Brown', 'andrewbrown' ,'MOCK'),
+  ('Andrew Bayko', 'bayko' ,'MOCK');
+
+INSERT INTO public.activities (user_uuid, message, expires_at)
+VALUES
+  (
+    (SELECT uuid from public.users WHERE users.handle = 'andrewbrown' LIMIT 1),
+    'This was imported as seed data!',
+    current_timestamp + interval '10 day'
+  )
+```
+
+
+## Change Permissions
+
+```sh
+chmod u+x ./bin/db-seed
+```
+
+## Run `db-schema-load` then seed data
+
+```sh
+./bin/db-schema-load
+./bin/db-seed
+```
