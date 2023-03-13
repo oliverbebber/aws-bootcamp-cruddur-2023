@@ -329,3 +329,28 @@ CREATE database cruddur;
 
 
 <img src="./assets/week4/db-create.jpg">
+
+
+# Add Shell Script to `db-schema-load`
+
+```sh
+echo "db-schema-load"
+```
+
+```sql
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
+
+The path is executing relative to where we are. 
+- We will need to use real path to find the `schema.sql` file
+
+<img src="./assets/week4/db-schema-load.jpg">
+
+
+```sh
+schema_path=$(realpath ..)/db/schema.sql
+echo $schema_path
+
+echo "db-schema-load"
+psql $CONNECTION_URL cruddur < db/schema.sql
+```
