@@ -1,7 +1,7 @@
 # Week 4 — Postgres and RDS
 
 # Required Homework
-- [ ] Watch Ashish's Week 4 - <a href="https://www.youtube.com/watch?v=UourWxz7iQg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46">Securing Your Amazon RDS Postgres Database</a>
+- [x] Watch Ashish's Week 4 - <a href="https://www.youtube.com/watch?v=UourWxz7iQg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46">Securing Your Amazon RDS Postgres Database</a>
 - [x] Create a RDS Postgres Instance - <a href="https://www.youtube.com/watch?v=EtD7Kv5YCUs&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=47">Live Stream</a>
 - [x] Bash scripting for common database actions 
 - [ ] Install Postgres Driver in Backend Application 
@@ -19,8 +19,66 @@ None assigned - leaving here in the event I think of any that I want to add to c
 - [ ]
 - [ ]
 
-# Provision RDS Instance
 
+# Securing AWS RDS Databases
+## What type of Database is RDS?
+<img src="./assets/week4/relational-nonrelational-db.jpg">
+
+Relational Database (SQL)
+- MySQL
+- SQL Server
+- Postgres
+
+These have tables and rows within the tables.
+
+Non-relational Database (NoSQL)
+- dynamoDB
+
+These databases are decoupled, there are no strong relationships between the columns and rows. 
+
+## Creating RDS with Security in Mind
+- Ensure you are in the appropriate region. 
+- Master password: create a custom, more secure password
+- Make sure encryption is enabled
+
+Once the RDS instance is created, we'll look at some security best practices:
+- Ensure the correct region is set
+- Make sure the RDS instance is not publicly accessible
+  - This may have to be edited to Publicly accessible, however make sure inbound security group rules are configured to ONLY allow the appropriate users on specific, allowed, IP ranges
+- Check the security group rules:
+  - Outbound rules can go anywhere 
+  - Inbound rules, by default, only allow it to talk to itself
+    - Security group may need to be edited/another rule may need to be added
+    - Do NOT allow Source to be set to Anywhere, this will allow anyone anywhere to connect to the database
+    - For working with a live organization, use custom, set the custom IP address range for the org, OR the VPN IP address that's been provided for all devs
+- IAM privileges must be assigned to extend access the RDS database has to other resources in the cloud.
+- For production environments: make sure to enable deletion protection & Multi-AZ 
+
+If the database is no longer being used, it is best practice to delete the database.
+- This will require you to confirm the deletion 
+
+## AWS RDS Security Best Practices 
+- Use VPCs: Use Amazon Virtual Private Cloud (VPC) to create a private network for your RDS instance. 
+  - This helps prevent unauthorized access to your instance from the public internet.
+- Compliance requirements that the organization must meet.
+  - RDS Instances should only be in the AWS region that you are legally allowed to store user data in.
+  - GDPR, ISO 27001, PCI DSS, etc. 
+- Amazon Organizations SCP - manages RDS deletion, creation, region lock, enforce encryption, etc.
+- AWS CloudTrail is enabled & monitored to trigger alerts based on malicious RDS behavior by an identity in AWS.
+- Amazon Guardduty is enabled on the same account & region of RDS.
+
+## Application RDS Security Best Practices
+- RDS Instance should use appropriate authentication
+  - Use IAM authentication, Kerberos, etc. 
+  - Do NOT use the default
+- Database User Lifecycle Management - Create, modify, & delete users
+- AWS User Access Lifecycle Management - Change of roles, revoke roles, etc.
+- Security groups should be restricted to only allow known IP addresses
+- Do not allow RDS to be internet/publicly accessible
+- Encryption for data in transit for comms between Apps & RDS
+- Secret Management: Master user passwords can be used with AWS Secrets Manager to automatically rotate the secrets for Amazon RDS
+
+# Provision RDS Instance
 Add this code into the CLI to create the instance
 
 ```
