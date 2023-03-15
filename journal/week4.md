@@ -744,3 +744,86 @@ user_uuid UUID NOT NULL,
 ```
 
 <img src="./assets/week4/seeded-data.jpg">
+
+# Connect to the database
+Run the following commands
+
+```
+./bin/db-connect
+\dt
+\x on
+SELECT * FROM activities;
+```
+
+<img src="./assets/week4/db-connect-activities.jpg">
+
+- Timestamps will present us with a challenge. 
+  - Do we store them in UTC or in the local time zone?
+
+
+Within Gitpod, open the Database Explorer on the left.
+- Click onto the PostgreSQL tab
+- Type in Cruddur for the Connection Name
+- Host: 127.0.0.1
+- Port: 5432
+- Username: postgres
+- Password
+- Databases: postgres
+- Then click Connect
+
+<img src="./assets/week4/connect-to-db-server.jpg">
+
+Try to drop the connection from the DB
+
+<img src="./assets/week4/db-drop-cruddur.jpg">
+
+We need to create a way to see active connections.
+
+# Add Script to View Active Connections
+
+```
+NO_DB_URL=$(sed 's/\/cruddur//g' <<<"$URL")
+psql $NO_DB_URL -c "select pid as process_id, \
+       usename as user,  \
+       datname as db, \
+       client_addr, \
+       application_name as app,\
+       state \
+from pg_stat_activity;"
+```
+
+We could have idle connections left open by our Database Explorer extension, try disconnecting and checking again the sessions
+
+## Create `db-sessions` in `/bin`
+
+```sql
+#! /usr/bin/bash 
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-sessions"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+if [ "$1" = "prod" ]; then
+    echo "Running in production mode"
+    CON_URL=$PROD_CONNECTION_URL
+else
+    CON_URL=$CONNECTION_URL
+fi
+
+NO_DB_URL=$(sed 's/\/cruddur//g' <<<"$URL")
+psql $NO_DB_URL -c "select pid as process_id, \
+    usename as user,  \
+    datname as db, \
+    client_addr, \
+    application_name as app,\
+    state \
+from pg_stat_activity;"
+```
+
+
+```
+chmod u+x bin/db-sessions
+```
+
+<img src="./assets/week4/psql-error-connection-failed.jpg">
