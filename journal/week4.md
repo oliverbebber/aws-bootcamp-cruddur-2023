@@ -1,17 +1,16 @@
 # Week 4 — Postgres and RDS
 
 # Required Homework
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [ ] Watch Ashish's Week 4 - <a href="https://www.youtube.com/watch?v=UourWxz7iQg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46">Securing Your Amazon RDS Postgres Database</a>
+- [x] Create a RDS Postgres Instance - <a href="https://www.youtube.com/watch?v=EtD7Kv5YCUs&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=47">Live Stream</a>
+- [x] Bash scripting for common database actions 
+- [ ] Install Postgres Driver in Backend Application 
+- [ ] Connect Gitpod to RDS Instance
+- [ ] Create Cognito Trigger to insert user into database
+- [ ] Create new activities with a database insert
 
 # Homework Challenges
+None assigned - leaving here in the event I think of any that I want to add to come back to after the bootcamp is finished or as time permits.
 - [ ]
 - [ ]
 - [ ]
