@@ -170,7 +170,7 @@ Enter the following into the CLI to list the databases postgres template0 and te
 <img src="./assets/week4/list-dbs.jpg">
 
 # Create (and dropping) our database
-We can use the createdb command to create our database:
+We can use the `createdb` command to create our database:
 
 https://www.postgresql.org/docs/current/app-createdb.html
 
@@ -319,6 +319,10 @@ chmod u+x bin/db-drop
 chmod u+x bin/db-schema-load
 ```
 
+<img src="./assets/week4/chmod-bin.jpg">
+
+
+
 OR
 
 ```sh
@@ -327,8 +331,7 @@ chmod 644 bin/db-drop
 chmod 644 bin/db-schema-load
 ```
 
-<img src="./assets/week4/chmod-bin.jpg">
-
+<img src="./assets/week4/permissions.png">
 
 ## Drop DB
 
