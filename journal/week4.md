@@ -724,3 +724,23 @@ chmod u+x ./bin/db-seed
 ./bin/db-schema-load
 ./bin/db-seed
 ```
+
+<img src="./assets/week4/seed-user-uuid-doesnt-exist.jpg">
+
+Looking in the `schema.sql` file, we didn't define the user_uuid.
+
+## Add `user_uuid` in `schema.sql`
+Add the following under public.activities:
+
+```sql
+user_uuid UUID NOT NULL,
+```
+
+### Run the following commands to try seeding data again:
+
+```sh
+./bin/db-schema-load
+./bin/db-seed
+```
+
+<img src="./assets/week4/seeded-data.jpg">
