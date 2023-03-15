@@ -57,6 +57,9 @@ Once the RDS instance is created, we'll look at some security best practices:
 If the database is no longer being used, it is best practice to delete the database.
 - This will require you to confirm the deletion 
 
+
+# Security Best Practices for Amazon RDS
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Security.html
 ## AWS RDS Security Best Practices 
 - Use VPCs: Use Amazon Virtual Private Cloud (VPC) to create a private network for your RDS instance. 
   - This helps prevent unauthorized access to your instance from the public internet.
@@ -77,6 +80,13 @@ If the database is no longer being used, it is best practice to delete the datab
 - Do not allow RDS to be internet/publicly accessible
 - Encryption for data in transit for comms between Apps & RDS
 - Secret Management: Master user passwords can be used with AWS Secrets Manager to automatically rotate the secrets for Amazon RDS
+
+
+# Amazon RDS Security
+https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html
+
+
+
 
 # Provision RDS Instance
 Add this code into the CLI to create the instance
