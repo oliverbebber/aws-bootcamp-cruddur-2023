@@ -806,9 +806,9 @@ printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
 if [ "$1" = "prod" ]; then
     echo "Running in production mode"
-    CON_URL=$PROD_CONNECTION_URL
+    URL=$PROD_CONNECTION_URL
 else
-    CON_URL=$CONNECTION_URL
+    RL=$CONNECTION_URL
 fi
 
 NO_DB_URL=$(sed 's/\/cruddur//g' <<<"$URL")
@@ -827,3 +827,8 @@ chmod u+x bin/db-sessions
 ```
 
 <img src="./assets/week4/psql-error-connection-failed.jpg">
+
+^^ hit the error above after not changing every variable to URL. After correcting this in `db-sessions` I was able to successfully display the active connections to my database.
+
+
+<img src="./assets/week4/db-sessions-success.jpg">
