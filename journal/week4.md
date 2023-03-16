@@ -832,3 +832,22 @@ chmod u+x bin/db-sessions
 
 
 <img src="./assets/week4/db-sessions-success.jpg">
+
+Going back to database explorer
+- Right click on the database
+- Close connection
+
+I was unable to terminate the active connection. 
+### Troubleshooting Active Connections
+
+- Attempting to do docker compose up again before trying to display the active connection again.
+
+One session remains idle.
+- Running docker compose down
+- Running `./bin/db-sessions` to confirm the connections are no longer active
+- Running docker compose up again 
+- Running `./bin/db-sessions` to check active sessions and only one shows as active, as expected
+
+<img src="./assets/week4/sessions-1.jpg">
+
+Note: try to stay away from the Database Explorer section since it opens connections and doesn't properly close them out.
