@@ -851,3 +851,28 @@ One session remains idle.
 <img src="./assets/week4/sessions-1.jpg">
 
 Note: try to stay away from the Database Explorer section since it opens connections and doesn't properly close them out.
+
+
+# Create `db-setup` & Add Scripts
+
+```sql
+#! /usr/bin/bash 
+-e # stop if it fails at any point
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-setup"
+printf "${CYAN}==== ${LABEL}${NO_COLOR}\n"
+
+bin_path="$(realpath .)/bin"
+
+source "$bin_path/db-drop"
+source "$bin_path/db-create"
+source "$bin_path/db-schema-load"
+source "$bin_path/db-seed"
+```
+
+```
+chmod u+x bin/db-setup
+```
+
+<img src="./assets/week4/db-setup.jpg">
