@@ -27,9 +27,11 @@ tasks:
       chmod u+x bin/install.sh
       ./bin/install.sh
   - name: react-js
+    init: true
     command: |
       cd frontend-react-js
       npm i
+      npm install -g npm@9.6.2
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
