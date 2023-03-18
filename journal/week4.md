@@ -1,19 +1,21 @@
 # Week 4 — Postgres and RDS
 
 # Required Homework
+
 - [x] Watch Ashish's Week 4 - <a href="https://www.youtube.com/watch?v=UourWxz7iQg&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=46">Securing Your Amazon RDS Postgres Database</a>
 - [x] Create a RDS Postgres Instance - <a href="https://www.youtube.com/watch?v=EtD7Kv5YCUs&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=47">Live Stream</a>
 - [x] Bash scripting for common database actions 
-- [ ] Install Postgres Driver in Backend Application 
-- [ ] Connect Gitpod to RDS Instance
+- [x] Install Postgres Driver in Backend Application 
+- [x] Connect Gitpod to RDS Instance
 - [ ] Create Cognito Trigger to insert user into database
 - [ ] Create new activities with a database insert
 
 # Homework Challenges
+
 None assigned - leaving here in the event I think of any that I want to add to come back to after the bootcamp is finished or as time permits.
-- [ ]
-- [ ]
-- [ ]
+- [x] Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
+- [x] Configure Gitpod to Auto Configure Private Commit Email for GitHub
+- [x] Use Security through Obscurity as an Added Layer of Protection for PostgreSQL Port
 - [ ]
 - [ ]
 - [ ]
@@ -21,7 +23,9 @@ None assigned - leaving here in the event I think of any that I want to add to c
 
 
 # Securing AWS RDS Databases
+
 ## What type of Database is RDS?
+
 <img src="./assets/week4/relational-nonrelational-db.jpg">
 
 Relational Database (SQL)
@@ -37,6 +41,7 @@ Non-relational Database (NoSQL)
 These databases are decoupled, there are no strong relationships between the columns and rows. 
 
 ## Creating RDS with Security in Mind
+
 - Ensure you are in the appropriate region. 
 - Master password: create a custom, more secure password
 - Make sure encryption is enabled
@@ -59,8 +64,11 @@ If the database is no longer being used, it is best practice to delete the datab
 
 
 # Security Best Practices for Amazon RDS
+
 https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Security.html
+
 ## AWS RDS Security Best Practices 
+
 - Use VPCs: Use Amazon Virtual Private Cloud (VPC) to create a private network for your RDS instance. 
   - This helps prevent unauthorized access to your instance from the public internet.
 - Compliance requirements that the organization must meet.
@@ -71,6 +79,7 @@ https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Securi
 - Amazon Guardduty is enabled on the same account & region of RDS.
 
 ## Application RDS Security Best Practices
+
 - RDS Instance should use appropriate authentication
   - Use IAM authentication, Kerberos, etc. 
   - Do NOT use the default
@@ -83,12 +92,12 @@ https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_BestPractices.Securi
 
 
 # Amazon RDS Security
+
 https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.html
 
 
-
-
 # Provision RDS Instance
+
 Add this code into the CLI to create the instance
 
 ```
@@ -134,6 +143,7 @@ More errors occurred while attempting to create my own RDS instance --- this app
 Comment out DynamoDB in `docker-compose.yml` then run docker compose up
 
 Go back into AWS RDS and check on the RDS instance.
+
 - Click into the instance
 - Click Actions
 - Click Stop temporarily
@@ -143,6 +153,7 @@ Stopping the instance temporarily will result in the instance starting automatic
 <img src="./assets/week4/rds-stop-temp.jpg">
 
 # Connect to Postgres
+
 To connect to psql via the psql client cli tool remember to use the host flag to specific localhost.
 
 ```
@@ -180,6 +191,7 @@ Enter the following into the CLI to list the databases postgres template0 and te
 <img src="./assets/week4/list-dbs.jpg">
 
 # Create (and dropping) our database
+
 We can use the `createdb` command to create our database:
 
 https://www.postgresql.org/docs/current/app-createdb.html
@@ -236,6 +248,7 @@ psql cruddur < db/schema.sql -h localhost -U postgres
 <img src="./assets/week4/create-extension.jpg">
 
 # Make a new connection_url string
+
 Test the connection_url by typing in:
 
 ```sh
@@ -276,8 +289,8 @@ gp env PROD_CONNECTION_URL="postgresql://masterusername:masterpassword@cruddur-d
 
 <img src="./assets/week4/prod-env-vars.jpg">
 
-
 # Create `bin` folder w/create `db-create`, `db-drop`, & `db-schema-load`
+
 In the backend-flask directory, create these folders and files without extensions.
 
 ```sh
@@ -294,6 +307,7 @@ whereis bash
 ```
 
 # Add Shell Script to Drop the DB
+
 `bin/db-drop`
 
 ```sh
@@ -321,6 +335,7 @@ w= write
 x= executable
 
 ## Change permissions in scope of the user
+
 We want to allow these files to become executable 
 
 ```sh
@@ -330,8 +345,6 @@ chmod u+x bin/db-schema-load
 ```
 
 <img src="./assets/week4/chmod-bin.jpg">
-
-
 
 OR
 
@@ -426,6 +439,7 @@ cd ..
 <img src="./assets/week4/db-schema-2.jpg">
 
 The path is executing relative to where we are. 
+
 - In order to get this to work with the current way `db-schema-load` is written, we would need to edit it slightly to be `backend-flask/db/schema.sql`. But we don't want this.
 - We will need to use real path to find the `schema.sql` file
 
@@ -444,10 +458,7 @@ Try to execute the file again
 ./backend-flask/bin/db-schema-load
 ```
 
-
 <img src="./assets/week4/realpath-nofile.jpg">
-
-
 
 ### Edit again, this time giving realpath a parameter
 
@@ -467,6 +478,7 @@ Try to execute the file again
 Same error occurred...
 
 ### Trying again but this time, wrapping realpath
+
 ```sh
 $echo $(realpath .)
 
@@ -489,9 +501,7 @@ cd backend-flask
 
 <img src="./assets/week4/realpath-wrapped-backend-flask.jpg">
 
-
 - This time it worked
-
 
 ### Use `schema_path` to locate the file
 
@@ -504,9 +514,6 @@ psql $CONNECTION_URL cruddur < db/schema.sql
 ```
 
 <img src="./assets/week4/schema-load-uuid-exists.jpg">
-
-
-
 
 ```sh
 echo "db-schema-load"
@@ -526,8 +533,8 @@ Only works from within `backend-flask`
 
 <img src="./assets/week4/backend-flask-schema.jpg">
 
-
 ## To toggle between local and prod
+
 In `db-schema-load` add the following & make the appropriate edits:
 
 ```sh
@@ -542,7 +549,6 @@ echo $schema_path
 psql $CONNECTION_URL cruddur < db/schema.sql
 ```
 
-
 Then run the following command
 
 ```sh
@@ -556,7 +562,6 @@ Using `$0` & `$1` didn't narrow down to what we expected which was just `prod`
 <img src="./assets/week4/schema-load-echo1.jpg">
 
 Removed `$0` and `$1` was the key to showing prod environment
-
 
 ## Add the following to `db-schema-load`
 
@@ -575,7 +580,6 @@ fi
 psql $CON_URL cruddur < $schema_path
 ```
 
-
 Then run the following
 
 ```sh
@@ -583,7 +587,6 @@ Then run the following
 ```
 
 <img src="./assets/week4/schema-using-prod.jpg">
-
 
 # Print in Color
 
@@ -641,7 +644,6 @@ CREATE TABLE public.activities (
 ./bin/db-schema-load
 ```
 
-
 # Create `db-connect` in `/bin`
 
 ```sh
@@ -667,7 +669,6 @@ chmod u+x ./bin/db-connect
 ```
 
 - Both tables should display in the CLI.
-
 
 # Create `db-seed`
 
@@ -710,7 +711,6 @@ VALUES
     current_timestamp + interval '10 day'
   )
 ```
-
 
 ## Change Permissions
 
@@ -762,6 +762,7 @@ SELECT * FROM activities;
 
 
 Within Gitpod, open the Database Explorer on the left.
+
 - Click onto the PostgreSQL tab
 - Type in Cruddur for the Connection Name
 - Host: 127.0.0.1
@@ -821,7 +822,6 @@ psql $NO_DB_URL -c "select pid as process_id, \
 from pg_stat_activity;"
 ```
 
-
 ```
 chmod u+x bin/db-sessions
 ```
@@ -834,6 +834,7 @@ chmod u+x bin/db-sessions
 <img src="./assets/week4/db-sessions-success.jpg">
 
 Going back to database explorer
+
 - Right click on the database
 - Close connection
 
@@ -843,6 +844,7 @@ I was unable to terminate the active connection.
 - Attempting to do docker compose up again before trying to display the active connection again.
 
 One session remains idle.
+
 - Running docker compose down
 - Running `./bin/db-sessions` to confirm the connections are no longer active
 - Running docker compose up again 
@@ -851,7 +853,6 @@ One session remains idle.
 <img src="./assets/week4/sessions-1.jpg">
 
 Note: try to stay away from the Database Explorer section since it opens connections and doesn't properly close them out.
-
 
 # Create `db-setup` & Add Scripts
 
@@ -876,3 +877,283 @@ chmod u+x bin/db-setup
 ```
 
 <img src="./assets/week4/db-setup.jpg">
+
+# Install Postgres Client
+
+Add the following to our `requirments.txt`
+
+```
+psycopg[binary]
+psycopg[pool]
+```
+
+Then run:
+
+```
+pip install -r requirements.txt
+```
+
+https://www.psycopg.org/psycopg3/
+
+We are using connection pooling.
+
+## Create DB Object and Connection Pool
+
+Create a new file `lib/db.py`
+
+```py
+from psycopg_pool import ConnectionPool
+import os
+
+def query_wrap_object(template):
+    sql = f"""
+    (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+    {template}
+    ) object_row);
+    """
+    return sql
+
+def query_wrap_array(template):
+    sql = f"""
+    (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+    {template}
+    ) array_row);
+    """
+    return sql
+
+connection_url = os.getenv("CONNECTION_URL")
+pool = ConnectionPool(connection_url)
+```
+
+## Set `backend-flask` Env Var
+
+Set the backend-flask connection env var in `docker-compose.yml`
+
+```yml
+      CONNECTION_URL: "${CONNECTION_URL}"
+```
+
+## Connect `home_activities.py`
+
+We need to replace our mock endpoint with a real API call
+
+```py
+from lib.db import pool, query_wrap_array
+```
+
+Add the following to the bottom of `home_activities.py`:
+
+```py
+    sql = query_wrap_array("""
+    SELECT
+      activities.uuid,
+      users.display_name,
+      users.handle,
+      activities.message,
+      activities.replies_count,
+      activities.reposts_count,
+      activities.likes_count,
+      activities.reply_to_activity_uuid,
+      activities.expires_at,
+      activities.created_at
+    FROM public.activities
+    LEFT JOIN public.users ON users.uuid = activities.user_uuid
+    ORDER BY activities.created_at DESC
+    """)
+    print(sql)
+    with pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(sql)
+        # this will return a tuple
+        # the first field being the data
+        json = cur.fetchone()
+    print("-------")
+    print(json[0])
+    return json[0]
+    return sql
+```
+
+Remove the following: 
+
+```py
+      results = [{
+        'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+        'handle':  'andrew brown',
+        'message': 'cloud is fun!',
+        'created_at': (now - timedelta(days=2)).isoformat(),
+        'expires_at': (now + timedelta(days=5)).isoformat(),
+        'likes_count': 5,
+        'replies_count': 1,
+        'reposts_count': 0,
+        'replies': [{
+          'uuid': '26e12864-1c26-5c3a-9658-97a10f8fea67',
+          'reply_to_activity_uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+          'handle':  'worf',
+          'message': 'This post has no honor!',
+          'likes_count': 0,
+          'replies_count': 0,
+          'reposts_count': 0,
+          'created_at': (now - timedelta(days=2)).isoformat()
+        }],
+      },
+      {
+        'uuid': '66e12864-8c26-4c3a-9658-95a10f8fea67',
+        'handle':  'worf',
+        'message': 'I am out of prune juice',
+        'created_at': (now - timedelta(days=7)).isoformat(),
+        'expires_at': (now + timedelta(days=9)).isoformat(),
+        'likes': 0,
+        'replies': []
+      },
+      {
+        'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
+        'handle':  'garek',
+        'message': 'my dear doctor, i am just simple tailor',
+        'created_at': (now - timedelta(hours=1)).isoformat(),
+        'expires_at': (now + timedelta(hours=12)).isoformat(),
+        'likes': 0,
+        'replies': []
+      }
+      ]
+      if cognito_user_id != None:
+        extra_crud = {
+          'uuid': '248959df-3079-4947-b847-9e0892d1bab4',
+          'handle':  'Phoenix',
+          'message': 'My dear human, it is time for bed',
+          'created_at': (now - timedelta(hours=1)).isoformat(),
+          'expires_at': (now + timedelta(hours=12)).isoformat(),
+          'likes': 77,
+          'replies': []
+        }
+        results.insert(0,extra_crud)
+```
+
+Run docker compose up
+
+# Connect to Prod - RDS via Gitpod
+
+In order to connect to the RDS instance we need to provide our Gitpod IP and whitelist for inbound traffic on port 5432 (this port number is the default but may be changed to another port number for additional security). 
+
+Note: Security through obscurity should **not** be used on its own. However, security through obscurity can provide an additional layer of protection while taking a defense in depth approach. 
+
+Run the following commands to have your Gitpod IP address returned in the CLI.
+
+```
+GITPOD_IP=$(curl ifconfig.me)
+echo $GITPOD_IP
+```
+
+```
+export GITPOD_IP="curl ifconfig.me"
+gp env GITPOD_IP="curl ifconfig.me"
+```
+
+## Create VPC Security Group Inbound Rule
+
+We need to get the Security Group Rule ID so we can easily modify it when using Gitpod.
+
+Replace the following with your SGID and SG Rule ID from AWS RDS.
+
+```
+export DB_SG_ID="sg-0b725ebab7e25635e"
+gp env DB_SG_ID="sg-0b725ebab7e25635e"
+export DB_SG_RULE_ID="sgr-070061bba156cfa88"
+gp env DB_SG_RULE_ID="sgr-070061bba156cfa88"
+```
+
+Whenever we need to update our security groups we can do this for access.
+
+```
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={IpProtocol=tcp,FromPort=$PORT,ToPort=$PORT,CidrIpv4=$GITPOD_IP/32}"
+```
+
+Note: I configured my port number to be obscured for added security and ran the following in Gitpod to set the port number as an env var:
+
+```
+export PORT="xxxx"
+gp env PORT="xxxx"
+```
+
+https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-security-group-rules.html#examples
+
+
+# Add Gitpod IP Addr in as a new Env Var
+
+Add the following to `.gitpod.yml` under postgres
+
+```yml
+    command: |
+      export GITPOD_IP=$(curl ifconfig.me)
+      source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
+```
+
+# Homework Challenges
+## Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
+
+Created a new script located under `backend-flask/bin` titled `install.sh`
+
+```sh
+#!/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="install.sh"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+pip install --upgrade pip && pip install -r requirements.txt
+```
+
+Updated `.gitpod.yml` with the following:
+
+```yml
+  - name: backend-flask
+    command: |
+      cd backend-flask
+      chmod u+x bin/install.sh
+      ./bin/install.sh
+```
+
+## Configure Gitpod to Auto Configure Private Commit Email for GitHub
+
+I got annoyed having to configure my email and username every time I launched Gitpod so I configured my `.gitpod.yml` file to automatically configure these for me.
+
+Set my private email and Github username as Gitpod Env Vars by running the following commands:
+
+```
+export user_email="xxxxxxxx+xxxxxxxxxxxx@users.noreply.github.com"
+gp env user_email="xxxxxxxx+xxxxxxxxxxxx@users.noreply.github.com"
+
+export user_name="xxxxxxxxxxxx"
+gp env user_name="xxxxxxxxxxxx"
+```
+
+Added the following to `.gitpod.yml`
+
+```
+  - name: github
+    command: |
+      git config --global user.email "$user_email"
+      git config --global user.name "$user_name"
+```
+
+## Use Security through Obscurity as an Added Layer of Protection for PostgreSQL Port
+
+I selected a different port number to use for PROD and wanted to keep it private to ensure additional security was implemented for the PostgreSQL service. When we started configuring a script to automatically update our VPC SG Rules, I attempted to create my port number as an env var to obfuscate the exact port number used so I could push the code to my public repo. 
+
+I ran the following in Gitpod to set the port number as an env var:
+
+```
+export PORT="xxxx"
+gp env PORT="xxxx"
+echo $PORT
+```
+
+After determining this method was successful, I was about to modify my script to obfuscate the port number I selected for the service.
+
+```
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={IpProtocol=tcp,FromPort=$PORT,ToPort=$PORT,CidrIpv4=$GITPOD_IP/32}"
+```
