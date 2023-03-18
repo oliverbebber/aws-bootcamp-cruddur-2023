@@ -893,6 +893,8 @@ Then run:
 pip install -r requirements.txt
 ```
 
+<img src="./assets/week4/pip-install-r.jpg">
+
 https://www.psycopg.org/psycopg3/
 
 We are using connection pooling.
@@ -936,6 +938,24 @@ Set the backend-flask connection env var in `docker-compose.yml`
 ## Connect `home_activities.py`
 
 We need to replace our mock endpoint with a real API call
+
+Originally, to test connecting home_activities, we added the following:
+
+```py
+from lib.db import pool
+
+      sql = """
+      SELECT * FROM activities
+      """
+      with pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql)
+          # this will return a tuple
+          # the first field being the data
+          json = cur.fetchall()
+```
+
+
 
 ```py
 from lib.db import pool, query_wrap_array
@@ -1030,6 +1050,60 @@ Remove the following:
 
 Run docker compose up
 
+<img src="./assets/week4/connect-failed-refused.jpg">
+
+After running docker compose up, I ran into this error several times. Once I looked at my Docker containers, I noticed my frontend application had not started successfully.
+
+<img src="./assets/week4/frontend-application-not-started.jpg">
+
+### Troubleshooting
+
+Went into the backend-flask shell to ensure the CONNECTION_URL env var was set correctly.
+
+<img src="./assets/week4/backend-flask-shell.jpg">
+
+Double checked that my `docker-compose.yml` had the CONNECTION_URL correctly set with 'db' instead of 'localhost'.
+
+<img src="./assets/week4/docker-compose-connectionurl.jpg">
+
+I ran docker compose up after changing 'localhost' to 'db' however, I hit a new error. 
+
+<img src="./assets/week4/connection-failed-db-doesnt-exist.jpg">
+
+I ran docker compose down, then docker compose up, but my frontend application was still having issues starting. 
+
+<img src="./assets/week4/port-3000-not-found.jpg">
+
+Checked the frontend logs.
+
+<img src="./assets/week4/frontend-logs.jpg">
+
+After viewing the logs, I realized this issue might be because the scripts for my database hadn't been executed. I had closed my Gitpod session before starting to work on installing the postgreSQL driver.
+
+I ran docker compose down, then navigated to the backend-flask directory to attempt running the create script.
+
+```
+cd backend-flask
+./bin/db-create
+```
+
+Returned an error: Permission denied
+
+```
+chmod u+x bin/db-create
+chmod u+x bin/db-connect
+chmod u+x bin/db-drop
+chmod u+x bin/db-schema-load
+chmod u+x bin/db-seed
+chmod u+x bin/db-setup
+./bin/db-create
+```
+
+<img src="./assets/week4/execute-db-scripts.jpg">
+
+Ran docker compose up again and all services ran as expected.
+
+
 # Connect to Prod - RDS via Gitpod
 
 In order to connect to the RDS instance we need to provide our Gitpod IP and whitelist for inbound traffic on port 5432 (this port number is the default but may be changed to another port number for additional security). 
@@ -1048,7 +1122,7 @@ export GITPOD_IP="curl ifconfig.me"
 gp env GITPOD_IP="curl ifconfig.me"
 ```
 
-## Create VPC Security Group Inbound Rule
+# Create VPC Security Group Inbound Rule
 
 We need to get the Security Group Rule ID so we can easily modify it when using Gitpod.
 
@@ -1157,3 +1231,35 @@ aws ec2 modify-security-group-rules \
     --group-id $DB_SG_ID \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={IpProtocol=tcp,FromPort=$PORT,ToPort=$PORT,CidrIpv4=$GITPOD_IP/32}"
 ```
+
+
+# Homework Summary
+What did I accomplish?
+
+- I successfully created an RDS postgreSQL instance in AWS then created bash scripts for db-connect, db-create, db-drop, db-schema-load, db-seed, db-sessions, and db-setup. 
+- I also successfully installed the postgreSQL driver for the backend-flask application.
+- I connected Gitpod to my RDS instance using a script stored in rds-update-sg-rule. 
+
+Were there any obstacles (did I overcome them)?
+
+- 
+
+What were the homework challenges I attempted?
+
+- This week, no homework challenges were assigned, however, I decided to add in a few things to make things easier for myself while using Gitpod.
+
+**Added a Shell Script to Install & Upgrade pip Upon Launching Gitpod**
+
+- I created a new file in backend-flask/bin to install pip upgrades and the requirements from requirements.txt; this was mainly to save time and prevent user error in the event that I forgot to run pip install -r requirements.txt while in the backend-flask directory.
+
+**Configure Gitpod to Auto Configure Private Commit Email for GitHub**
+
+- My local environment was originally setup years ago while I was in a software engineering bootcamp. When we setup our environments, we created our GItHub with email privacy enabled. This has caused problems for me when using Gitpod when trying to commit and push changes to my repo. 
+- I solved this problem by creating Gitpod env vars for my private email provided by GitHub and my GitHub username.
+- After setting the env vars, I updated my .gitpod.yml file with a new task for GitHub & the git config --global user.email & user.name to automatically configure the correct information for me upon launching Gitpod. 
+
+**Use Security through Obscurity as an Added Layer of Protection for PostgreSQL Port**
+
+- During the setup process to create an RDS instance in AWS, I wanted to take an additional step to secure the database so I changed the port from 5432 to another port number.
+- When we built our script to update the VPC Security Group Inbound Rules in AWS, I added the port number as a GItpod env var to obscure the real port my service is running on for production.
+- This env var was added into the script as $PORT for both the FromPort and ToPort.
