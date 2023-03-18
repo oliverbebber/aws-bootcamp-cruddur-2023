@@ -24,7 +24,7 @@ tasks:
   - name: backend-flask
     command: |
       cd backend-flask
-      sudo ./install.sh
+      ./bin/install.sh
   - name: react-js
     command: |
       cd frontend-react-js
