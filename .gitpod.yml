@@ -24,6 +24,7 @@ tasks:
   - name: backend-flask
     command: |
       cd backend-flask
+      chmod u+x bin/install.sh
       ./bin/install.sh
   - name: react-js
     command: |

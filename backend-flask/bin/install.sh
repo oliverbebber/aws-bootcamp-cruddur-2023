@@ -5,5 +5,4 @@ NO_COLOR='\033[0m'
 LABEL="install.sh"
 printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
 
-pip install -r requirements.txt
-pip install --upgrade pip
+pip install --upgrade pip && pip install -r requirements.txt
