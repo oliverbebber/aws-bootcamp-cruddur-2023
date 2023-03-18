@@ -24,7 +24,7 @@ tasks:
   - name: backend-flask
     command: |
       cd backend-flask
-      pip install -r requirements.txt; pip install --upgrade pip
+      sudo ./install.sh
   - name: react-js
     command: |
       cd frontend-react-js
