@@ -1191,8 +1191,6 @@ cd lambdas
 touch cruddur-post-confirmation.py
 ```
 
-## Add Lambda Env Vars
-
 ## Create Lambda in AWS Console
 
 We need to create a Lambda Function in the same VPC as our RDS instance
