@@ -7,7 +7,7 @@
 - [x] Bash scripting for common database actions 
 - [x] Install Postgres Driver in Backend Application 
 - [x] Connect Gitpod to RDS Instance
-- [ ] Create Cognito Trigger to insert user into database
+- [x] Create Cognito Trigger to insert user into database
 - [ ] Create new activities with a database insert
 
 # Homework Challenges
@@ -16,10 +16,7 @@ None assigned - leaving here in the event I think of any that I want to add to c
 - [x] Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
 - [x] Configure Gitpod to Auto Configure Private Commit Email for GitHub
 - [x] Use Security through Obscurity as an Added Layer of Protection for PostgreSQL Port
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+
 
 
 # Securing AWS RDS Databases
@@ -1511,6 +1508,202 @@ The function isn't connected to a VPC, so we will need to connect it.
 <img src="./assets/week4/lambda-config-vpc.jpg">
 
 Now we can go back to our Cognito User pool and delete our user to attempt the sign-up experience again.
+
+
+# Creating Activities
+
+Starting up Gitpod environment after previously closing the session.
+
+We need to make sure our database is created so I am running the following commands
+
+```
+docker compose up
+cd backend-flask
+./bin/db-setup
+```
+
+After we get our database setup, let's sign into the app.
+
+<img src="./assets/week4/cruddur-no-data.jpg">
+
+## Edit and Refactor `/lib/db.py`
+
+```py
+class Db:
+    def __init__(self):
+        self.init_pool()
+
+    def init_pool(self):
+        connection_url = os.getenv("CONNECTION_URL")
+        self.pool = ConnectionPool(connection_url)
+    def query_commit():
+        try:
+            conn = self.pool.connection()
+            curr = conn.cursor()
+            cur.execute(sql)
+            conn.commit()
+        except Exception as err:
+            self.psycopg_exception(err)
+            # conn.rollback()
+    def query_wrap_object(template):
+        sql = f"""
+        (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+        {template}
+        ) object_row);
+        """
+        return sql
+    def query_wrap_array(template):
+        sql = f"""
+        (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+        {template}
+        ) array_row);
+        """
+        return sql
+    # define a function that handles and parses psycopg2 exceptions
+    def psycopg_exception(err):
+        # get details about the exception
+        err_type, err_obj, traceback = sys.exc_info()
+
+        # get the line number when exception occured
+        line_num = traceback.tb_lineno
+
+        # print the connect() error
+        print ("\npsycopg ERROR:", err, "on line number:", line_num)
+        print ("psycopg traceback:", traceback, "-- type:", err_type)
+
+        # psycopg2 extensions.Diagnostics object attribute
+        print ("\nextensions.Diagnostics:", err.diag)
+
+        # print the pgcode and pgerror exceptions
+        print ("pgerror:", err.pgerror)
+        print ("pgcode:", err.pgcode, "\n")
+db = Db()
+```
+
+## Edit `create_activitiy.py`
+
+Add the following:
+
+```py
+from lib.db import db
+```
+
+Add the following under the else statement:
+
+```py
+    self.create_activity()
+```
+
+Under return model, add a new function:
+
+```py
+  def create_activity(user_uuid, message, expires_at):
+    sql = f"""
+    INSERT INTO (
+      user_uuid.
+      message,
+      expires_at
+    )
+    VALUES (
+      "{user_uuid}",
+      "{message}".
+      "{expires_at}"
+    )
+    """
+# Note: Since we are inserting this data directly into sql, this might be a security concern since we're not sanitizing the data first. We will want to look for a way to do this with python.
+    query_commit(sql)
+```
+
+## Edit & Refactor `db.py`
+
+```py
+    # when we want to return an array of json objects
+    def query_array_json(self,sql):
+        print("SQL STATEMENT-[array]------")
+        print(sql + "\n")
+        wrapped_sql = self.query_wrap_array(sql)
+        with self.pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(wrapped_sql)
+                # this will return a tuple
+                # the first field being the data
+                json = cur.fetchone()
+                return json[0]
+    # when we want to return a json object
+    def query_object_json(self,sql):
+        print("SQL STATEMENT-[object]------")
+        print(sql + "\n")
+        wrapped_sql = self.query_wrap_object(sql)
+        with self.pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(wrapped_sql)
+                # this will return a tuple
+                # the first field being the data
+                json = cur.fetchone()
+                return json[0]
+```
+
+## Edit `home_activities.py`
+
+Change 
+
+```py
+from lib.db import pool, query_wrap_array
+```
+
+to
+
+```py
+from lib.db import db
+
+```py
+class HomeActivities:
+  def run(cognito_user_id=None):
+    #logger.info("HomeActivities")
+    #with tracer.start_as_current_span("home-activities-handler"):
+    #  now = datetime.now(timezone.utc).astimezone()
+    results = db.query_array_json("""
+    SELECT
+      activities.uuid,
+      users.display_name,
+      users.handle,
+      activities.message,
+      activities.replies_count,
+      activities.reposts_count,
+      activities.likes_count,
+      activities.reply_to_activity_uuid,
+      activities.expires_at,
+      activities.created_at
+    FROM public.activities
+    LEFT JOIN public.users ON users.uuid = activities.user_uuid
+    ORDER BY activities.created_at DESC
+  """)
+
+    return results
+```
+
+## Test for functionality
+
+Refresh app and view backend logs
+
+<img src="./assets/week4/typeError-array-args.jpg">
+
+I needed to make a few changes to resolve the error.
+
+Added self to the following in `db.py`
+
+```py
+def query_commit(self):
+
+def query_array_json(self,sql):
+
+def query_object_json(self,sql):
+
+def query_wrap_object(self,template):
+```
+
+<img src="./assets/week4/successful-refactoring.jpg">
+
 
 
 
