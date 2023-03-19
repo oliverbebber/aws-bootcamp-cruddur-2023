@@ -1507,10 +1507,38 @@ The function isn't connected to a VPC, so we will need to connect it.
 
 <img src="./assets/week4/lambda-config-vpc.jpg">
 
-# Connect to Prod - Test Signup Experience
+# Connect to Prod - Test Sign-up Experience
 
 Now we can go back to our Cognito User pool and delete our user to attempt the sign-up experience again.
 
+We signed in successfully, however, we our table didn't have the user get inserted.
+
+<img src="./assets/week4/successful-login-prod.jpg">
+
+<img src="./assets/week4/connect-prod-failed-no-table.jpg">
+
+Heading over to Cloudwatch to review the logs, I discovered there was an error.
+
+<img src="./assets/week4/cloudwatch-insert-into-users-syntax-error.jpg">
+
+Deleted user and attempted again after editing `cruddur-post-confirmation.py` & the lambda code function in AWS.
+
+<img src="./assets/week4/cloudwatch-line13-error.jpg">
+
+Removing an additional " and trying again.
+
+<img src="./assets/week4/cloudwatch-line2-error.jpg">
+
+We needed to edit the schema with the following to successfully insert the data into the user table:
+
+```sql
+    display_name text NOT NULL,
+    handle text NOT NULL,
+    email text NOT NULL, 
+    cognito_user_id text NOT NULL,
+```
+
+<img src="./assets/week4/db-connect-prod.jpg">
 
 # Creating Activities
 
