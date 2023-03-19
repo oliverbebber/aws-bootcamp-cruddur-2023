@@ -927,6 +927,22 @@ connection_url = os.getenv("CONNECTION_URL")
 pool = ConnectionPool(connection_url)
 ```
 
+<img src="./assets/week4/dbpy.jpg">
+
+Edited the following:
+
+```py
+  sql = '''
+```
+
+To be 
+
+```py
+  sql = f"""
+```
+
+<img src="./assets/week4/imported-seed-data.jpg">
+
 ## Set `backend-flask` Env Var
 
 Set the backend-flask connection env var in `docker-compose.yml`
@@ -992,6 +1008,10 @@ Add the following to the bottom of `home_activities.py`:
     return json[0]
     return sql
 ```
+
+<img src="./assets/week4/update-home-activities.jpg">
+
+<img src="./assets/week4/joined-table.jpg">
 
 Remove the following: 
 
@@ -1106,7 +1126,7 @@ Ran docker compose up again and all services ran as expected.
 
 # Connect to Prod - RDS via Gitpod
 
-In order to connect to the RDS instance we need to provide our Gitpod IP and whitelist for inbound traffic on port 5432 (this port number is the default but may be changed to another port number for additional security). 
+In order to connect to the RDS instance we need to provide our Gitpod IP and create an allow list for inbound traffic on port 5432 (this port number is the default but may be changed to another port number for additional security). 
 
 Note: Security through obscurity should **not** be used on its own. However, security through obscurity can provide an additional layer of protection while taking a defense in depth approach. 
 
@@ -1162,6 +1182,239 @@ Add the following to `.gitpod.yml` under postgres
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
 ```
+
+# Setup Cognito Post Confirmation Lambda
+
+Create a new folder and file `aws/lambdas/cruddur-post-confirmation.py`
+
+```
+cd aws
+mkdir lambdas
+cd lambdas
+touch cruddur-post-confirmation.py
+```
+
+## Add Lambda Env Vars
+
+## Create Lambda in AWS Console
+
+We need to create a Lambda Function in the same VPC as our RDS instance
+
+- Login and search for Lambda
+- Click create function
+- Select Author from scratch
+  - Name the function 
+  - Select the Runtime: we're selecting Python 3.8
+  - Select the architecture: we're using x86_64 
+  - Skipping advanced settings
+  - Click Create Function
+
+<img src="./assets/week4/create-lambda.jpg">
+
+Note: I took this screenshot after creating the lambda function. My function uses '-' instead of underscores.
+
+## Add a Layer to Lambda Function
+
+We need to add a layer for psycopg2 with one of the below methods for development or production
+
+Added the following layer from https://github.com/jetbridge/psycopg2-lambda-layer
+
+```
+arn:aws:lambda:us-east-1:898466741470:layer:psycopg2-py38:2
+```
+
+<img src="./assets/week4/lambda-layer.jpg">
+
+## Add Lambda Env Vars
+
+Env vars needed for the lambda environment:
+
+```
+PG_HOSTNAME='cruddur-db-instance.czz1cuvepklc.ca-central-1.rds.amazonaws.com'
+PG_DATABASE='cruddur'
+PG_USERNAME='root'
+PG_PASSWORD='huEE33z2Qvl383'
+```
+
+^^ filler text, replaced with my own information by going to the lambda instance and clicking on Configuration > Environment Variables
+
+<img src="./assets/week4/lambda-envvars.jpg">
+
+## Create a Handler Function
+
+Add the following to `cruddur-post-confirmation.py`
+
+```py
+import json
+import psycopg2
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+    try:
+        conn = psycopg2.connect(
+            host=(os.getenv('PG_HOSTNAME')),
+            database=(os.getenv('PG_DATABASE')),
+            user=(os.getenv('PG_USERNAME')),
+            password=(os.getenv('PG_SECRET'))
+        )
+        cur = conn.cursor()
+        cur.execute("INSERT INTO users (display_name, handle, cognito_user_id) VALUES(%s, %s, %s)", (user['name'], user['email'], user['sub']))
+        conn.commit() 
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+        
+    finally:
+        if conn is not None:
+            cur.close()
+            conn.close()
+            print('Database connection closed.')
+
+    return event
+```
+
+Then copy & paste this into our Code source within AWS Lambda
+
+<img src="./assets/week4/lambda-function.jpg">
+
+
+## Add Lambda Trigger in Cognito
+
+- Select User Pool Properties
+- Add Lambda Trigger
+
+<img src="./assets/week4/cognito-add-lambda-trigger.jpg">
+
+- Trigger type: Sign-up
+- Sign-up: Post confirmation trigger
+
+<img src="./assets/week4/post-confirmation-trigger.jpg">
+
+- Assign the Lambda function we created
+
+<img src="./assets/week4/assign-lambda-function.jpg">
+
+- Click Add Lambda Trigger
+
+## View Lambda Monitor Logs
+
+Let's go back over to Lambda to check out the logs.
+
+- Click on Monitor
+- Click on Logs
+
+<img src="./assets/week4/lambda-monitor-logs.jpg">
+
+Let's test out the app with a user in production.
+
+- I needed to delete my user from Cognito before testing.
+- Then I signed back up for an account
+
+<img src="./assets/week4/postconfirmation-failed-syntax.jpg">
+
+Let's check out Cloudwatch Logs
+
+<img src="./assets/week4/cloudwatch-logs.jpg">
+
+- Click on `/aws/lambda/cruddur-post-confirmation`
+- We should see the first log entry appear on the next page
+
+<img src="./assets/week4/first-cloudwatch-lambda-log.jpg">
+
+Let's open this up and inspect it to see what's going on!
+
+<img src="./assets/week4/cloudwatch-syntax-error-log.jpg">
+
+I decided to ask ChatGPT what was going on with my code after reviewing it manually didn't help me discover the syntax error on line 15. Here's what ChatGPT told me:
+
+<img src="./assets/week4/chatgpt-syntax-error.jpg">
+
+I went back to my `cruddur-post-confirmation.py` file and edited line 14 with an additional ')' then tried confirming my user account.
+
+<img src="./assets/week4/user-cannot-be-confirmed.jpg">
+
+I was able to successfully sign in after leaving this page and going back to the sign in page, however, I deleted my user from Cognito again to continue testing.
+
+After deleting my user and signing back up, I received a new error message.
+
+<img src="./assets/week4/postconfirmation-failed-local-var.jpg">
+
+Looking back at the logs in Cloudwatch, I found the recent entry and reviewed it.
+
+<img src="./assets/week4/cloudwatch-local-var.jpg">
+
+After getting this error, I asked ChatGPT to review my code and the error again as I was unsure why line 37 was an issue. The following is its response:
+
+<img src="./assets/week4/chatgpt-conn-1.jpg">
+
+<img src="./assets/week4/chatgpt-conn-2.jpg">
+
+Updated `cruddur-post-confirmation.py` with the code from ChatGPT and tested again after deleting the user account from Cognito.
+
+<img src="./assets/week4/postconfirmation-failed-timeout.jpg">
+
+Attempted to resent the activation code but this resulted in the same error as before:
+
+"User cannot be confirmed. Current status is CONFIRMED"
+
+<img src="./assets/week4/current-status-confirmed.jpg">
+
+Checked the logs in Cloudwatch.
+
+<img src="./assets/week4/cloudwatch-timeout-log.jpg">
+
+From here, I updated my Lambda function with the following: 
+
+```py
+import json
+import psycopg2
+import os
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+    print('userAttributes')
+    print(user)
+
+    user_display_name   = user['name']
+    user_email          = user['email']
+    user_handle         = user['preferred_username']
+    user_cognito_id     = user['sub']
+    try:
+        print('entered-try')
+
+        sql = f"""
+            "INSERT INTO users (
+                display_name,
+                email,
+                handle,
+                cognito_user_id
+                ) 
+            VALUES(
+                '{user_display_name}', 
+                '{user_email}', 
+                '{user_handle}', 
+                '{user_cognito_id}'
+            )"
+        """
+        print('SQL Statement ----')
+        print(sql)
+        conn = psycopg2.connect(os.getenv('CONNECTION_URL'))
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            cur.close()
+            conn.close()
+            print('Database connection closed.')
+
+    return event
+```
+
+<img src="./assets/week4/cloudwatch-logs-sql-statement.jpg">
 
 # Homework Challenges
 ## Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
