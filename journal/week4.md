@@ -1416,6 +1416,104 @@ def lambda_handler(event, context):
 
 <img src="./assets/week4/cloudwatch-logs-sql-statement.jpg">
 
+## Create AWS Lambda VPC Execution Role
+
+Going back to our function, I looked under Configuration and Permissions, to check for the Execution role.
+
+<img src="./assets/week4/execution-role.jpg">
+
+We only have a basic role configured for the Execution role so we need to add another in IAM.
+
+- Click on the Role name
+
+<img src="./assets/week4/iam-execution-role.jpg">
+
+- Click on Add permissions
+- Attach Policies
+- Search for VPC 
+  - All of the options displayed are AWS managed, we want to have a customer managed policy. This will require us to create a policy.
+
+<img src="./assets/week4/iam-search-vpc.jpg">
+
+- Click Create policy
+
+<img src="./assets/week4/iam-create-policy.jpg">
+
+- From the Visual editor page
+  - Select the service: EC2
+- From the JSON page:
+  - Add the following
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:CreateNetworkInterface",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DescribeNetworkInterfaces"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+- Click Next: We will skip the Tags section
+- Click Next: Review
+  - Give the policy a name: AWSLambdaVPCAccessExecutionRole
+  - Description: Allow Lambda VPC Access
+
+<img src="./assets/week4/review-policy.jpg">
+
+- Click Create policy
+
+## Attach Policy
+
+- Select the AWSLambdaVPCAccessExecutionRole
+
+<img src="./assets/week4/policies-attach.jpg">
+
+- Click Actions
+  - Click Attach policy
+  - Select cruddur-post-confirmation
+  
+<img src="./assets/week4/attach-post-confirmation.jpg">
+
+- Click Attach policy
+
+<img src="./assets/week4/permission-policies.jpg">
+
+## Connect Lambda to VPC
+
+Head back to Lambda and check to make sure the permissions are showing under the Resource Summary for EC2.
+
+<img src="./assets/week4/resource-summary-ec2.jpg">
+
+The function isn't connected to a VPC, so we will need to connect it.
+
+- Go to Lambda in AWS
+- Click on Configuration
+- Click on VPC
+
+<img src="./assets/week4/lambda-vpc.jpg">
+
+- Click on Edit
+- Select the VPC: we only have one currently
+- Select the subnet: we're choosing to select 1a as this is the AZ we are using
+  - It's recommended to choose at least 2 subnets for Lambda to run functions in HA mode
+  - We will select 1b as well for redundancy
+- Select the security groups: we only have one and it is the default
+- Click Save
+
+<img src="./assets/week4/lambda-config-vpc.jpg">
+
+Now we can go back to our Cognito User pool and delete our user to attempt the sign-up experience again.
+
+
+
 # Homework Challenges
 ## Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
 
