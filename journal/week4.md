@@ -1733,6 +1733,354 @@ def query_wrap_object(self,template):
 <img src="./assets/week4/successful-refactoring.jpg">
 
 
+## Continuing Creating Activities
+
+- We need to use a splat
+
+Splatting is a way to pass a variable number of arguments to a function. There are two types of splatting in Python
+
+- `*args` used to pass a variable number of arguments
+- `**kwargs` used to pass a variable number of keyword arguments to a function
+
+
+Add the following to `db.py`
+
+```py
+    def query_commit_returning_id(self,sql,*kwargs):
+        print("SQL STATEMENT-[commit-with returning]------")
+        try:
+            conn = self.pool.connection()
+            cur = conn.cursor()
+            cur.execute(sql,kwargs)
+            returning_id = cur.fetchone()[0]
+            conn.commit()
+            return returning_id
+        except Exception as err:
+            self.psycopg_exception(err)
+```
+
+```py
+    def query_commit(self,sql):
+```
+
+## Edit `create_activity.py`
+
+```py
+    else:
+      # return an object
+      expires_at = (now + ttl_offset)
+      self.create_activity(user_handle,message,expires_at)
+```
+
+
+```py
+  def create_activity(handle, message, expires_at):
+    sql = f"""
+    INSERT INTO (
+      user_uuid,
+      message,
+      expires_at
+    )
+    VALUES (
+      (SELECT uuid 
+        FROM public.users 
+        WHERE users.handle = %(handle)s
+        LIMIT 1
+      ),
+      %(message)s,
+      %(expires_at)s,
+    ) RETURNING uuid;
+    """
+    uuid = db.query_commit(sql,
+      handle,
+      message,
+      expires_at
+    )
+```
+
+We have the user's handle but the handle doesn't tell us who they are.
+
+
+### Testing Crud
+
+Go back to app, refresh, then click Crud and post a new Crud.
+
+Check the backend logs.
+
+<img src="./assets/week4/self-not-defined.jpg">
+
+Edited `create_activity.py`
+
+```py
+    else:
+      # return an object
+      expires_at = (now + ttl_offset)
+      CreateActivity.create_activity(user_handle,message,expires_at)
+```
+
+Changing `query_commit_returning_id` to the following in both `db.py` and `create_activity.py`
+
+```py
+    def query_commit(self,sql,*kwargs):
+```
+
+Adding the following to `db.py`
+
+```py
+import re
+```
+
+```py
+    def query_commit(self,sql,*kwargs):
+        print("SQL STATEMENT-[commit-with returning]------")
+        print(sql + "\n")
+
+        pattern = r"\bRETURNING\b"
+        is_returning_id = re.search(pattern,sql)
+
+        try:
+            conn = self.pool.connection()
+            cur = conn.cursor()
+            cur.execute(sql,kwargs)
+            if is_returning_id:
+              returning_id = cur.fetchone()[0]
+            conn.commit()
+            if is_returning_id:
+              return returning_id
+        except Exception as err:
+            self.psycopg_exception(err)
+```
+
+Remove the following from `db.py`: 
+
+```py
+def query_commit(self,sql):
+        print("SQL STATEMENT-[commit]------")
+        try:
+            conn = self.pool.connection()
+            cur = conn.cursor()
+            cur.execute(sql)
+            conn.commit()
+        except Exception as err:
+            self.psycopg_exception(err)
+            # conn.rollback()
+```
+
+<img src="./assets/week4/db-not-defined.jpg">
+
+The following was commented out, removing and trying again.
+
+```py
+from lib.db import db
+```
+
+<img src="./assets/week4/unexpected-keyword-handle.jpg">
+
+Removing `*kwargs` from `db.py` & editing the following in `create_activity.py`
+
+```py
+    uuid = db.query_commit(sql,{
+      'handle': handle,
+      'message': message,
+      'expires_at': expires_at
+    })
+```
+
+Trying to post a new crud again but get the following error:
+
+<img src="./assets/week4/psycopg-exeception.jpg">
+
+Editing `db/py`
+
+```py
+    # missing self
+    def psycopg_exception(self, err):
+```
+
+<img src="./assets/week4/attribute-error-no-diag.jpg">
+
+Commenting out the following in `db.py`
+
+```py
+        # psycopg extensions.Diagnostics object attribute
+        # print ("\nextensions.Diagnostics:", err.diag)
+```
+
+<img src="./assets/week4/no-attribute-pgerror.jpg">
+
+Commenting out the following in `db.py`
+
+```py
+        # print the pgcode and pgerror exceptions
+        # print ("pgerror:", err.pgerror)
+        # print ("pgcode:", err.pgcode, "\n")
+```
+
+<img src="./assets/week4/no-attribute-cursor.jpg">
+
+Editing `db.py` after having ChatGPT review my code and the error received. 
+
+<img src="./assets/week4/chatgpt-no-cursor.jpg">
+
+```py
+      with self.pool.connection() as conn:
+        cur = conn.cursor()
+```
+
+
+
+## Edit Lambda Function
+
+```py
+      VALUES(%s,%s,%s,%s)
+    """
+    print('SQL Statement ----')
+    print(sql)
+    conn = psycopg2.connect(os.getenv('CONNECTION_URL'))
+    cur = conn.cursor()
+    params = [
+      user_display_name, 
+      user_email, 
+      user_handle, 
+      user_cognito_id
+    ]
+    cur.execute(sql,*params)
+```
+
+## Update and Deploy Lambda Code in AWS
+
+Making this change will help prevent SQL injection
+
+```py
+import json
+import psycopg2
+import os
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+    print('userAttributes')
+    print(user)
+
+    user_display_name   = user['name']
+    user_email          = user['email']
+    user_handle         = user['preferred_username']
+    user_cognito_id     = user['sub']
+    try:
+        print('entered-try')
+        sql = f"""
+            INSERT INTO public.users (
+                display_name,
+                email,
+                handle,
+                cognito_user_id
+                ) 
+            VALUES(%s,%s,%s,%s)
+        """
+        print('SQL Statement ----')
+        print(sql)
+        conn = psycopg2.connect(os.getenv('CONNECTION_URL'))
+        cur = conn.cursor()
+        params = [
+            user_display_name, 
+            user_email, 
+            user_handle, 
+            user_cognito_id
+        ]
+        cur.execute(sql,*params)
+        conn.commit()
+
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            cur.close()
+            conn.close()
+            print('Database connection closed.')
+
+    return event
+```
+
+
+# Create SQL Folder and `create_activity.sql`
+
+```sh
+cd backend-flask/db
+mkdir sql
+cd sql
+touch create_activity.sql
+```
+
+Cut the following from `create_activity.py` to add to `create_activity.sql`
+
+```sql
+INSERT INTO public.activities (
+  user_uuid,
+  message,
+  expires_at
+)
+VALUES (
+  (SELECT uuid 
+    FROM public.users 
+    WHERE users.handle = %(handle)s
+    LIMIT 1
+  ),
+    %(message)s,
+    %(expires_at)s
+  ) RETURNING uuid;
+  """
+```
+
+Edit `create_activity.py`
+
+```py
+  sql = db.template('create_activity')
+  uuid = db.query_commit(sql,{
+    'handle': handle,
+    'message': message,
+    'expires_at': expires_at
+  })
+```
+
+## Create a Load Function in `db.py`
+
+We need to load a text file into a variable
+
+```py
+def template(self, name):
+  os.path.join(app.root_path, 'db', 'sql', "name" + '.sql')
+  with open(template_path, 'r') as f:
+    template_content = f.read()
+  return template_content
+```
+
+Add the following to the top of `db.py`:
+
+```py
+from flask import current_app as app
+```
+
+
+<img src="./assets/week4/nofile-directory.jpg">
+
+<img src="./assets/week4/unterminated-string-literal.jpg">
+
+<img src="./assets/week4/chatgpt-templatepath.jpg">
+
+
+## Add Colors
+
+```py
+    def print_sql(self, title, sql):
+        cyan = '\033[96m'
+        no_color = '\033[0m'
+        print("\n")
+        print(f'{cyan}SQL STATEMENT-[{title}]------{no_color}')
+        print(sql + "\n")
+```
+
+<img src="./assets/week4/sql-statement-color.jpg">
+
+
 # Homework Challenges
 ## Add Shell Script to Install & Upgrade pip Upon Launching Gitpod
 

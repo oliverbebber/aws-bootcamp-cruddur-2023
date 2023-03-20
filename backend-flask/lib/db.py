@@ -1,25 +1,52 @@
 from psycopg_pool import ConnectionPool
 import os
+import re
+import sys
+from flask import current_app as app
 
 class Db:
     def __init__(self):
         self.init_pool()
 
+    def template(self, name):
+        template_path = os.path.join(app.root_path, 'db', 'sql', f"{name}.sql")
+        with open(template_path, 'r') as f:
+            template_content = f.read()
+        return template_content
+
     def init_pool(self):
         connection_url = os.getenv("CONNECTION_URL")
         self.pool = ConnectionPool(connection_url)
-    # when we want to commit data such as an insert
-    def query_commit(self):
+
+    def print_sql(self, title, sql):
+        cyan = '\033[96m'
+        no_color = '\033[0m'
+        print("\n")
+        print(f'{cyan}SQL STATEMENT-[{title}]------{no_color}')
+        print(sql + "\n")
+
+    ## we want to commit data such as an insert
+    ## be sure RETURNING is in all caps
+    def query_commit(self, sql, params):
+        self.print_sql('commit with returning', sql)
+
+        pattern = r"\bRETURNING\b"
+        is_returning_id = re.search(pattern, sql)
+
         try:
-            conn = self.pool.connection()
-            curr = conn.cursor()
-            cur.execute(sql)
-            conn.commit()
+            with self.pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(sql, params)
+                if is_returning_id:
+                    returning_id = cur.fetchone()[0]
+                conn.commit()
+                if is_returning_id:
+                    return returning_id
         except Exception as err:
             self.psycopg_exception(err)
-            # conn.rollback()
+
     # when we want to return an array of json objects
-    def query_array_json(self,sql):
+    def query_array_json(self, sql):
         print("SQL STATEMENT-[array]------")
         print(sql + "\n")
         wrapped_sql = self.query_wrap_array(sql)
@@ -30,8 +57,9 @@ class Db:
                 # the first field being the data
                 json = cur.fetchone()
                 return json[0]
+
     # when we want to return a json object
-    def query_object_json(self,sql):
+    def query_object_json(self, sql):
         print("SQL STATEMENT-[object]------")
         print(sql + "\n")
         wrapped_sql = self.query_wrap_object(sql)
@@ -42,22 +70,25 @@ class Db:
                 # the first field being the data
                 json = cur.fetchone()
                 return json[0]
-    def query_wrap_object(self,template):
+
+    def query_wrap_object(self, template):
         sql = f"""
         (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
         {template}
         ) object_row);
         """
         return sql
-    def query_wrap_array(self,template):
+
+    def query_wrap_array(self, template):
         sql = f"""
         (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
         {template}
         ) array_row);
         """
         return sql
-    # define a function that handles and parses psycopg2 exceptions
-    def psycopg_exception(err):
+
+    # define a function that handles and parses psycopg exceptions
+    def psycopg_exception(self, err):
         # get details about the exception
         err_type, err_obj, traceback = sys.exc_info()
 
@@ -68,10 +99,11 @@ class Db:
         print ("\npsycopg ERROR:", err, "on line number:", line_num)
         print ("psycopg traceback:", traceback, "-- type:", err_type)
 
-        # psycopg2 extensions.Diagnostics object attribute
-        print ("\nextensions.Diagnostics:", err.diag)
+        # psycopg extensions.Diagnostics object attribute
+        # print ("\nextensions.Diagnostics:", err.diag)
 
         # print the pgcode and pgerror exceptions
-        print ("pgerror:", err.pgerror)
-        print ("pgcode:", err.pgcode, "\n")
+        # print ("pgerror:", err.pgerror)
+        # print ("pgcode:", err.pgcode, "\n")
+
 db = Db()
