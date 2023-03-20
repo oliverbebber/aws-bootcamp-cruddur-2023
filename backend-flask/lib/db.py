@@ -35,8 +35,9 @@ class Db:
 
         try:
             with self.pool.connection() as conn:
-                with conn.cursor() as cur:
-                    cur.execute(sql, params)
+                # with conn.cursor() as cur: # potentially causing errors
+                cur = conn.cursor()
+                cur.execute(sql, params)
                 if is_returning_id:
                     returning_id = cur.fetchone()[0]
                 conn.commit()
