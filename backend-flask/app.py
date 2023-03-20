@@ -2,6 +2,8 @@ from flask import Flask
 from flask import request
 from flask_cors import CORS, cross_origin
 import os
+import sys
+import logging
 
 from services.home_activities import *
 from services.notifications_activities import *
@@ -23,9 +25,11 @@ from opentelemetry.instrumentation.requests import RequestsInstrumentor
 from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
+# come back and refine
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
 
-# X-RAY -------
+# X-RAY ------- 
+# Come back and finish segementing
 #from aws_xray_sdk.core import xray_recorder
 #from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
@@ -50,22 +54,22 @@ from time import strftime
 
 # HoneyComb Updates -------
 # Initialize tracing and an exporter that can send data to Honeycomb
-provider = TracerProvider()
+# provider = TracerProvider()
 # OTLPSpanExporter reads the Env Vars for configuring the location to send spans to
-processor = BatchSpanProcessor(OTLPSpanExporter())
-provider.add_span_processor(processor)
+# processor = BatchSpanProcessor(OTLPSpanExporter())
+# provider.add_span_processor(processor)
+
+# Show this in logs within backend-flask app (STDOUT)
+# simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
+# provider.add_span_processor(simple_processor)
+
+# trace.set_tracer_provider(provider)
+# tracer = trace.get_tracer(__name__)
 
 # X-RAY -------
 # xray_url = os.getenv("AWS_XRAY_URL")
 # xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
-# HoneyComb Updates -------
-# Show this in logs within backend-flask app (STDOUT)
-simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
-provider.add_span_processor(simple_processor)
-
-trace.set_tracer_provider(provider)
-tracer = trace.get_tracer(__name__)
 
 app = Flask(__name__)
 
@@ -80,8 +84,8 @@ cognito_jwt_token = CognitoJwtToken(
 
 # HoneyComb Updates -------
 # Initialize automatic instrumentation with Flask
-FlaskInstrumentor().instrument_app(app)
-RequestsInstrumentor().instrument()
+# FlaskInstrumentor().instrument_app(app)
+# RequestsInstrumentor().instrument()
 
 frontend = os.getenv('FRONTEND_URL')
 backend = os.getenv('BACKEND_URL')
@@ -135,7 +139,7 @@ def data_message_groups():
 
 @app.route("/api/messages/@<string:handle>", methods=['GET'])
 def data_messages(handle):
-  user_sender_handle = 'andrewbrown'
+  user_sender_handle = 'andrewbrown' # this will likely need to be changed to user_sender_handle?
   user_receiver_handle = request.args.get('user_reciever_handle')
 
   model = Messages.run(user_sender_handle=user_sender_handle, user_receiver_handle=user_receiver_handle)
@@ -148,7 +152,7 @@ def data_messages(handle):
 @app.route("/api/messages", methods=['POST','OPTIONS'])
 @cross_origin()
 def data_create_message():
-  user_sender_handle = 'andrewbrown'
+  user_sender_handle = 'andrewbrown' # this will likely need to be changed
   user_receiver_handle = request.json['user_receiver_handle']
   message = request.json['message']
 

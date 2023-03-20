@@ -8,8 +8,17 @@ class Db:
     def __init__(self):
         self.init_pool()
 
-    def template(self, name):
-        template_path = os.path.join(app.root_path, 'db', 'sql', f"{name}.sql")
+    def template(self, *args):
+        pathing = list((app.root_path, 'db', 'sql') + args)
+        pathing[-1] = pathing[-1] + ".sql"
+
+        template_path = os.path.join(*pathing)
+
+        green = '\033[92m'
+        no_color = '\033[00m'
+        print("\n")
+        print(f'{green}Load SQL Template: {template_path} {no_color}')
+
         with open(template_path, 'r') as f:
             template_content = f.read()
         return template_content
@@ -18,16 +27,22 @@ class Db:
         connection_url = os.getenv("CONNECTION_URL")
         self.pool = ConnectionPool(connection_url)
 
+    def print_params(self, params):
+        blue = '\033[94m'
+        no_color = '\033[00m'
+        print(f'{blue} SQL Params: {no_color}')
+        for key, value in params.items():
+            print(key, ":", value)
+
     def print_sql(self, title, sql):
-        cyan = '\033[96m'
-        no_color = '\033[0m'
-        print("\n")
-        print(f'{cyan}SQL STATEMENT-[{title}]------{no_color}')
-        print(sql + "\n")
+        purple = '\033[95m'
+        no_color = '\033[00m'
+        print(f'{purple}SQL STATEMENT-[{title}]------{no_color}')
+        print(sql)
 
     ## we want to commit data such as an insert
     ## be sure RETURNING is in all caps
-    def query_commit(self, sql, params):
+    def query_commit(self, sql, params={}):
         self.print_sql('commit with returning', sql)
 
         pattern = r"\bRETURNING\b"
@@ -35,7 +50,6 @@ class Db:
 
         try:
             with self.pool.connection() as conn:
-                # with conn.cursor() as cur: # potentially causing errors
                 cur = conn.cursor()
                 cur.execute(sql, params)
                 if is_returning_id:
@@ -44,33 +58,34 @@ class Db:
                 if is_returning_id:
                     return returning_id
         except Exception as err:
-            self.psycopg_exception(err)
+            self.print_sql_err(err)
 
     # when we want to return an array of json objects
-    def query_array_json(self, sql):
-        print("SQL STATEMENT-[array]------")
-        print(sql + "\n")
+    def query_array_json(self, sql, params={}):
+        self.print_sql('array', sql)
+    
         wrapped_sql = self.query_wrap_array(sql)
+
         with self.pool.connection() as conn:
             with conn.cursor() as cur:
-                cur.execute(wrapped_sql)
-                # this will return a tuple
-                # the first field being the data
+                cur.execute(wrapped_sql, params)
                 json = cur.fetchone()
                 return json[0]
 
     # when we want to return a json object
-    def query_object_json(self, sql):
-        print("SQL STATEMENT-[object]------")
-        print(sql + "\n")
+    def query_object_json(self, sql, params={}):
+        self.print_sql('json', sql)
+        self.print_params(params)
         wrapped_sql = self.query_wrap_object(sql)
+
         with self.pool.connection() as conn:
             with conn.cursor() as cur:
-                cur.execute(wrapped_sql)
-                # this will return a tuple
-                # the first field being the data
+                cur.execute(wrapped_sql, params)
                 json = cur.fetchone()
-                return json[0]
+                if json == None:
+                    "{}"
+                else: 
+                    return json[0]
 
     def query_wrap_object(self, template):
         sql = f"""
@@ -89,7 +104,7 @@ class Db:
         return sql
 
     # define a function that handles and parses psycopg exceptions
-    def psycopg_exception(self, err):
+    def print_sql_err(self, err):
         # get details about the exception
         err_type, err_obj, traceback = sys.exc_info()
 
@@ -99,9 +114,6 @@ class Db:
         # print the connect() error
         print ("\npsycopg ERROR:", err, "on line number:", line_num)
         print ("psycopg traceback:", traceback, "-- type:", err_type)
-
-        # psycopg extensions.Diagnostics object attribute
-        # print ("\nextensions.Diagnostics:", err.diag)
 
         # print the pgcode and pgerror exceptions
         # print ("pgerror:", err.pgerror)
