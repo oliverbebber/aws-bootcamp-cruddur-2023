@@ -127,7 +127,7 @@ Docker for VSCode makes it easy to work with Docker
 
 https://code.visualstudio.com/docs/containers/overview
 
-    Gitpod is preinstalled with theis extension
+    Gitpod is preinstalled with this extension
 
 
 # Containerize Application - Dockerfiles, Docker Compose
